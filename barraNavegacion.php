@@ -11,8 +11,9 @@
             if( !isset( $_SESSION["idUsuario"] ) ){
                 echo " <li class = 'bntSesion'><a href='iniciarSesion.php'>Iniciar sesión</a></li> ";
             }else{
-              // echo"Bienvenido(a):".$_SESSION['nombres']." ";
-               echo " <li class = 'bntSesion'><a href='cerrarSesion.php'>Cerrar sesión</a></li> ";
+               echo "
+               <li class = 'msjBienvenida'><b>Bienvenido(a):</b> ".$_SESSION['nombres']."</li>
+               <li class = 'bntSesion'><a href='cerrarSesion.php'>Cerrar sesión</a></li> ";
             }
         ?>
 

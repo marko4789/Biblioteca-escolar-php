@@ -22,13 +22,20 @@ ul {
     padding: 14px 16px;
     text-decoration: none;
   }
-  
+
   li a:hover {
     background-color: #111;
   }
 
   .bntSesion{
       float: right;
+  }
+
+  .msjBienvenida {
+    float: right;
+    padding: 15px;
+    color: #ffffff;
+    background-color:rgb(224, 130, 52);
   }
 
   form {
@@ -38,15 +45,15 @@ ul {
       width: 70%;
     }
 
-    input[type=text], input[type=password] {
-        width: 100%;
-        padding: 12px 20px;
-        margin: 8px 0;
-        display: inline-block;
-        border: 1px solid #ccc;
-        box-sizing: border-box;
-      
-      }
+  input[type=text], input[type=password] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    
+    }
 button {
     background-color: #3D7FCB;
     color: white;
