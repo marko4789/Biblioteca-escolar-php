@@ -17,20 +17,16 @@
 
 <body>
 
+    <?php
+    include("barraNavegacion.php");
+    ?>
+
     <header>
         <div class="titulo">
-            <h2>Biblioteca escolar</h2>
+            <h1>Biblioteca escolar</h1>
         </div>
 
-        <?php
-            if( !isset( $_SESSION["idUsuario"] ) ){
-                echo "  <button type='submit' onclick='location.href=\"IniciarSesion.php\"'>
-                            Iniciar sesión
-                        </button>";
-            }else{
-               echo"Bienvenido(a):".$_SESSION['nombres']." ";
-            }
-        ?>
+        
 
     </header>
 

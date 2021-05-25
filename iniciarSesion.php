@@ -20,17 +20,24 @@
 
 <body>
 
+ <?php
+    include("barraNavegacion.php");
+    ?>
+
     <header>
         <div class="titulo">
-            <h2>Biblioteca escolar</h2>
+            <h1>Biblioteca escolar</h1>
         </div>
     </header>
 
     <div class="frmInicioSesion">
-        <h4 style="margin-bottom: 30px;">Inicia sesión con tu cuenta</h4>
+        
 
         <form method="post" action='IniciarSesion.php'>
 
+        <h2 style="margin-bottom: 30px;">Inicia sesión con tu cuenta</h2>
+
+        <div class = "frmMargen">
             <div>
                 <label>Usuario</label>
                 <input name="usuario" type="text" pattern="[\wñ]+" required>
@@ -42,7 +49,7 @@
             </div>
 
             <button type="submit">Iniciar Sesion</button>
-
+       </div>
         </form>
 
     </div>
@@ -50,7 +57,7 @@
     <?php
 
         //Se llenó el formulario de Inicio de sesión
-        if(isset($_POST["usuario"]) && !isset($_POST["nombre"])){
+        if(isset($_POST["usuario"])){
             include_once("Conexion.php");
 
             $usuario = $_POST["usuario"];

@@ -1,8 +1,9 @@
 /*
 SQLyog Ultimate v11.11 (64 bit)
-MySQL - 5.5.5-10.4.14-MariaDB : Database - bd_biblioteca
+MySQL - 5.5.5-10.4.18-MariaDB : Database - bd_biblioteca
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -18,6 +19,8 @@ USE `bd_biblioteca`;
 
 /*Table structure for table `usuarios` */
 
+DROP TABLE IF EXISTS `usuarios`;
+
 CREATE TABLE `usuarios` (
   `idUsuario` int(11) NOT NULL AUTO_INCREMENT,
   `nombreUsuario` varchar(30) NOT NULL,
@@ -25,6 +28,7 @@ CREATE TABLE `usuarios` (
   `apellidoPaterno` varchar(30) NOT NULL,
   `apellidoMaterno` varchar(30) NOT NULL,
   `password` varchar(32) NOT NULL,
+  `email` varchar(100) NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`idUsuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -32,6 +36,8 @@ CREATE TABLE `usuarios` (
 /*Data for the table `usuarios` */
 
 /*Table structure for table `alumnos` */
+
+DROP TABLE IF EXISTS `alumnos`;
 
 CREATE TABLE `alumnos` (
   `idAlumno` int(11) NOT NULL AUTO_INCREMENT,
@@ -47,6 +53,8 @@ CREATE TABLE `alumnos` (
 
 /*Table structure for table `autores` */
 
+DROP TABLE IF EXISTS `autores`;
+
 CREATE TABLE `autores` (
   `idAutor` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) NOT NULL,
@@ -60,6 +68,8 @@ CREATE TABLE `autores` (
 
 /*Table structure for table `categorias` */
 
+DROP TABLE IF EXISTS `categorias`;
+
 CREATE TABLE `categorias` (
   `idCategoria` int(11) NOT NULL AUTO_INCREMENT,
   `categoria` varchar(60) NOT NULL,
@@ -71,6 +81,8 @@ CREATE TABLE `categorias` (
 
 /*Table structure for table `editoriales` */
 
+DROP TABLE IF EXISTS `editoriales`;
+
 CREATE TABLE `editoriales` (
   `idEditorial` int(11) NOT NULL AUTO_INCREMENT,
   `editorial` varchar(80) NOT NULL,
@@ -81,6 +93,8 @@ CREATE TABLE `editoriales` (
 /*Data for the table `editoriales` */
 
 /*Table structure for table `libros` */
+
+DROP TABLE IF EXISTS `libros`;
 
 CREATE TABLE `libros` (
   `idLibro` int(11) NOT NULL AUTO_INCREMENT,
@@ -106,6 +120,8 @@ CREATE TABLE `libros` (
 
 /*Table structure for table `prestamos` */
 
+DROP TABLE IF EXISTS `prestamos`;
+
 CREATE TABLE `prestamos` (
   `idPrestamo` int(11) NOT NULL AUTO_INCREMENT,
   `idLibro` int(11) NOT NULL,
@@ -126,6 +142,8 @@ CREATE TABLE `prestamos` (
 /*Data for the table `prestamos` */
 
 /*Table structure for table `relacion_autoria` */
+
+DROP TABLE IF EXISTS `relacion_autoria`;
 
 CREATE TABLE `relacion_autoria` (
   `idAutoria` int(11) NOT NULL AUTO_INCREMENT,
