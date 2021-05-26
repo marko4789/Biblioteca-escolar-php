@@ -16,13 +16,24 @@
 
     <link href="css/Estilo.css" rel="stylesheet">
 
+    <script>
+        function msjUsuarioIncorrecto (){
+            alert('Usuario o contraseña incorrectos. \n\nVuelva a intentarlo')
+        }
+
+        function msjError (){
+            alert('Error')
+        }
+    </script>
+
 </head>
 
 <body>
 
- <?php
-    include("barraNavegacion.php");
+    <?php
+        include("barraNavegacion.php");
     ?>
+
 
     <header>
         <div class="titulo">
@@ -35,21 +46,22 @@
 
         <form method="post" action='IniciarSesion.php'>
 
-        <h2 style="margin-bottom: 30px;">Inicia sesión con tu cuenta</h2>
+            <h2 style="margin-bottom: 30px;">Inicia sesión con tu cuenta</h2>
 
-        <div class = "frmMargen">
-            <div>
-                <label>Usuario</label>
-                <input placeholder = "Nombre del usuario" name="usuario" type="text" pattern="[\wñ]+" required>
+            <div class = "frmMargen">
+                <div>
+                    <label>Usuario</label>
+                    <input placeholder = "Nombre del usuario" name="usuario" type="text" pattern="[\wÑñ]+" required>
+                </div>
+
+                <div>
+                    <label>Contraseña</label>
+                    <input placeholder = "Contraseña del usuario" name="password" type="password" pattern="[\wñÑ]{8,}" required>
+                </div>
+
+                <button type="submit">Iniciar Sesion</button>
             </div>
 
-            <div>
-                <label>Contraseña</label>
-                <input placeholder = "Contraseña del usuario" name="password" type="password" pattern="[\wñ]+" required>
-            </div>
-
-            <button type="submit">Iniciar Sesion</button>
-       </div>
         </form>
 
     </div>
@@ -70,7 +82,7 @@
                 header("Location: Index.php");
                 
             }else{
-                echo "Usuario o contraseña incorrectos";
+                echo "<script>msjUsuarioIncorrecto();</script>";
             }
         }
 
@@ -106,7 +118,7 @@
                 $_SESSION["email"] = $datosUsuario[5];
                 
             }else{
-                echo "Fracaso";
+                echo "<script>msjError('Error.');</script>";
             }
 
             

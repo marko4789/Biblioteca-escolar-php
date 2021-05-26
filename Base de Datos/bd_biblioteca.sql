@@ -45,6 +45,7 @@ CREATE TABLE `alumnos` (
   `apellidoPaterno` varchar(30) NOT NULL,
   `apellidoMaterno` varchar(30) DEFAULT NULL,
   `matricula` varchar(9) NOT NULL,
+  `deudor` varchar(20) NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`idAlumno`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -100,6 +101,7 @@ CREATE TABLE `libros` (
   `idLibro` int(11) NOT NULL AUTO_INCREMENT,
   `titulo` varchar(200) NOT NULL,
   `paginas` int(11) NOT NULL,
+  `descripcion` varchar(1100) NOT NULL,
   `pais` varchar(20) DEFAULT NULL,
   `fechaPublicacion` date NOT NULL,
   `idioma` varchar(20) DEFAULT NULL,
