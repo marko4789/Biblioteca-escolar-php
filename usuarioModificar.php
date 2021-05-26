@@ -1,7 +1,5 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
+    include("validarSesion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -25,8 +23,6 @@
         <div class="titulo">
             <h1>Biblioteca escolar</h1>
         </div>
-
-        
 
     </header>
 
