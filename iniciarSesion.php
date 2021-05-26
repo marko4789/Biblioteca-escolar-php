@@ -67,12 +67,10 @@
             if(existeUsuario($usuario, $password)){
                 guardarSesion($usuario);
 
-                echo "  <script type='text/javascript'>
-                            window.location='Index.php';
-                        </script>";
+                header("Location: Index.php");
                 
             }else{
-                echo "Salte pinche jaker xfavor tnxs";
+                echo "Usuario o contraseña incorrectos";
             }
         }
 
@@ -108,7 +106,7 @@
                 $_SESSION["email"] = $datosUsuario[5];
                 
             }else{
-                echo "Fracasado";
+                echo "Fracaso";
             }
 
             
