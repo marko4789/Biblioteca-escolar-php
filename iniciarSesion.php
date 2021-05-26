@@ -40,12 +40,12 @@
         <div class = "frmMargen">
             <div>
                 <label>Usuario</label>
-                <input name="usuario" type="text" pattern="[\wñ]+" required>
+                <input placeholder = "Nombre del usuario" name="usuario" type="text" pattern="[\wñ]+" required>
             </div>
 
             <div>
                 <label>Contraseña</label>
-                <input name="password" type="password" pattern="[\wñ]+" required>
+                <input placeholder = "Contraseña del usuario" name="password" type="password" pattern="[\wñ]+" required>
             </div>
 
             <button type="submit">Iniciar Sesion</button>
