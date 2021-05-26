@@ -23,7 +23,7 @@
 
     <header>
         <div class="titulo">
-            <h1>Biblioteca escolar</h1>
+            <h1>Deshabilitar Editorial</h1>
         </div>
 
         
