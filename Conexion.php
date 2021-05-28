@@ -18,6 +18,11 @@
 
         }// Fin - conectar
 
+        public function obtenerUsuarios() {
+            $sql = "Select * FROM usuarios WHERE status = 'Activo';";
+            return $this->conexion->query($sql);
+        }
+
     }// Fin - Clase Server
 
     $server = new Server;
