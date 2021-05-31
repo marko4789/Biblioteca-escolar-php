@@ -14,10 +14,16 @@
     <link href="css/Estilo.css" rel="stylesheet">
 
     <script>
-        function validarContrasena(){
-            var pass1 = $("#inputPassword1").val();
-            var pass2 = $("#inputPassword2").val();
-            return (pass1 === pass2);
+        function validarPassword(){
+            var pass1 = document.getElementById('inputPassword1').value;
+            var pass2 = document.getElementById('inputPassword2').value;
+        
+            if (pass1 === pass2){
+                return true;
+            }else {
+                alert('Las contraseñas no coinciden.');
+                return false;
+            }
         }
 
         function msjUsuarioExistente (){
@@ -56,7 +62,7 @@
         <div class="card-body">
             <h3>Datos del usuario:</h3>
             <div style="width: 600px; margin: 20px; padding: 10px;">
-                <form  method="post" action= 'usuarioAgregar.php' onsubmit="return validarContrasena()">
+                <form  method="post" action= 'usuarioAgregar.php' onsubmit="return validarPassword()">
                     <div class="mb-3">
                         <label for="inputUsuario" class="form-label">Usuario</label>
                         <input name="usuario" type="text" class="form-control" id="inputUsuario" pattern="[\wñ]+" required>
