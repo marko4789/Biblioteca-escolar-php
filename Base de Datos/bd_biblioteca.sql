@@ -35,6 +35,8 @@ CREATE TABLE `usuarios` (
 
 /*Data for the table `usuarios` */
 
+INSERT INTO `usuarios` (`idUsuario`, `nombreUsuario`, `nombre`, `apellidoPaterno`, `apellidoMaterno`, `password`, `email`, `status`) VALUES ('1', 'admin', 'Juan', 'Perez', 'Lopez', MD5('Mx_123456'), 'juan@gmail.com', 'Activo');
+
 /*Table structure for table `alumnos` */
 
 DROP TABLE IF EXISTS `alumnos`;
