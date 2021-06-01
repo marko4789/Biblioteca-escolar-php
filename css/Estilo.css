@@ -2,9 +2,9 @@
 body {
     margin: 0;
     padding: 0;
-    background-color: #333;
-    color:greenyellow;
- /*   background-color: #F6F8FA;*/
+  /*background-color: #333;
+    color:rgb(255, 47, 82);*/
+    background-color: #F6F8FA;
     font-family: 'Times New Roman', Times, serif;
 }
 
