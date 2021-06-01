@@ -65,21 +65,21 @@
                         <input name="usuario" type="text" pattern="[\wñ]+" required>
                     </div>
 
-                    <div >
+                    <div>
 
-                        <div >
+                        <div>
                             <label >Contraseña</label>
                             <input id="inputPassword1" name="password" type="password"  pattern="[\wñÑ]{8,}" required>
                         </div>
 
-                        <div >
+                        <div>
                             <label>Confirmar contraseña</label>
                             <input id="inputPassword2" name="confirmepassword" type="password"  pattern="[\wñÑ]{8,}" required>
                         </div>
 
                     </div>
                     
-                    <div >
+                    <div>
                         <label>Nombre(s)</label>
                         <input name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
                     </div>
@@ -87,7 +87,7 @@
                     <label >Apellidos</label>
                     <div>
 
-                        <div >
+                        <div>
                             <input name="apellidoPaterno" placeholder="Paterno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
                         </div>
 
@@ -100,11 +100,8 @@
                         <label>Email</label>
                         <input name="email" type="email" placeholder="ejemplo.email@gmail.com" required>
                     </div>
-
-                    </div>
             
                     <button type="submit" name="registrar">Registrar</button>
-                    <a href='Index.php'>Cancelar</a>
 
                 </form>
             
