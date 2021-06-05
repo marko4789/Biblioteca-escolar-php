@@ -56,56 +56,46 @@
  
                     
         <div class= "frmInicioSesion">
+
             <h2>Datos del usuario</h2>
-            <div style="width: 600px; margin: 20px; padding: 10px;">
-
-                <form  method="post" action= 'usuarioAgregar.php' onsubmit="return validarPassword()">
-                    <div>
-                        <label>Usuario</label>
-                        <input name="usuario" type="text" pattern="[\wñ]+" required>
-                    </div>
-
-                    <div>
-
-                        <div>
-                            <label >Contraseña</label>
-                            <input id="inputPassword1" name="password" type="password"  pattern="[\wñÑ]{8,}" required>
-                        </div>
-
-                        <div>
-                            <label>Confirmar contraseña</label>
-                            <input id="inputPassword2" name="confirmepassword" type="password"  pattern="[\wñÑ]{8,}" required>
-                        </div>
-
-                    </div>
+           
+                <form method="post" action= 'usuarioAgregar.php' onsubmit="return validarPassword()">
                     
-                    <div>
+                <div class="frmMargen">
+
+                        <label>Usuario</label>
+                        <input placeholder = "Nombre de usuario" name="usuario" type="text" pattern="[\wñ]+" required>
+                    
+                                       
+                        <label >Contraseña</label>
+                        <input placeholder = "Contraseña del usuario" id="inputPassword1" name="password" type="password"  pattern="[\wñÑ]{8,}" required>
+                    
+                       
+                        <label>Confirmar contraseña</label>
+                        <input placeholder = "Escriba de nuevo la contraseña" id="inputPassword2" name="confirmepassword" type="password"  pattern="[\wñÑ]{8,}" required>
+                       
+                                                    
                         <label>Nombre(s)</label>
-                        <input name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
-                    </div>
+                        <input placeholder = "Nombre" name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
+                    
 
-                    <label >Apellidos</label>
-                    <div>
-
-                        <div>
-                            <input name="apellidoPaterno" placeholder="Paterno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
+                        <label >Apellidos</label>
+                        <div>                        
+                                <input name="apellidoPaterno" placeholder="Apellido paterno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>                                   
+                                <input name="apellidoMaterno" placeholder="Apellido materno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>                      
                         </div>
 
-                        <div>
-                            <input name="apellidoMaterno" placeholder="Materno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
-                        </div>
-                    </div>
-
-                    <div>
+                   
                         <label>Email</label>
                         <input name="email" type="email" placeholder="ejemplo.email@gmail.com" required>
+                    
+           
+                    <button type="submit" name="registrar">Registrar</button>  
+
                     </div>
-            
-                    <button type="submit" name="registrar">Registrar</button>
 
                 </form>
-            
-            </div>
+                      
         </div>
 
 
