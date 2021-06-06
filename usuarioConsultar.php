@@ -1,14 +1,11 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
+    include("validarSesion.php");
 
-        include_once ('Conexion.php');
+    include_once ('Conexion.php');
 
-        $datos = $server->obtenerUsuarios();
-
-        
-    }
+    $datos = $server->consultarTabla("usuarios");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 

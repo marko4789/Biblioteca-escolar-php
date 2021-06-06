@@ -18,8 +18,13 @@
 
         }// Fin - conectar
 
-        public function obtenerUsuarios() {
-            $sql = "Select * FROM usuarios WHERE status = 'Activo';";
+        public function consultarTabla($tabla, $condiciones = null) {
+            if ($condiciones === null) {
+                $sql = "Select * FROM $tabla WHERE status = 'Activo';";
+            }else {
+                $sql = "Select * FROM $tabla WHERE $condiciones status = 'Activo';";
+            }
+            
             return $this->conexion->query($sql);
         }
 
