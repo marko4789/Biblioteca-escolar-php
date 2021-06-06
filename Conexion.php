@@ -29,12 +29,17 @@
         }
 
         public function buscarUsuario($usuario) {
-            $sql = "Select * FROM usuarios WHERE CONCAT(
-                nombreUsuario, 
-                nombre, 
-                apellidoPaterno, 
-                apellidoMaterno) like '%$usuario%' AND status = 'Activo';";
-
+            if (is_int($usuario)){
+                $sql = "Select * FROM usuarios WHERE idUsuario = $usuario AND status = 'Activo';";  
+            }else{
+                $sql = "Select * FROM usuarios WHERE CONCAT(
+                    idUsuario,
+                    nombreUsuario, 
+                    nombre, 
+                    apellidoPaterno, 
+                    apellidoMaterno) like '%$usuario%' AND status = 'Activo';";    
+            }
+            
             return $this->conexion->query($sql);
         }
 

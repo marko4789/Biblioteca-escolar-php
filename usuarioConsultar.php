@@ -70,8 +70,8 @@
                             echo "<td>".$fila['apellidoMaterno']."</td>";
                             echo "<td>".$fila['email']."</td>";
                             echo "<td>
-                                    <a class='btn btn-success' href='usuariosEditar.php?id=".$fila['idUsuario']."'><img src='Imagenes/Lapiz.png' width='28' height='28'> Editar</a>
-                                    <a class='btn btn-danger' href='usuariosEliminar.php?id=".$fila['idUsuario']."'><img src='Imagenes/Basura.png' width='28' height='28'> Eliminar</a>
+                                    <a class='btn btn-success' href='usuarioModificar.php?id=".$fila['idUsuario']."'><img src='Imagenes/Lapiz.png' width='28' height='28'> Editar</a>
+                                    <a class='btn btn-danger' href='usuarioDeshabilitar.php?id=".$fila['idUsuario']."'><img src='Imagenes/Basura.png' width='28' height='28'> Eliminar</a>
                                 </td>";
                             echo "</th>";
                             echo "</tr>";
