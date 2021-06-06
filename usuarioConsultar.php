@@ -2,8 +2,13 @@
     include("validarSesion.php");
 
     include_once ('Conexion.php');
-
-    $datos = $server->consultarTabla("usuarios");
+    if(isset($_POST["usuario"])){
+        $usuario = $_POST["usuario"];
+        $datos = $server->buscarUsuario($usuario);
+    }else{
+        $datos = $server->consultarTabla("usuarios");
+    }
+    
 ?>
 
 <!DOCTYPE html>
@@ -29,14 +34,19 @@
             <h1>Consultar Usuario</h1>
         </div>
 
-        <div class="card">
-        <div class="card-header">
+        <form method="post" action= 'usuarioConsultar.php'>
+            <input placeholder = "Nombre de usuario o Nombre de empleado" name="usuario" type="text" pattern="[\wñ]+" required>
+            <button type="submit" name="buscar">Buscar</button>  
+        </form>
+        
+        <div>
+        <div>
             <h2 style="text-align: center;">Listado de usuarios</h2>
         </div>
 
-        <div class="card-body">
-            <table class="table">
-                <thead class="thead-dark">
+        <div>
+            <table>
+                <thead>
                     <tr>
                         <th scope="col">#id</th>
                         <th scope="col">Usuario</th>

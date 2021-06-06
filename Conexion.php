@@ -28,6 +28,16 @@
             return $this->conexion->query($sql);
         }
 
+        public function buscarUsuario($usuario) {
+            $sql = "Select * FROM usuarios WHERE CONCAT(
+                nombreUsuario, 
+                nombre, 
+                apellidoPaterno, 
+                apellidoMaterno) like '%$usuario%' AND status = 'Activo';";
+
+            return $this->conexion->query($sql);
+        }
+
     }// Fin - Clase Server
 
     $server = new Server;
