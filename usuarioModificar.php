@@ -84,13 +84,17 @@
                     <label>Usuario</label>
                     <input value= "<?php echo $usuario; ?>" placeholder = "Nombre de usuario" name="usuario" type="text" pattern="[\wñ]+" required>
                 
-                                    
-                    <label >Contraseña</label>
-                    <input placeholder = "Contraseña del usuario" id="inputPassword1" name="password" type="password"  pattern="[\wñÑ]{8,}" required>
-                
-                    
-                    <label>Confirmar contraseña</label>
-                    <input placeholder = "Escriba de nuevo la contraseña" id="inputPassword2" name="confirmepassword" type="password"  pattern="[\wñÑ]{8,}" required>
+
+                    <?php 
+                        if ($_GET["id"] == $_SESSION["idUsuario"]){ 
+                            echo "<label >Contraseña</label>
+                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password'  pattern='[\wñÑ]{8,}'>
+                        
+                            
+                            <label>Confirmar contraseña</label>
+                            <input placeholder = 'Escriba de nuevo la contraseña' id='inputPassword2' name='confirmepassword' type='password'  pattern='[\wñÑ]{8,}'>"; 
+                        }
+                    ?>
                     
                                                 
                     <label>Nombre(s)</label>
@@ -122,11 +126,16 @@
 
         $idUsuario = $_GET["id"];
         $usuario = $_POST['usuario'];
-        $password = $_POST['password'];
         $nombre = $_POST['nombres'];
         $apellidoPaterno = $_POST['apellidoPaterno'];
         $apellidoMaterno = $_POST['apellidoMaterno'];
         $email = $_POST['email'];
+
+        if ( isset($_POST['password']) ){
+            $password = $_POST['password'];
+        }else{
+            $password = "";
+        }
         
         if(existeUsuario($idUsuario, $usuario)){
             echo "<script>
@@ -157,13 +166,25 @@
     function ModificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email){
         global $server;
 
-        $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
+        if ($password == ""){
+            $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
+                                        nombre = '$nombre', 
+                                        apellidoPaterno = '$apellidoPaterno', 
+                                        apellidoMaterno = '$apellidoMaterno', 
+                                        email = '$email'
+                    WHERE idUsuario = $idUsuario AND status = 'Activo';";
+
+        }else{
+            $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
                                         password = MD5('$password'), 
                                         nombre = '$nombre', 
                                         apellidoPaterno = '$apellidoPaterno', 
                                         apellidoMaterno = '$apellidoMaterno', 
                                         email = '$email'
                     WHERE idUsuario = $idUsuario AND status = 'Activo';";
+        }
+
+        
 
         if ($server->conexion->query($consulta)) {
             echo "<script>
