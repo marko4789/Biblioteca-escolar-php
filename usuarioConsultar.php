@@ -34,17 +34,16 @@
             <h1>Consultar Usuario</h1>
         </div>
 
-        <form method="post" action= 'usuarioConsultar.php'>
-            <input placeholder = "Nombre de usuario o Nombre de empleado" name="usuario" type="text" pattern="[\wñ]+" required>
-            <button type="submit" name="buscar">Buscar</button>  
+        
+
+        <div class = "frmFormulario">
+
+        <form class = "frmBuscar" method="post" action= 'usuarioConsultar.php'>
+            <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" type="text" pattern="[\wñ]+" required>
+            <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
         
-        <div>
-        <div>
-            <h2 style="text-align: center;">Listado de usuarios</h2>
-        </div>
-
-        <div>
+        <div class = "tablaDatos">
             <table>
                 <thead>
                     <tr>
@@ -70,8 +69,8 @@
                             echo "<td>".$fila['apellidoMaterno']."</td>";
                             echo "<td>".$fila['email']."</td>";
                             echo "<td>
-                                    <a class='btn btn-success' href='usuarioModificar.php?id=".$fila['idUsuario']."'><img src='Imagenes/Lapiz.png' width='28' height='28'> Editar</a>
-                                    <a class='btn btn-danger' href='usuarioDeshabilitar.php?id=".$fila['idUsuario']."'><img src='Imagenes/Basura.png' width='28' height='28'> Eliminar</a>
+                                    <a class='btnEditar' href='usuarioModificar.php?id=".$fila['idUsuario']."'>🖉 Editar</a>
+                                    <a class='btnEliminar' href='usuarioDeshabilitar.php?id=".$fila['idUsuario']."'>⮾ Eliminar</a>
                                 </td>";
                             echo "</th>";
                             echo "</tr>";
@@ -80,8 +79,13 @@
                     ?>
                 </tbody>
             </table>
-        </div>
-    </div>
+
+        </div> <!-- Div con la clase tablaDatos -->
+
+        <a class = "cancel" href="usuarioConsultar.php">Cancelar</a>
+        <br><br>
+
+    </div> <!-- Div con la clase frmFormulario -->
         
 
     </header>

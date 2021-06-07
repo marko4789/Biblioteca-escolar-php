@@ -41,7 +41,7 @@
         </div>
     </header>
 
-    <div class="frmInicioSesion">
+    <div class="frmFormulario">
         
 
         <form method="post" action='IniciarSesion.php'>

@@ -9,7 +9,7 @@ body {
 }
 
 
-  .frmInicioSesion {
+  .frmFormulario {
     background-color: white;
       border: 3px solid #f1f1f1;
       margin-right: auto;
@@ -20,7 +20,7 @@ body {
       box-shadow:  0px 8px 16px 0px rgba(0,0,0,0.2); ;
     }
 
- .frmInicioSesion input[type=text],.frmInicioSesion  input[type=password], .frmInicioSesion input[type=email]{
+ .frmFormulario input[type=text],.frmFormulario input[type=password], .frmFormulario input[type=email]{
       width: 100%;
       padding: 12px 20px;
       margin: 8px 0;
@@ -30,7 +30,7 @@ body {
       font-size: 16px;
     }
 
-   .frmInicioSesion button {
+   .frmFormulario button {
       background-color:#e08234;
       color: white;
       padding: 14px 20px;
@@ -42,11 +42,11 @@ body {
       font-family: 'Times New Roman', Times, serif;
   }
       
-  .frmInicioSesion button:hover {
+  .frmFormulario button:hover {
   opacity: 0.8;
   }
 
-  .frmInicioSesion label, .frmInicioSesion button{
+  .frmFormulario label, .frmFormulario button{
      font-weight: bold;
       font-size: larger;
   }
@@ -62,3 +62,65 @@ body {
   }
 
 
+
+  .tablaDatos table{
+    border-collapse: collapse;
+    text-align: center;
+    border-radius: 10px;
+    margin: 50px;
+    margin-top: 30px;
+  }
+
+  .tablaDatos thead, .tablaDatos th{
+    background-color: #333;
+    color: #ffffff;
+  }
+
+  .tablaDatos th, .tablaDatos td{
+    border: #000000 1px solid;
+    padding: 5px;
+  }
+
+  .tablaDatos tr:nth-child(even) {
+    background-color: #85807d3b;
+    
+  }
+
+  .frmBuscar{
+    font-size: 14px;
+    margin: 10px;
+  }
+
+  .frmBuscar input[type=text]{
+    width: 400px;
+    border-radius: 20px;
+  }
+  .frmBuscar button{
+    width: auto;
+    border-radius: 20px;
+  }
+
+  .cancel{
+    background-color: #333;
+    color: #ffff;
+    text-decoration: none;
+    font-size: larger;
+    padding: 10px 10px;
+    margin: 30px;
+  }
+
+  .btnEditar, .btnEliminar{
+    color: #ffff;
+    text-decoration: none;
+    padding: 3px;
+    margin: 3px;
+    display: block;
+    text-align: center;
+    font-size: large;
+  }
+  .btnEliminar{
+    background-color: #D9534F;
+  }
+  .btnEditar{
+    background-color: #5CB85C;
+  }

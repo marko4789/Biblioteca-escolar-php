@@ -53,7 +53,7 @@
 
  
                     
-        <div class= "frmInicioSesion">
+        <div class= "frmFormulario">
 
             <h2>Datos del usuario</h2>
            
@@ -93,6 +93,8 @@
                     </div>
 
                 </form>
+
+                <a class = "cancel" href="Index.php">Cancelar</a> <br><br>
                       
         </div>
 
