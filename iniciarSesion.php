@@ -116,12 +116,30 @@
                 $_SESSION["apellidoPaterno"] = $datosUsuario[3];
                 $_SESSION["apellidoMaterno"] = $datosUsuario[4];
                 $_SESSION["email"] = $datosUsuario[5];
-                
+
+                setcookie("usuario", $datosUsuario[1], time() + (60 * 10), "/");
+                setcookie("email", $datosUsuario[5], time() + (60 * 10), "/");
+                setcookie("direccion-ip", obtenerIP(), time() + (60 * 10), "/");
+
             }else{
                 echo "<script>msjError('Error.');</script>";
             }
 
-            
+        }
+
+        function obtenerIP() {
+            // Caso IP compartido
+            if ( !empty($_SERVER['HTTP_CLIENT_IP']) ){
+                return $_SERVER['HTTP_CLIENT_IP'];
+            }
+               
+            // Caso IP Proxy
+            if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+                return $_SERVER['HTTP_X_FORWARDED_FOR'];
+            }
+           
+            // IP Acceso
+            return $_SERVER['REMOTE_ADDR'];
         }
         
     ?>

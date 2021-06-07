@@ -156,7 +156,7 @@
         global $server;
 
         $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
-                                        password = '$password', 
+                                        password = MD5('$password'), 
                                         nombre = '$nombre', 
                                         apellidoPaterno = '$apellidoPaterno', 
                                         apellidoMaterno = '$apellidoMaterno', 
