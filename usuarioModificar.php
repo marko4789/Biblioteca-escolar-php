@@ -13,6 +13,8 @@
             $apellidoPaterno = $fila['apellidoPaterno'];
             $apellidoMaterno = $fila['apellidoMaterno'];
             $email = $fila['email'];
+        }else{
+            header("Location: usuarioConsultar.php");
         }
 
     }else if (!isset($_POST["usuario"])){
