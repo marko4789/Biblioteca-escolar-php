@@ -87,12 +87,15 @@
 
                     <?php 
                         if ($_GET["id"] == $_SESSION["idUsuario"]){ 
-                            echo "<label >Contraseña</label>
-                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password'  pattern='[\wñÑ]{8,}'>
-                        
+                            echo "<label>Contraseña</label> <span style = 'color: red;'>*</span> 
+                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password' pattern='[\wñÑ]{8,16}' required>
+                            <br> <span style = 'color: red;'>*</span> <span style = 'color: rgb(120, 120, 120);'>Debe contener de 8 a 16 caracteres. </span> <br>
+    
                             
                             <label>Confirmar contraseña</label>
-                            <input placeholder = 'Escriba de nuevo la contraseña' id='inputPassword2' name='confirmepassword' type='password'  pattern='[\wñÑ]{8,}'>"; 
+                            <input placeholder = 'Escriba de nuevo la contraseña' id='inputPassword2' name='confirmepassword' type='password'  pattern='[\wñÑ]{8,16}'>
+                            <p style = 'color: red;>* Debe tener al entre 8 y 16 caracteres.</p>
+                       ";
                         }
                     ?>
                     
