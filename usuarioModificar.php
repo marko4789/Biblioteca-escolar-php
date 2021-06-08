@@ -94,7 +94,6 @@
                             
                             <label>Confirmar contraseña</label>
                             <input placeholder = 'Escriba de nuevo la contraseña' id='inputPassword2' name='confirmepassword' type='password'  pattern='[\wñÑ]{8,16}'>
-                            <p style = 'color: red;'>* Debe tener al entre 8 y 16 caracteres.</p>
                        ";
                         }
                     ?>
