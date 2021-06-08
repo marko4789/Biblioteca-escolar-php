@@ -39,7 +39,7 @@
         <div class = "frmFormulario">
 
         <form class = "frmBuscar" method="post" action= 'usuarioConsultar.php'>
-            <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" type="text" pattern="[\wñ]+" required>
+            <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" type="text" pattern="[\wñá-ú]+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
         

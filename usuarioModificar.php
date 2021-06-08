@@ -88,7 +88,7 @@
                     <?php 
                         if ($_GET["id"] == $_SESSION["idUsuario"]){ 
                             echo "<label>Contraseña</label> <span style = 'color: red;'>*</span> 
-                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password' pattern='[\wñÑ]{8,16}' required>
+                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password' pattern='[\wñÑ]{8,16}'>
                             <br> <span style = 'color: red;'>*</span> <span style = 'color: rgb(120, 120, 120);'>Debe contener de 8 a 16 caracteres. </span> <br>
     
                             

@@ -61,14 +61,14 @@ body {
       margin-bottom: 50px;
   }
 
-
-
   .tablaDatos table{
     border-collapse: collapse;
     text-align: center;
     border-radius: 10px;
-    margin: 50px;
-    margin-top: 30px;
+    margin: 30px;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .tablaDatos thead, .tablaDatos th{
