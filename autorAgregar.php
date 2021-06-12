@@ -52,7 +52,7 @@
                
                                                 
                     <label>Nombre(s)</label>
-                    <input placeholder = "Nombre" name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
+                    <input placeholder = "Nombre" name="nombres" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
                 
 
                     <label >Apellidos</label>

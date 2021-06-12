@@ -66,12 +66,12 @@
                     
                                        
                         <label>Contraseña</label> <span style = "color: red;">*</span> 
-                        <input placeholder = "Contraseña del usuario" id="inputPassword1" name="password" type="password"  pattern="[\wñÑ]{8,16}" required>
-                        <br> <span style = "color: red;">*</span> <span style = "color: rgb(120, 120, 120);">Debe contener de 8 a 16 caracteres. </span> <br>
+                        <input placeholder = "Contraseña del usuario" id="inputPassword1" name="password" type="password"  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
+                        <br> <span style = "color: red;">*</span> <span style = "color: rgb(120, 120, 120);">Debe contener de 8 a 16 caracteres, al menos un dígito, una minúscula y una mayúscula. </span> <br>
 
 
                         <label>Confirmar contraseña</label>
-                        <input placeholder = "Escriba de nuevo la contraseña" id="inputPassword2" name="confirmepassword" type="password"  pattern="[\wñÑ]{8,16}" required>
+                        <input placeholder = "Escriba de nuevo la contraseña" id="inputPassword2" name="confirmepassword" type="password"  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
                        
                                                     
                         <label>Nombre(s)</label>
