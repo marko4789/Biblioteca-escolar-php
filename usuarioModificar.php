@@ -167,7 +167,7 @@
         }
     }
 
-    function ModificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email){
+    function modificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email){
         global $server;
 
         if ($password == ""){

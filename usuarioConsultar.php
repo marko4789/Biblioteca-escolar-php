@@ -33,10 +33,10 @@
         <div class="titulo">
             <h1>Consultar Usuario</h1>
         </div>
-
+    </header>
         
 
-        <div class = "frmFormulario">
+    <div class = "frmFormulario">
 
         <form class = "frmBuscar" method="post" action= 'usuarioConsultar.php'>
             <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" type="text" pattern="[\wñá-ú]+" required>
@@ -88,7 +88,7 @@
     </div> <!-- Div con la clase frmFormulario -->
         
 
-    </header>
+   
 
 </body>
 

@@ -43,6 +43,20 @@
             return $this->conexion->query($sql);
         }
 
+        public function buscarAutor($autor) {
+            if (is_int($autor)){
+                $sql = "Select * FROM autores WHERE idAutor = $autor AND status = 'Activo';";  
+            }else{
+                $sql = "Select * FROM autores WHERE CONCAT(
+                    idAutor,
+                    nombre, 
+                    apellidoPaterno, 
+                    apellidoMaterno) like '%$autor%' AND status = 'Activo';";    
+            }
+            
+            return $this->conexion->query($sql);
+        }
+
     }// Fin - Clase Server
 
     $server = new Server;
