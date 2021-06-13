@@ -44,7 +44,7 @@
 
     <div class= "frmFormulario">
 
-        <h2>Datos del usuario</h2>
+        <h2>Datos de la editorial</h2>
 
         <form method="post" action= 'editorialAgregar.php'>
 

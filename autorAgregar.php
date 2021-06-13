@@ -44,7 +44,7 @@
 
     <div class= "frmFormulario">
 
-        <h2>Datos del usuario</h2>
+        <h2>Datos del autor</h2>
 
         <form method="post" action= 'autorAgregar.php'>
 

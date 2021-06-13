@@ -67,6 +67,10 @@
                             echo "</th>";
                             echo "</tr>";
                         }
+
+                        if (mysqli_num_rows($datos) == 0){
+                            echo 'No se han encontrado coincidencias con tu busqueda "'.$categoria.'"';
+                        }
                         
                     ?>
                 </tbody>

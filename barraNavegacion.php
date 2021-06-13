@@ -94,7 +94,7 @@
                
                <div class='dropdown-content'>
                <a href='alumnoAgregar.php'>Agregar Alumno</a>
-               <a href='alumnoConsultar.php'>Consultar Aulumnos</a>
+               <a href='alumnoConsultar.php'>Consultar Alumnos</a>
                </div>
                
                </li>
