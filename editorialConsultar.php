@@ -48,7 +48,7 @@
                     <tr>
                         <th scope="col">#id</th>
                         <th scope="col">Nombre de editorial</th>
-
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>

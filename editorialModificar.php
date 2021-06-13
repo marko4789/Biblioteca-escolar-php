@@ -61,12 +61,12 @@
 
         <h2>Datos de la editorial</h2>
 
-        <form method="post" action= 'editorialEliminar.php?id=<?php echo $id;?>'>
+        <form method="post" action= 'editorialModificar.php?id=<?php echo $id;?>'>
 
             <div class="frmMargen">
                
-                <label>Nombre de la editorial: </label>
-                <input value= "<?php echo $editorial; ?>" placeholder = "editorial" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+                <label>Editorial </label>
+                <input value= "<?php echo $editorial; ?>" placeholder = "Nombre de la editorial" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
             
                 <button type="submit" name="modificar">Modificar</button>  
 
@@ -74,7 +74,7 @@
     
         </form>
 
-        <a class = "cancel" href="Index.php">Cancelar</a> <br><br>
+        <a class = "cancel" href="editorialConsultar.php">Cancelar</a> <br><br>
             
     </div>
 

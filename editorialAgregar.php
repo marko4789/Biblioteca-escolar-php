@@ -51,8 +51,8 @@
             <div class="frmMargen">
                
                                                 
-                <label>Nombre de la editorial: </label>
-                <input placeholder = "editorial" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+                <label>Editorial </label>
+                <input placeholder = "Nombre de la editorial" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
             
                 <button type="submit" name="registrar">Registrar</button>  
 

@@ -71,7 +71,7 @@
     
         </form>
 
-        <a class = "cancel" href="Index.php">Cancelar</a> <br><br>
+        <a class = "cancel" href="editorialConsultar.php">Cancelar</a> <br><br>
             
     </div>
 
