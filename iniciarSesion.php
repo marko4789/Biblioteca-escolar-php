@@ -117,9 +117,9 @@
                 $_SESSION["apellidoMaterno"] = $datosUsuario[4];
                 $_SESSION["email"] = $datosUsuario[5];
 
-                setcookie("usuario", $datosUsuario[1], time() + (60 * 10), "/");
-                setcookie("email", $datosUsuario[5], time() + (60 * 10), "/");
-                setcookie("direccion-ip", obtenerIP(), time() + (60 * 10), "/");
+                setcookie("usuario", $datosUsuario[1], 0, "/");
+                setcookie("email", $datosUsuario[5], 0, "/");
+                setcookie("direccion-ip", obtenerIP(), 0, "/");
 
             }else{
                 echo "<script>msjError('Error.');</script>";
