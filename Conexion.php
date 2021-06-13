@@ -57,6 +57,19 @@
             return $this->conexion->query($sql);
         }
 
+        public function buscarCategoria($categoria) {
+            if (is_int($categoria)){
+                $sql = "Select * FROM categorias WHERE idCategoria = $categoria AND status = 'Activo';";  
+            }else{
+                $sql = "Select * FROM categorias WHERE CONCAT(
+                    idCategoria,
+                    categoria) like '%$categoria%' AND status = 'Activo';";    
+            }
+            
+            return $this->conexion->query($sql);
+        }
+
+
     }// Fin - Clase Server
 
     $server = new Server;
