@@ -66,6 +66,18 @@
                     categoria) like '%$categoria%' AND status = 'Activo';";    
             }
             
+                return $this->conexion->query($sql);
+            }
+            
+        public function buscarEditorial($editorial) {
+            if (is_int($editorial)){
+                $sql = "Select * FROM editoriales WHERE idEditorial = $editorial AND status = 'Activo';";  
+            }else{
+                $sql = "Select * FROM editoriales WHERE CONCAT(
+                    idEditorial,
+                    editorial) like '%$editorial%' AND status = 'Activo';";    
+            }
+            
             return $this->conexion->query($sql);
         }
 

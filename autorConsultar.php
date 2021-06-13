@@ -6,6 +6,7 @@
         $autor = $_POST["autor"];
         $datos = $server->buscarAutor($autor);
     }else{
+        $autor = "";
         $datos = $server->consultarTabla("autores");
     }
     
@@ -41,7 +42,7 @@
     <div class = "frmFormulario">
 
         <form class = "frmBuscar" method="post" action= 'autorConsultar.php'>
-            <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="[\wñá-ú]+" required>
+            <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
 
@@ -72,6 +73,9 @@
                                 </td>";
                             echo "</th>";
                             echo "</tr>";
+                        }
+                        if (mysqli_num_rows($datos) == 0){
+                            echo 'No se han encontrado coincidencias con tu busqueda "'.$autor.'"';
                         }
                         
                     ?>

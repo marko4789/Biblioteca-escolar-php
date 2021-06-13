@@ -82,25 +82,25 @@
                 <div class="frmMargen">
 
                     <label>Usuario</label>
-                    <input value= "<?php echo $usuario; ?>" placeholder = "Nombre de usuario" name="usuario" type="text" pattern="[\wñ]+" required>
+                    <input value= "<?php echo $usuario; ?>" placeholder = "Nombre de usuario" name="usuario" type="text" pattern="[\wñÑ]+" required>
                 
 
                     <?php 
                         if ($_GET["id"] == $_SESSION["idUsuario"]){ 
                             echo "<label>Contraseña</label> <span style = 'color: red;'>*</span> 
-                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password' pattern='[\wñÑ]{8,16}'>
-                            <br> <span style = 'color: red;'>*</span> <span style = 'color: rgb(120, 120, 120);'>Debe contener de 8 a 16 caracteres. </span> <br>
+                            <input placeholder = 'Contraseña del usuario' id='inputPassword1' name='password' type='password' pattern='(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}'>
+                            <br> <span style = 'color: red;'>*</span> <span style = 'color: rgb(120, 120, 120);'>Debe contener de 8 a 16 caracteres, al menos un dígito, una minúscula y una mayúscula. </span> <br>
     
                             
                             <label>Confirmar contraseña</label>
-                            <input placeholder = 'Escriba de nuevo la contraseña' id='inputPassword2' name='confirmepassword' type='password'  pattern='[\wñÑ]{8,16}'>
+                            <input placeholder = 'Escriba de nuevo la contraseña' id='inputPassword2' name='confirmepassword' type='password'  pattern='(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}'>
                        ";
                         }
                     ?>
                     
                                                 
                     <label>Nombre(s)</label>
-                    <input value= "<?php echo $nombre; ?>" placeholder = "Nombre" name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
+                    <input value= "<?php echo $nombre; ?>" placeholder = "Nombre" name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+" required>
                 
 
                     <label >Apellidos</label>

@@ -56,7 +56,7 @@
 
                 <div>
                     <label>Contraseña</label>
-                    <input placeholder = "Contraseña del usuario" name="password" type="password" pattern="[\wñÑ]{8,}" required>
+                    <input placeholder = "Contraseña del usuario" name="password" type="password" pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
                 </div>
 
                 <button type="submit">Iniciar Sesion</button>

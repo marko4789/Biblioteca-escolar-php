@@ -6,6 +6,7 @@
         $usuario = $_POST["usuario"];
         $datos = $server->buscarUsuario($usuario);
     }else{
+        $usuario = "";
         $datos = $server->consultarTabla("usuarios");
     }
     
@@ -39,7 +40,7 @@
     <div class = "frmFormulario">
 
         <form class = "frmBuscar" method="post" action= 'usuarioConsultar.php'>
-            <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" type="text" pattern="[\wñá-ú]+" required>
+            <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" value="<?php echo $usuario;?>" type="text" pattern="[\wñÑá-ú]+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
         
@@ -74,6 +75,9 @@
                                 </td>";
                             echo "</th>";
                             echo "</tr>";
+                        }
+                        if (mysqli_num_rows($datos) == 0){
+                            echo 'No se han encontrado coincidencias con tu busqueda "'.$usuario.'"';
                         }
                     
                     ?>
