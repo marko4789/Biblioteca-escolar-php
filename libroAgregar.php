@@ -1,5 +1,6 @@
 <?php
     include("validarSesion.php");
+    include_once("Conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -114,9 +115,9 @@
 
         function mostrarCategoria() {
 
-            include_once ('Conexion.php');
+            global $server;
 
-            if (!isset($_COOKIE["titulo"])){
+            if (isset($_POST["titulo"])){
                 setcookie("titulo", $_POST["titulo"], 0, "/");    
                 setcookie("descripcion", $_POST["descripcion"], 0, "/");
                 setcookie("paginas", $_POST["paginas"], 0, "/");
@@ -185,9 +186,9 @@
 
         function mostrarEditorial() {
             
-            include_once ('Conexion.php');
+            global $server;
 
-            if (!isset($_COOKIE["idCategoria"])){
+            if (isset($_GET["idCategoria"])){
                 setcookie("idCategoria", $_GET["idCategoria"], 0, "/");
             }
 
@@ -246,12 +247,100 @@
         }
 
         function agregarLibro(){
-            if (!isset($_COOKIE["idEditorial"])){
+            if (isset($_GET["idEditorial"])){
                 setcookie("idEditorial", $_GET["idEditorial"], 0, "/");
             }
-            echo "Exito";
-            //Aquí se guardan los datos
 
+            //Aquí se guardan los datos
+            
+
+            if(existeLibro($_COOKIE["titulo"])){
+                borrarCookies();
+                echo "<script>
+                            msjLibroExistente();
+                            window.location='libroAgregar.php';
+                        </script>";
+            }else{
+                registrarLibro( $_COOKIE["titulo"], 
+                                $_COOKIE["descripcion"], 
+                                $_COOKIE["paginas"], 
+                                $_COOKIE["pais"], 
+                                $_COOKIE["fechaPublicacion"], 
+                                $_COOKIE["idioma"], 
+                                $_COOKIE["isbn"], 
+                                $_COOKIE["existencia"], 
+                                $_COOKIE["idCategoria"], 
+                                $_COOKIE["idEditorial"]);
+
+            }            
+
+            
+
+            
+            echo "Exito";
+
+        }
+
+        function existeLibro($titulo){
+            global $server;
+
+            $consulta = "SELECT titulo FROM libros WHERE titulo = '$titulo' AND status ='Activo';";
+
+            $datosLibro = $server->conexion->query($consulta);
+            
+            //Si existe un registro en la BD
+            if(mysqli_num_rows($datosLibro) >= 1){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        function registrarLibro($titulo, $descripcion, $paginas, $pais, $fechaPublicacion, $idioma, 
+                                $isbn, $existencia, $idCategoria, $idEditorial) {
+
+            global $server;
+
+            $consulta = "INSERT INTO libros (titulo, 
+                                            descripcion, 
+                                            paginas, 
+                                            pais, 
+                                            fechaPublicacion, 
+                                            idioma, 
+                                            isbn, 
+                                            existencia, 
+                                            idCategoria, 
+                                            idEditorial, 
+                                            status)
+            VALUES ('$titulo', 
+                    '$descripcion', 
+                    $paginas, 
+                    '$pais', 
+                    '$fechaPublicacion', 
+                    '$idioma', 
+                    '$isbn', 
+                    $existencia, 
+                    $idCategoria, 
+                    $idEditorial, 
+                    'Activo');";
+
+            borrarCookies();
+
+            if ($server->conexion->query($consulta)) {
+                
+                echo "<script>
+                            msjExito();
+                            window.location='libroConsultar.php';
+                        </script>";
+            
+            }else{
+                echo "<script>
+                            msjFracaso();
+                        </script>";
+            }
+        }
+
+        function borrarCookies(){
             setcookie("titulo", "" , time() - 1, "/");    
             setcookie("descripcion", "", time() - 1, "/");
             setcookie("paginas", "", time() - 1, "/");
@@ -262,7 +351,6 @@
             setcookie("existencia", "", time() - 1, "/");
             setcookie("idCategoria", "", time() - 1, "/");
             setcookie("idEditorial", "", time() - 1, "/");
-
         }
         
         ?>
