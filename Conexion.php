@@ -81,6 +81,14 @@
             return $this->conexion->query($sql);
         }
 
+        public function buscarLibro($libro) {
+            $sql = "Select * FROM libros WHERE CONCAT(
+                idEditorial,
+                editorial) like '%$libro%' AND status = 'Activo';";    
+        
+            
+            return $this->conexion->query($sql);
+        }
 
     }// Fin - Clase Server
 
