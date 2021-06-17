@@ -49,8 +49,10 @@
             mostrarFormulario();
         } else if (isset($_REQUEST["btnSiguiente"])){
             if ($_REQUEST["btnSiguiente"] == "paso2"){
-                mostrarCategoria();
+                mostrarAutor();
             }else if ($_REQUEST["btnSiguiente"] == "paso3"){
+                mostrarCategoria();
+            }else if ($_REQUEST["btnSiguiente"] == "paso4"){
                 mostrarEditorial();
             }
             
@@ -113,9 +115,7 @@
             ';
         }
 
-        function mostrarCategoria() {
-
-            global $server;
+        function mostrarAutor(){
 
             if (isset($_POST["titulo"])){
                 setcookie("titulo", $_POST["titulo"], 0, "/");    
@@ -127,6 +127,77 @@
                 setcookie("isbn", $_POST["isbn"], 0, "/");
                 setcookie("existencia", $_POST["existencia"], 0, "/");
             }
+
+            global $server;
+            
+            if(isset($_POST["autor"])){
+                $autor = $_POST["autor"];
+                $datos = $server->buscarAutor($autor);
+            }else{
+                $datos = $server->consultarTabla("autores");
+            }
+
+            echo '
+            <div class = "frmFormulario">
+
+            <form class = "frmBuscar" method="post" action= "libroAgregar.php">
+                <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+                <button type="submit" name="btnSiguiente" value="paso2">🔍 Buscar</button>  
+            </form>
+
+            <p>Seleccione los autores del libro: </p>
+
+            <form method="post" action= "libroAgregar.php">
+                <div class = "tablaDatos">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Seleccionar</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido paterno</th>
+                                <th scope="col">Apellido materno</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+
+                                while($fila = mysqli_fetch_array($datos)){
+                                    echo "<tr>";
+                                    echo "<th scope='row'><input name='idAutor[]' type='checkbox' value=".$fila['idAutor']."></th>";
+                                    echo "<td>".$fila['nombre']."</td>";
+                                    echo "<td>".$fila['apellidoPaterno']."</td>";
+                                    echo "<td>".$fila['apellidoMaterno']."</td>";
+                                    echo "</th>";
+                                    echo "</tr>";
+                                }
+                                if (mysqli_num_rows($datos) == 0){
+                                    echo 'No se han encontrado coincidencias con tu busqueda "'.$autor.'"';
+                                }
+                                
+                echo '        </tbody>
+                    </table>
+
+                </div>
+            
+            <button type="submit" name="btnSiguiente" value="paso3">Probar</button>
+            <a class = "cancel" href="libroConsultar.php">Cancelar</a>
+
+            </form>
+            <br><br>
+
+        </div>
+                
+                ';                
+                
+        }
+
+        function mostrarCategoria() {
+
+            if(isset($_POST['idAutor'])){
+                setcookie("idAutor", serialize($_POST['idAutor']), 0, "/");
+                
+            }
+
+            global $server;
             
             if(isset($_POST["categoria"])){
                 $categoria = $_POST["categoria"];
@@ -140,7 +211,7 @@
 
             <form class = "frmBuscar" method="post" action= "libroAgregar.php">
                 <input placeholder = "Escriba el nombre de la categoría a buscar" name="categoria" type="text" pattern="[\wñá-ú]+" required>
-                <button type="submit" name="btnSiguiente" value="paso2">🔍 Buscar</button>  
+                <button type="submit" name="btnSiguiente" value="paso3">🔍 Buscar</button>  
             </form>
     
             <div class = "tablaDatos">
@@ -205,7 +276,7 @@
 
                 <form class = "frmBuscar" method="post" action= "libroAgregar.php">
                     <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
-                    <button type="submit" name="btnSiguiente" value="paso3">🔍 Buscar</button>  
+                    <button type="submit" name="btnSiguiente" value="paso4">🔍 Buscar</button>  
                 </form>
 
                 <div class = "tablaDatos">
@@ -274,11 +345,6 @@
 
             }            
 
-            
-
-            
-            echo "Exito";
-
         }
 
         function existeLibro($titulo){
@@ -301,7 +367,7 @@
 
             global $server;
 
-            $consulta = "INSERT INTO libros (titulo, 
+            $registroLibro = "INSERT INTO libros (titulo, 
                                             descripcion, 
                                             paginas, 
                                             pais, 
@@ -312,22 +378,51 @@
                                             idCategoria, 
                                             idEditorial, 
                                             status)
-            VALUES ('$titulo', 
-                    '$descripcion', 
-                    $paginas, 
-                    '$pais', 
-                    '$fechaPublicacion', 
-                    '$idioma', 
-                    '$isbn', 
-                    $existencia, 
-                    $idCategoria, 
-                    $idEditorial, 
-                    'Activo');";
+                            VALUES ('$titulo', 
+                                    '$descripcion', 
+                                    $paginas, 
+                                    '$pais', 
+                                    '$fechaPublicacion', 
+                                    '$idioma', 
+                                    '$isbn', 
+                                    $existencia, 
+                                    $idCategoria, 
+                                    $idEditorial, 
+                                    'Activo');";
+
+                                    //echo $registroLibro;
+
+            $idAutores = unserialize($_COOKIE["idAutor"]);
+
+            
 
             borrarCookies();
 
-            if ($server->conexion->query($consulta)) {
+            if ($server->conexion->query($registroLibro)) {
                 
+                $idLibro = $server->conexion->insert_id;
+
+                foreach ($idAutores as $idAutor){
+
+                    $relacionAutores = "INSERT INTO relacion_autoria (idAutor, idLibro)
+                                            VALUES ($idAutor, $idLibro);";
+
+                    try {
+                        $server->conexion->query($relacionAutores);
+                    } catch (mysqli_sql_exception $e) {
+                        echo $e;
+                        $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
+                        $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
+
+                        "<script>
+                            msjFracaso();
+                            window.location='libroAgregar.php';
+                        </script>";
+
+                    }
+
+                }
+
                 echo "<script>
                             msjExito();
                             window.location='libroConsultar.php';
@@ -336,6 +431,7 @@
             }else{
                 echo "<script>
                             msjFracaso();
+                            window.location='libroAgregar.php';
                         </script>";
             }
         }
@@ -349,6 +445,7 @@
             setcookie("idioma", "", time() - 1, "/");
             setcookie("isbn", "", time() - 1, "/");
             setcookie("existencia", "", time() - 1, "/");
+            setcookie("idAutor", "", time() - 1, "/");
             setcookie("idCategoria", "", time() - 1, "/");
             setcookie("idEditorial", "", time() - 1, "/");
         }
