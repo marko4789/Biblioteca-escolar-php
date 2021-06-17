@@ -38,6 +38,7 @@
         
 
     <div class = "frmFormulario">
+    <a class ="agregar" href="usuarioAgregar.php">✚ Nuevo usuario</a>
 
         <form class = "frmBuscar" method="post" action= 'usuarioConsultar.php'>
             <input placeholder = "Escriba el nombre del usuario a buscar" name="usuario" value="<?php echo $usuario;?>" type="text" pattern="[\wñÑá-ú]+" required>
