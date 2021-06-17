@@ -36,6 +36,7 @@
     </header>
 
         <div class = "frmFormulario">
+        <a class ="agregar" href="editorialAgregar.php">✚ Nueva editorial</a>
 
         <form class = "frmBuscar" method="post" action= 'editorialConsultar.php'>
             <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>

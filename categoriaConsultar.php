@@ -37,6 +37,7 @@
 
 
     <div class = "frmFormulario">
+    <a class ="agregar" href="categoriaAgregar.php">✚ Nueva categoría</a>
 
         <form class = "frmBuscar" method="post" action= 'categoriaConsultar.php'>
             <input placeholder = "Escriba el nombre de la categoría a buscar" name="categoria" type="text" pattern="[\wñá-ú]+" required>

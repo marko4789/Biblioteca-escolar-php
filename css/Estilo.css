@@ -94,20 +94,36 @@ body {
 
   .frmBuscar input[type=text]{
     width: 400px;
-    border-radius: 20px;
+    border-radius: 10px;
   }
   .frmBuscar button{
     width: auto;
-    border-radius: 20px;
+    height: auto;
+    border-radius: 10px;
   }
 
-  .cancel{
-    background-color: #333;
+  .cancel, .agregar{
     color: #ffff;
     text-decoration: none;
     font-size: larger;
     padding: 10px 10px;
     margin: 30px;
+  }
+
+  .cancel{
+    background-color: #333;
+  }
+  .agregar{
+    float:right;
+    background-color: #3a95db;
+    border-radius: 10px;
+    font-weight: bold;
+  }
+  .agregar:hover{
+    background-color: #5da5db;
+  }
+  .cancel:hover{
+    background-color: #636262;
   }
 
   .btnEditar, .btnEliminar{

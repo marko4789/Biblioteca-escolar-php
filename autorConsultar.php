@@ -40,6 +40,7 @@
 
 
     <div class = "frmFormulario">
+    <a class ="agregar" href="autorAgregar.php">✚ Nuevo autor</a>
 
         <form class = "frmBuscar" method="post" action= 'autorConsultar.php'>
             <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>

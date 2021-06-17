@@ -4,7 +4,7 @@
 
     if (isset($_GET["id"])){
 
-        $id = $_GET["id"];
+        $id = (int)$_GET["id"];
         $datos = $server->buscarUsuario($id);
 
         if ($fila = mysqli_fetch_array($datos)){
@@ -122,87 +122,87 @@
                       
                 <a class = "cancel" href="usuarioConsultar.php">Cancelar</a> <br><br>
 
-        </div>
+    </div>
 
     <?php
-    
-    if (isset($_POST["usuario"])){
+        
+        if (isset($_POST["usuario"])){
 
-        $idUsuario = $_GET["id"];
-        $usuario = $_POST['usuario'];
-        $nombre = $_POST['nombres'];
-        $apellidoPaterno = $_POST['apellidoPaterno'];
-        $apellidoMaterno = $_POST['apellidoMaterno'];
-        $email = $_POST['email'];
+            $idUsuario = $_GET["id"];
+            $usuario = $_POST['usuario'];
+            $nombre = $_POST['nombres'];
+            $apellidoPaterno = $_POST['apellidoPaterno'];
+            $apellidoMaterno = $_POST['apellidoMaterno'];
+            $email = $_POST['email'];
 
-        if ( isset($_POST['password']) ){
-            $password = $_POST['password'];
-        }else{
-            $password = "";
+            if ( isset($_POST['password']) ){
+                $password = $_POST['password'];
+            }else{
+                $password = "";
+            }
+            
+            if(existeUsuario($idUsuario, $usuario)){
+                echo "<script>
+                            msjUsuarioExistente();
+                        </script>";
+            }else{
+                modificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email);
+            }
+            
+            
         }
-        
-        if(existeUsuario($idUsuario, $usuario)){
-            echo "<script>
-                        msjUsuarioExistente();
-                    </script>";
-        }else{
-            modificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email);
-        }
-        
-        
-    }
-        
-    function existeUsuario($idUsuario, $usuario){
-        global $server;
+            
+        function existeUsuario($idUsuario, $usuario){
+            global $server;
 
-        $consulta = "SELECT nombreUsuario FROM usuarios WHERE idUsuario != $idUsuario AND nombreUsuario = '$usuario' AND status ='Activo';";
+            $consulta = "SELECT nombreUsuario FROM usuarios WHERE idUsuario != $idUsuario AND nombreUsuario = '$usuario' AND status ='Activo';";
 
-        $datosUsuario = $server->conexion->query($consulta);
+            $datosUsuario = $server->conexion->query($consulta);
 
-        //Si existe un registro en la BD
-        if(mysqli_num_rows($datosUsuario) >= 1){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    function modificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email){
-        global $server;
-
-        if ($password == ""){
-            $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
-                                        nombre = '$nombre', 
-                                        apellidoPaterno = '$apellidoPaterno', 
-                                        apellidoMaterno = '$apellidoMaterno', 
-                                        email = '$email'
-                    WHERE idUsuario = $idUsuario AND status = 'Activo';";
-
-        }else{
-            $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
-                                        password = MD5('$password'), 
-                                        nombre = '$nombre', 
-                                        apellidoPaterno = '$apellidoPaterno', 
-                                        apellidoMaterno = '$apellidoMaterno', 
-                                        email = '$email'
-                    WHERE idUsuario = $idUsuario AND status = 'Activo';";
+            //Si existe un registro en la BD
+            if(mysqli_num_rows($datosUsuario) >= 1){
+                return true;
+            }else{
+                return false;
+            }
         }
 
-        
+        function modificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email){
+            global $server;
 
-        if ($server->conexion->query($consulta)) {
-            echo "<script>
-                        msjExito();
-                        window.location='usuarioConsultar.php';
-                    </script>";
-        }else{
-            echo "<script>
-                        msjFracaso();
-                        window.location='usuarioModificar.php?id=$idUsuario';
-                    </script>";
+            if ($password == ""){
+                $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
+                                            nombre = '$nombre', 
+                                            apellidoPaterno = '$apellidoPaterno', 
+                                            apellidoMaterno = '$apellidoMaterno', 
+                                            email = '$email'
+                        WHERE idUsuario = $idUsuario AND status = 'Activo';";
+
+            }else{
+                $consulta = "UPDATE usuarios SET nombreUsuario = '$usuario', 
+                                            password = MD5('$password'), 
+                                            nombre = '$nombre', 
+                                            apellidoPaterno = '$apellidoPaterno', 
+                                            apellidoMaterno = '$apellidoMaterno', 
+                                            email = '$email'
+                        WHERE idUsuario = $idUsuario AND status = 'Activo';";
+            }
+
+            
+
+            if ($server->conexion->query($consulta)) {
+                echo "<script>
+                            msjExito();
+                            window.location='usuarioConsultar.php';
+                        </script>";
+            }else{
+                echo "<script>
+                            msjFracaso();
+                            window.location='usuarioModificar.php?id=$idUsuario';
+                        </script>";
+            }
         }
-    }
-    
+        
     ?>
 
 </body>

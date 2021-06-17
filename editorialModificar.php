@@ -4,7 +4,7 @@
 
     if (isset($_GET["id"])){
 
-        $id = $_GET["id"];
+        $id = (int)$_GET["id"];
         $datos = $server->buscarEditorial($id);
 
         if ($fila = mysqli_fetch_array($datos)){
