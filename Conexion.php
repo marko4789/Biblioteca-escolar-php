@@ -90,6 +90,21 @@
             return $this->conexion->query($sql);
         }
 
+        public function buscarAlumno($alumno) {
+            if (is_int($alumno)){
+                $sql = "Select * FROM alumnos WHERE idAlumno = $alumno AND status = 'Activo';";  
+            }else{
+                $sql = "Select * FROM alumnos WHERE CONCAT(
+                    idAlumno,
+                    nombre, 
+                    apellidoPaterno, 
+                    apellidoMaterno,
+                    matricula) like '%$alumno%' AND status = 'Activo';";    
+            }
+            
+            return $this->conexion->query($sql);
+        }
+
     }// Fin - Clase Server
 
     $server = new Server;
