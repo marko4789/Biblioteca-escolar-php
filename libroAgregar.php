@@ -332,16 +332,7 @@
                             window.location='libroAgregar.php';
                         </script>";
             }else{
-                registrarLibro( $_COOKIE["titulo"], 
-                                $_COOKIE["descripcion"], 
-                                $_COOKIE["paginas"], 
-                                $_COOKIE["pais"], 
-                                $_COOKIE["fechaPublicacion"], 
-                                $_COOKIE["idioma"], 
-                                $_COOKIE["isbn"], 
-                                $_COOKIE["existencia"], 
-                                $_COOKIE["idCategoria"], 
-                                $_COOKIE["idEditorial"]);
+                registrarLibro();
 
             }            
 
@@ -362,11 +353,11 @@
             }
         }
 
-        function registrarLibro($titulo, $descripcion, $paginas, $pais, $fechaPublicacion, $idioma, 
-                                $isbn, $existencia, $idCategoria, $idEditorial) {
+        function registrarLibro() {
 
             global $server;
 
+            
             $registroLibro = "INSERT INTO libros (titulo, 
                                             descripcion, 
                                             paginas, 
@@ -378,26 +369,23 @@
                                             idCategoria, 
                                             idEditorial, 
                                             status)
-                            VALUES ('$titulo', 
-                                    '$descripcion', 
-                                    $paginas, 
-                                    '$pais', 
-                                    '$fechaPublicacion', 
-                                    '$idioma', 
-                                    '$isbn', 
-                                    $existencia, 
-                                    $idCategoria, 
-                                    $idEditorial, 
+                            VALUES ('".$_COOKIE["titulo"]."', 
+                                    '".$_COOKIE["descripcion"]."', 
+                                    ".$_COOKIE["paginas"].", 
+                                    '".$_COOKIE["pais"]."', 
+                                    '".$_COOKIE["fechaPublicacion"]."', 
+                                    '".$_COOKIE["idioma"]."', 
+                                    '".$_COOKIE["isbn"]."', 
+                                    ".$_COOKIE["existencia"].", 
+                                    ".$_COOKIE["idCategoria"].", 
+                                    ".$_COOKIE["idEditorial"].", 
                                     'Activo');";
 
-                                    //echo $registroLibro;
 
             $idAutores = unserialize($_COOKIE["idAutor"]);
 
-            
-
             borrarCookies();
-
+            
             if ($server->conexion->query($registroLibro)) {
                 
                 $idLibro = $server->conexion->insert_id;
@@ -429,10 +417,12 @@
                         </script>";
             
             }else{
+                borrarCookies();
+/*
                 echo "<script>
                             msjFracaso();
                             window.location='libroAgregar.php';
-                        </script>";
+                        </script>";*/
             }
         }
 
