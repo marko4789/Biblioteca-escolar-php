@@ -38,7 +38,7 @@
     <div class = "frmFormulario">
 
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
-            <input placeholder = "Escriba el nombre, autor, ISBN a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+            <input placeholder = "Escriba el nombre, autor, ISBN a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
 
@@ -46,8 +46,9 @@
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">#id</th>
-                        <th scope="col">Nombre de editorial</th>
+                        <th scope="col">ISBN</th>
+                        <th scope="col">Libro</th>
+                        <th scope="col">Autor(es)</th>
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
@@ -56,17 +57,24 @@
 
                         while($fila = mysqli_fetch_array($datos)){
                             echo "<tr>";
-                            echo "<th scope='row'>".$fila['idEditorial']."</th>";
-                            echo "<td>".$fila['editorial']."</td>";
+                            echo "<th scope='row'>".$fila['isbn']."</th>";
+                            echo "<td>".$fila['titulo']."</td>";
+                            echo "<td>";
+                                $autores = $server->obtenerAutores($fila['idLibro']);
+                                    while ($autor = mysqli_fetch_array($autores)){
+                                        echo " - ".$autor["nombre"]." ".$autor["apellidoPaterno"]." ".$autor["apellidoPaterno"]."<br>";
+                                    }
+                            echo "</td>";
                             echo "<td>
-                                    <a class='btnEditar' href='editorialModificar.php?id=".$fila['idEditorial']."'>🖉 Editar</a>
-                                    <a class='btnEliminar' href='editorialDeshabilitar.php?id=".$fila['idEditorial']."'>⮾ Eliminar</a>
+                                    <a class='btnEditar' href='libroDetalles.php?id=".$fila['idLibro']."'>Ver detalles</a>
+                                    <a class='btnEditar' href='libroModificar.php?id=".$fila['idLibro']."'>🖉 Editar</a>
+                                    <a class='btnEliminar' href='libroDeshabilitar.php?id=".$fila['idLibro']."'>⮾ Eliminar</a>
                                 </td>";
                             echo "</th>";
                             echo "</tr>";
                         }
                         if (mysqli_num_rows($datos) == 0){
-                            echo 'No se han encontrado coincidencias con tu busqueda "'.$editorial.'"';
+                            echo 'No se han encontrado coincidencias con tu busqueda "'.$libro.'"';
                         }
                         
                     ?>
@@ -75,7 +83,7 @@
 
         </div>
 
-        <a class = "cancel" href="editorialConsultar.php">Cancelar</a>
+        <a class = "cancel" href="libroConsultar.php">Cancelar</a>
         <br><br>
 
     </div>

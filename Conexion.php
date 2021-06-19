@@ -82,9 +82,15 @@
         }
 
         public function buscarLibro($libro) {
-            $sql = "Select * FROM libros WHERE CONCAT(
-                idEditorial,
-                editorial) like '%$libro%' AND status = 'Activo';";    
+            $sql = "SELECT * FROM ((libros 
+                    INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
+                    INNER JOIN autores ON relacion_autoria.idAutor = autores.idAutor) 
+                    WHERE CONCAT(libros.isbn, 
+                                 libros.titulo, 
+                                 autores.nombre, 
+                                 autores.apellidoPaterno, 
+                                 autores.apellidoMaterno) 
+                    like '%$libro%' AND libros.status = 'Activo';";    
         
             
             return $this->conexion->query($sql);
@@ -92,9 +98,9 @@
 
         public function buscarAlumno($alumno) {
             if (is_int($alumno)){
-                $sql = "Select * FROM alumnos WHERE idAlumno = $alumno AND status = 'Activo';";  
+                $sql = "SELECT * FROM alumnos WHERE idAlumno = $alumno AND status = 'Activo';";  
             }else{
-                $sql = "Select * FROM alumnos WHERE CONCAT(
+                $sql = "SELECT * FROM alumnos WHERE CONCAT(
                     idAlumno,
                     nombre, 
                     apellidoPaterno, 
@@ -102,6 +108,15 @@
                     matricula) like '%$alumno%' AND status = 'Activo';";    
             }
             
+            return $this->conexion->query($sql);
+        }
+
+        public function obtenerAutores($idLibro) {
+            $sql = "SELECT autores.nombre, autores.apellidoPaterno, autores.apellidoMaterno
+                    FROM (autores
+                    INNER JOIN relacion_autoria ON autores.idAutor = relacion_autoria.idAutor)
+                    WHERE relacion_autoria.idLibro = $idLibro;";
+
             return $this->conexion->query($sql);
         }
 
