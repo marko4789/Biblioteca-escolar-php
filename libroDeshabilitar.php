@@ -105,13 +105,12 @@
                 <label>Categoria: </label>
                 <input value= "<?php echo $titulo; ?>" name="categoria" type="text" readonly>
                 
+                <button type="submit" name="eliminar">Eliminar</button>
             </div>
-
-            <button type="submit" name="eliminar">Eliminar</button>  
     
         </form>
 
-        <a class = "cancel" href="editorialConsultar.php">Aceptar</a> <br><br>
+        <a class = "cancel" href="libroConsultar.php">Cancelar</a> <br><br>        
             
     </div>
 
