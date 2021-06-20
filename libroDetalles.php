@@ -1,4 +1,5 @@
 <?php
+    include("validarSesion.php");
     include("Conexion.php");
 
     if (isset($_GET["id"])){
@@ -97,7 +98,7 @@
     
         </form>
 
-        <a class = "cancel" href="librosConsultar.php">Volver</a> <br><br>
+        <a class = "cancel" href="libroConsultar.php">Volver</a> <br><br>
             
     </div>
 

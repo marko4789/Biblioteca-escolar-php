@@ -1,4 +1,5 @@
 <?php
+    include("validarSesion.php");
     include_once ('Conexion.php');
     if(isset($_POST["libro"])){
         $libro = $_POST["libro"];

@@ -77,26 +77,26 @@
 
                 <div class="frmMargen">
                     
-                    <label>Titulo</label>
+                    <label>Título</label>
                     <input placeholder = "Nombre del libro" name="titulo" type="text" pattern="([\w]|[á-úñÑ.\s]|[!¡#$%&/\(\)=¿?-+])+" required>
 
                     <label>Descripción</label><br>
                     <textarea placeholder = "Escriba una breve descripción" name="descripcion" rows="10" cols="50" required></textarea> <br>
 
                     <label>Número de páginas</label>
-                    <input name="paginas" type="number" min=1 required><br>
+                    <input  placeholder = "Seleccione o digite el número de páginas" name="paginas" type="number" min=1 required><br>
 
                     <label>País</label>
-                    <input name="pais" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+">
+                    <input  placeholder = "País de donde procede el libro" name="pais" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+">
 
                     <label>Fecha de publicación</label>
                     <input name="fechaPublicacion" type="date" required><br>
 
                     <label>Idioma</label>
-                    <input name="idioma" type="text">
+                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text">
 
                     <label>ISBN</label>
-                    <input name="isbn" type="text" pattern="([-\d]){10,17}">
+                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}">
 
                     <label>Existencia</label>
                     <input name="existencia" placeholder = "Numero de ejemplares" type="number" min=1 required><br>
@@ -177,8 +177,11 @@
                     </table>
 
                 </div>
-            
+
+            <div class= "frmMargen">
             <button type="submit" name="btnSiguiente" value="paso3">Siguiente</button>
+            </div>                 
+
             <a class = "cancel" href="libroConsultar.php">Cancelar</a>
 
             </form>
