@@ -83,14 +83,14 @@
             $idEditorial = $_GET["id"];
             $editorial = $_POST["editorial"];
 
-            eliminarEditorial($idEditorial, $editorial);
+            eliminarEditorial($idEditorial);
 
         }
 
         function eliminarEditorial($idEditorial){
             global $server;
          
-            $consulta = "UPDATE Editoriales SET 
+            $consulta = "UPDATE editoriales SET 
             status = 'Inactivo'
             WHERE idEditorial = $idEditorial AND status = 'Activo';";
 

@@ -97,46 +97,9 @@
     
         </form>
 
-        <a class = "cancel" href="editorialConsultar.php">Aceptar</a> <br><br>
+        <a class = "cancel" href="librosConsultar.php">Volver</a> <br><br>
             
     </div>
-
-    <?php
-    
-        include_once("Conexion.php");
-
-        if(isset($_POST["editorial"])){
-            $idEditorial = $_GET["id"];
-            $editorial = $_POST["editorial"];
-
-            eliminarEditorial($idEditorial, $editorial);
-
-        }
-
-        function eliminarEditorial($idEditorial){
-            global $server;
-         
-            $consulta = "UPDATE Editoriales SET 
-            status = 'Inactivo'
-            WHERE idEditorial = $idEditorial AND status = 'Activo';";
-
-            if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='editorialConsultar.php';
-                        </script>";
-             
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='editorialDeshabilitar.php?id=$idEditorial';
-                        </script>";
-            }
-        }
-
-       
-        
-    ?>
 
 </body>
 
