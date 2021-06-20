@@ -83,7 +83,8 @@
 
         public function buscarLibro($libro) {
             if (is_int($libro)){
-                $sql = "SELECT  libros.isbn, 
+                $sql = "SELECT  libros.idLibro, 
+                                libros.isbn, 
                                 libros.titulo, 
                                 libros.paginas, 
                                 libros.descripcion, 
@@ -95,7 +96,7 @@
                                 
                         FROM ((libros INNER JOIN categorias ON libros.idCategoria = categorias.idCategoria)
                                       INNER JOIN editoriales ON libros.idEditorial = editoriales.idEditorial) 
-                        WHERE libros.idLibro = $libro AND status = 'Activo';";  
+                        WHERE libros.idLibro = $libro AND libros.status = 'Activo';";
             }else{
                 $sql = "SELECT * FROM ((libros 
                         INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
