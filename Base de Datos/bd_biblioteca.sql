@@ -111,7 +111,6 @@ CREATE TABLE `libros` (
   `existencia` int(11) NOT NULL,
   `idCategoria` int(11) NOT NULL,
   `idEditorial` int(11) NOT NULL,
-  `numlibro` varchar(5) NOT NULL,
   `status` varchar(20) NOT NULL,
   PRIMARY KEY (`idLibro`),
   KEY `idCategoria` (`idCategoria`),

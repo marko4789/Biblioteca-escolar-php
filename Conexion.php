@@ -82,16 +82,31 @@
         }
 
         public function buscarLibro($libro) {
-            $sql = "SELECT * FROM ((libros 
-                    INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
-                    INNER JOIN autores ON relacion_autoria.idAutor = autores.idAutor) 
-                    WHERE CONCAT(libros.isbn, 
-                                 libros.titulo, 
-                                 autores.nombre, 
-                                 autores.apellidoPaterno, 
-                                 autores.apellidoMaterno) 
-                    like '%$libro%' AND libros.status = 'Activo';";    
-        
+            if (is_int($libro)){
+                $sql = "SELECT  libros.isbn, 
+                                libros.titulo, 
+                                libros.paginas, 
+                                libros.descripcion, 
+                                libros.pais, 
+                                libros.fechaPublicacion, 
+                                libros.idioma, 
+                                categorias.categoria, 
+                                editoriales.editorial
+                                
+                        FROM ((libros INNER JOIN categorias ON libros.idCategoria = categorias.idCategoria)
+                                      INNER JOIN editoriales ON libros.idEditorial = editoriales.idEditorial) 
+                        WHERE libros.idLibro = $libro AND status = 'Activo';";  
+            }else{
+                $sql = "SELECT * FROM ((libros 
+                        INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
+                        INNER JOIN autores ON relacion_autoria.idAutor = autores.idAutor) 
+                        WHERE CONCAT(libros.isbn, 
+                                    libros.titulo, 
+                                    autores.nombre, 
+                                    autores.apellidoPaterno, 
+                                    autores.apellidoMaterno) 
+                        like '%$libro%' AND libros.status = 'Activo';";    
+            }
             
             return $this->conexion->query($sql);
         }

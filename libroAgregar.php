@@ -15,7 +15,7 @@
     <script>
     
     function msjLibroExistente (){
-            alert('El nombre del libro que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
+            alert('El isbn del libro que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
         }
 
         function msjExito (){
@@ -178,7 +178,7 @@
 
                 </div>
             
-            <button type="submit" name="btnSiguiente" value="paso3">Probar</button>
+            <button type="submit" name="btnSiguiente" value="paso3">Siguiente</button>
             <a class = "cancel" href="libroConsultar.php">Cancelar</a>
 
             </form>
@@ -320,12 +320,10 @@
         function agregarLibro(){
             if (isset($_GET["idEditorial"])){
                 setcookie("idEditorial", $_GET["idEditorial"], 0, "/");
+                echo "<br>";
             }
 
-            //Aquí se guardan los datos
-            
-
-            if(existeLibro($_COOKIE["titulo"])){
+            if(existeLibro($_COOKIE["isbn"])){
                 borrarCookies();
                 echo "<script>
                             msjLibroExistente();
@@ -338,10 +336,10 @@
 
         }
 
-        function existeLibro($titulo){
+        function existeLibro($isbn){
             global $server;
 
-            $consulta = "SELECT titulo FROM libros WHERE titulo = '$titulo' AND status ='Activo';";
+            $consulta = "SELECT isbn FROM libros WHERE isbn = '$isbn' AND status ='Activo';";
 
             $datosLibro = $server->conexion->query($consulta);
             
@@ -357,6 +355,9 @@
 
             global $server;
 
+            if (!isset($_COOKIE["idEditorial"])){
+                $_COOKIE["idEditorial"] = $_GET["idEditorial"];
+            }
             
             $registroLibro = "INSERT INTO libros (titulo, 
                                             descripcion, 
