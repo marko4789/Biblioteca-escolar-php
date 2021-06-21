@@ -93,10 +93,10 @@
                     <input name="fechaPublicacion" type="date" required><br>
 
                     <label>Idioma</label>
-                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text">
+                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+" required>
 
                     <label>ISBN</label>
-                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}">
+                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}" required>
 
                     <label>Existencia</label>
                     <input name="existencia" placeholder = "Numero de ejemplares" type="number" min=1 required><br>
@@ -116,17 +116,6 @@
         }
 
         function mostrarAutor(){
-
-            if (isset($_POST["titulo"])){
-                setcookie("titulo", $_POST["titulo"], 0, "/");    
-                setcookie("descripcion", $_POST["descripcion"], 0, "/");
-                setcookie("paginas", $_POST["paginas"], 0, "/");
-                setcookie("pais", $_POST["pais"], 0, "/");
-                setcookie("fechaPublicacion", $_POST["fechaPublicacion"], 0, "/");
-                setcookie("idioma", $_POST["idioma"], 0, "/");
-                setcookie("isbn", $_POST["isbn"], 0, "/");
-                setcookie("existencia", $_POST["existencia"], 0, "/");
-            }
 
             global $server;
             
@@ -187,9 +176,18 @@
             </form>
             <br><br>
 
-        </div>
-                
-                ';                
+        </div>';
+        
+        if (isset($_POST["titulo"])){
+            setcookie("titulo", $_POST["titulo"], 0, "/");    
+            setcookie("descripcion", $_POST["descripcion"], 0, "/");
+            setcookie("paginas", $_POST["paginas"], 0, "/");
+            setcookie("pais", $_POST["pais"], 0, "/");
+            setcookie("fechaPublicacion", $_POST["fechaPublicacion"], 0, "/");
+            setcookie("idioma", $_POST["idioma"], 0, "/");
+            setcookie("isbn", $_POST["isbn"], 0, "/");
+            setcookie("existencia", $_POST["existencia"], 0, "/");
+        }
                 
         }
 
