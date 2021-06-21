@@ -46,7 +46,7 @@
         </form>
         
         <div class = "tablaDatos">
-            <table>
+            <table style = " width: 90%;">
                 <thead>
                     <tr>
                         <th scope="col">#id</th>

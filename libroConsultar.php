@@ -36,15 +36,19 @@
 
     <div class = "frmFormulario">
 
+    <a class ="agregar" href="libroAgregar.php">✚ Nuevo libro</a>
+
+
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
             <input placeholder = "Escriba el nombre, autor, ISBN a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
 
         <div class = "tablaDatos">
-            <table>
+            <table style = " width: 90%;">
                 <thead>
                     <tr>
+                        <th scope="col">#id</th>
                         <th scope="col">ISBN</th>
                         <th scope="col">Libro</th>
                         <th scope="col">Autor(es)</th>
@@ -56,7 +60,8 @@
 
                         while($fila = mysqli_fetch_array($datos)){
                             echo "<tr>";
-                            echo "<th scope='row'>".$fila['isbn']."</th>";
+                            echo "<th scope='row'>".$fila['idLibro']."</th>";
+                            echo "<td scope='row'>".$fila['isbn']."</td>";
                             echo "<td>".$fila['titulo']."</td>";
                             echo "<td>";
                                 $autores = $server->obtenerAutores($fila['idLibro']);

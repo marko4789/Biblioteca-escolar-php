@@ -1,4 +1,5 @@
 <?php
+    include("validarSesion.php");
     include("Conexion.php");
 
     if (isset($_GET["id"])){
@@ -58,7 +59,7 @@
 
     <header>
         <div class="titulo">
-            <h1>Detalles del libro</h1>
+            <h1>Deshabilitar libro</h1>
         </div>
     </header>
 
