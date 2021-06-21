@@ -38,7 +38,7 @@
                 echo " <li class = 'btnSesion'><a class = 'btnSesion' href='iniciarSesion.php'>Iniciar sesión</a></li> ";
             }else{
                echo "
-               <li class='dropdown'><a href=''>Libros</a>
+               <li class='dropdown'><a href='libroConsultar.php'>Libros</a>
 
                <div class='dropdown-content'>
                <a href='libroAgregar.php'>Agregar Libro</a>
@@ -50,7 +50,7 @@
                
                </li>
 
-               <li class='dropdown'><a href=''>Autores</a>
+               <li class='dropdown'><a href='autorConsultar.php'>Autores</a>
                
                <div class='dropdown-content'>
                <a href='autorAgregar.php'>Agregar Autor</a>
@@ -60,7 +60,7 @@
                </li>
 
 
-               <li class='dropdown'><a href=''>Categorías</a>
+               <li class='dropdown'><a href='categoriaConsultar.php'>Categorías</a>
                
                <div class='dropdown-content'>
                <a href='categoriaAgregar.php'>Agregar Categoría</a>
@@ -70,7 +70,7 @@
                </li>
 
 
-               <li class='dropdown'><a href=''>Editoriales</a>
+               <li class='dropdown'><a href='editorialConsultar.php'>Editoriales</a>
                
                <div class='dropdown-content'>
                <a href='editorialAgregar.php'>Agregar Editorial</a>
@@ -80,7 +80,7 @@
                </li>
 
 
-               <li class='dropdown'><a href=''>Usuarios</a>
+               <li class='dropdown'><a href='usuarioConsultar.php'>Usuarios</a>
                
                <div class='dropdown-content'>
                <a href='usuarioAgregar.php'>Agregar Usuario</a>
@@ -90,7 +90,7 @@
                </li>
 
 
-               <li class='dropdown'><a href=''>Alumnos</a>
+               <li class='dropdown'><a href='alumnoConsultar.php'>Alumnos</a>
                
                <div class='dropdown-content'>
                <a href='alumnoAgregar.php'>Agregar Alumno</a>
@@ -100,7 +100,7 @@
                </li>
 
 
-               <li class='dropdown'><a href=''>Préstamos</a>
+               <li class='dropdown'><a href='prestamoConsultar.php'>Préstamos</a>
                
                <div class='dropdown-content'>
                <a href='prestamoAgregar.php'>Agregar Préstamo</a>

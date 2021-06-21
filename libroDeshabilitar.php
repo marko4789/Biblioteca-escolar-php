@@ -59,7 +59,7 @@
 
     <header>
         <div class="titulo">
-            <h1>Deshabilitar libro</h1>
+            <h1>Deshabilitar Libro</h1>
         </div>
     </header>
 
@@ -72,38 +72,38 @@
             <div class="frmMargen">
                
                                                 
-                <label>Titulo: </label>
+                <label>Título </label>
                 <input value= "<?php echo $titulo; ?>" name="titulo" type="text" readonly>
 
-                <label>Autores: </label><br><br>
+                <label>Autores </label>
                 <textarea name="autores" rows="5" cols="30" readonly>
                     <?php while ($autor = mysqli_fetch_array($autores)){
                                echo "\n- ".$autor["nombre"]." ".$autor["apellidoPaterno"]." ".$autor["apellidoPaterno"];
                             }?>
-                </textarea><br><br>
+                </textarea>
                 
-                <label>isbn: </label>
+                <label>ISBN </label>
                 <input value= "<?php echo $isbn; ?>" name="isbn" type="text" readonly>
                 
-                <label>Número de páginas: </label>
+                <label>Número de páginas </label>
                 <input value= "<?php echo $paginas; ?>" name="paginas" type="text" readonly>
                 
-                <label>Descripcion: </label>
+                <label>Descripción </label>
                 <input value= "<?php echo $descripcion; ?>" name="descripcion" type="text" readonly>
                 
-                <label>País: </label>
+                <label>País </label>
                 <input value= "<?php echo $pais; ?>" name="pais" type="text" readonly>
                 
-                <label>Fecha de publicacion: </label>
+                <label>Fecha de publicación</label>
                 <input value= "<?php echo $fechaPublicacion; ?>" name="fechaPublicacion" type="date" readonly>
                 
-                <label>Idioma: </label>
+                <label>Idioma </label>
                 <input value= "<?php echo $idioma; ?>" name="idioma" type="text" readonly>
                 
-                <label>Editorial: </label>
+                <label>Editorial </label>
                 <input value= "<?php echo $editorial; ?>" name="editorial" type="text" readonly>
                 
-                <label>Categoria: </label>
+                <label>Categoría </label>
                 <input value= "<?php echo $titulo; ?>" name="categoria" type="text" readonly>
                 
                 <button type="submit" name="eliminar">Eliminar</button>

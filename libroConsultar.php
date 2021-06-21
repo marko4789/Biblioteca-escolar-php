@@ -70,7 +70,7 @@
                                     }
                             echo "</td>";
                             echo "<td>
-                                    <a class='btnEditar' href='libroDetalles.php?id=".$fila['idLibro']."'>Ver detalles</a>
+                                    <a class='btnDetalles' href='libroDetalles.php?id=".$fila['idLibro']."'>👁 Ver detalles</a>
                                     <a class='btnEditar' href='libroModificar.php?id=".$fila['idLibro']."'>🖉 Editar</a>
                                     <a class='btnEliminar' href='libroDeshabilitar.php?id=".$fila['idLibro']."'>⮾ Eliminar</a>
                                 </td>";

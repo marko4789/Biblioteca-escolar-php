@@ -129,7 +129,7 @@ body {
     background-color: #636262;
   }
 
-  .btnEditar, .btnEliminar{
+  .btnEditar, .btnEliminar, .btnDetalles{
     color: #ffff;
     text-decoration: none;
     padding: 3px;
@@ -143,4 +143,8 @@ body {
   }
   .btnEditar{
     background-color: #5CB85C;
+  }
+  .btnDetalles{
+    background-color: #DEA602;
+    background-color: #E09703;
   }
