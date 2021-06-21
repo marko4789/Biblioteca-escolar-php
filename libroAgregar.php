@@ -398,10 +398,10 @@
                         $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
                         $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
 
-                        "<script>
-                            msjFracaso();
-                            window.location='libroAgregar.php';
-                        </script>";
+                        echo "<script>
+                                msjFracaso();
+                                window.location='libroAgregar.php';
+                              </script>";
 
                     }
 
@@ -414,11 +414,10 @@
             
             }else{
                 borrarDatosLibro();
-/*
                 echo "<script>
                             msjFracaso();
                             window.location='libroAgregar.php';
-                        </script>";*/
+                        </script>";
             }
         }
 

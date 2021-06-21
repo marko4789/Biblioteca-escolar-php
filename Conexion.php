@@ -91,6 +91,7 @@
                                 libros.pais, 
                                 libros.fechaPublicacion, 
                                 libros.idioma, 
+                                libros.existencia, 
                                 categorias.categoria,
                                 categorias.idCategoria, 
                                 editoriales.editorial, 
