@@ -21,7 +21,7 @@
   <li class="dropdown" ><a class="dropbtn" href="">Catálogo</a>
   
   <div class="dropdown-content">
-  <a href="#">Libros</a>
+  <a href="libroConsultar.php">Libros</a>
   <a href="#">Autores</a>
   <a href="#">Categorías</a> 
   </div>

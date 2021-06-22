@@ -91,8 +91,11 @@
                                 libros.pais, 
                                 libros.fechaPublicacion, 
                                 libros.idioma, 
-                                categorias.categoria, 
-                                editoriales.editorial
+                                libros.existencia, 
+                                categorias.categoria,
+                                categorias.idCategoria, 
+                                editoriales.editorial, 
+                                editoriales.idEditorial
                                 
                         FROM ((libros INNER JOIN categorias ON libros.idCategoria = categorias.idCategoria)
                                       INNER JOIN editoriales ON libros.idEditorial = editoriales.idEditorial) 

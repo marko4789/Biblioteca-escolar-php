@@ -1,5 +1,9 @@
 <?php
-    include("validarSesion.php");
+
+    if(session_status() === PHP_SESSION_NONE){
+        session_start();
+    }
+
     include_once ('Conexion.php');
     if(isset($_POST["libro"])){
         $libro = $_POST["libro"];
@@ -36,8 +40,11 @@
 
     <div class = "frmFormulario">
 
-    <a class ="agregar" href="libroAgregar.php">✚ Nuevo libro</a>
-
+    <?php  
+        if (isset( $_SESSION['idUsuario'])) {
+            echo '<a class ="agregar" href="libroAgregar.php">✚ Nuevo libro</a>';
+        }
+    ?>
 
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
             <input placeholder = "Escriba el nombre, autor, ISBN a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
@@ -69,11 +76,17 @@
                                         echo " - ".$autor["nombre"]." ".$autor["apellidoPaterno"]." ".$autor["apellidoPaterno"]."<br>";
                                     }
                             echo "</td>";
-                            echo "<td>
+                            if (isset( $_SESSION['idUsuario'])) {
+                                echo "<td>
                                     <a class='btnDetalles' href='libroDetalles.php?id=".$fila['idLibro']."'>👁 Ver detalles</a>
                                     <a class='btnEditar' href='libroModificar.php?id=".$fila['idLibro']."'>🖉 Editar</a>
                                     <a class='btnEliminar' href='libroDeshabilitar.php?id=".$fila['idLibro']."'>⮾ Eliminar</a>
                                 </td>";
+                            }else{
+                                echo "<td>
+                                    <a class='btnDetalles' href='libroDetalles.php?id=".$fila['idLibro']."'>👁 Ver detalles</a>
+                                </td>";
+                            }
                             echo "</th>";
                             echo "</tr>";
                         }

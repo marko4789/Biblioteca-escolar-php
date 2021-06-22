@@ -1,5 +1,4 @@
 <?php
-    include("validarSesion.php");
     include("Conexion.php");
 
     if (isset($_GET["id"])){

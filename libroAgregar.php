@@ -93,10 +93,10 @@
                     <input name="fechaPublicacion" type="date" required><br>
 
                     <label>Idioma</label>
-                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text">
+                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+" required>
 
                     <label>ISBN</label>
-                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}">
+                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}" required>
 
                     <label>Existencia</label>
                     <input name="existencia" placeholder = "Numero de ejemplares" type="number" min=1 required><br>
@@ -116,17 +116,6 @@
         }
 
         function mostrarAutor(){
-
-            if (isset($_POST["titulo"])){
-                setcookie("titulo", $_POST["titulo"], 0, "/");    
-                setcookie("descripcion", $_POST["descripcion"], 0, "/");
-                setcookie("paginas", $_POST["paginas"], 0, "/");
-                setcookie("pais", $_POST["pais"], 0, "/");
-                setcookie("fechaPublicacion", $_POST["fechaPublicacion"], 0, "/");
-                setcookie("idioma", $_POST["idioma"], 0, "/");
-                setcookie("isbn", $_POST["isbn"], 0, "/");
-                setcookie("existencia", $_POST["existencia"], 0, "/");
-            }
 
             global $server;
             
@@ -187,20 +176,28 @@
             </form>
             <br><br>
 
-        </div>
-                
-                ';                
+        </div>';
+        
+        if (isset($_POST["titulo"])){
+            $_SESSION["titulo"] = $_POST["titulo"];
+            $_SESSION["descripcion"] = $_POST["descripcion"];
+            $_SESSION["paginas"] = $_POST["paginas"];
+            $_SESSION["pais"] = $_POST["pais"];
+            $_SESSION["fechaPublicacion"] = $_POST["fechaPublicacion"];
+            $_SESSION["idioma"] = $_POST["idioma"];
+            $_SESSION["isbn"] = $_POST["isbn"];
+            $_SESSION["existencia"] = $_POST["existencia"];
+        }
                 
         }
 
         function mostrarCategoria() {
 
-            if(isset($_POST['idAutor'])){
-                setcookie("idAutor", serialize($_POST['idAutor']), 0, "/");
-                
-            }
-
             global $server;
+
+            if(isset($_POST['idAutor'])){
+                $_SESSION["idAutor"] = serialize($_POST['idAutor']);  
+            }
             
             if(isset($_POST["categoria"])){
                 $categoria = $_POST["categoria"];
@@ -259,12 +256,12 @@
         }
 
         function mostrarEditorial() {
-            
-            global $server;
 
             if (isset($_GET["idCategoria"])){
-                setcookie("idCategoria", $_GET["idCategoria"], 0, "/");
+                $_SESSION["idCategoria"] = $_GET["idCategoria"];
             }
+            
+            global $server;
 
             if(isset($_POST["editorial"])){
                 $editorial = $_POST["editorial"];
@@ -322,12 +319,11 @@
 
         function agregarLibro(){
             if (isset($_GET["idEditorial"])){
-                setcookie("idEditorial", $_GET["idEditorial"], 0, "/");
-                echo "<br>";
+                $_SESSION["idEditorial"] = $_GET["idEditorial"];
             }
 
-            if(existeLibro($_COOKIE["isbn"])){
-                borrarCookies();
+            if(existeLibro($_SESSION["isbn"])){
+                borrarDatosLibro();
                 echo "<script>
                             msjLibroExistente();
                             window.location='libroAgregar.php';
@@ -357,10 +353,6 @@
         function registrarLibro() {
 
             global $server;
-
-            if (!isset($_COOKIE["idEditorial"])){
-                $_COOKIE["idEditorial"] = $_GET["idEditorial"];
-            }
             
             $registroLibro = "INSERT INTO libros (titulo, 
                                             descripcion, 
@@ -373,22 +365,22 @@
                                             idCategoria, 
                                             idEditorial, 
                                             status)
-                            VALUES ('".$_COOKIE["titulo"]."', 
-                                    '".$_COOKIE["descripcion"]."', 
-                                    ".$_COOKIE["paginas"].", 
-                                    '".$_COOKIE["pais"]."', 
-                                    '".$_COOKIE["fechaPublicacion"]."', 
-                                    '".$_COOKIE["idioma"]."', 
-                                    '".$_COOKIE["isbn"]."', 
-                                    ".$_COOKIE["existencia"].", 
-                                    ".$_COOKIE["idCategoria"].", 
-                                    ".$_COOKIE["idEditorial"].", 
+                            VALUES ('".$_SESSION["titulo"]."', 
+                                    '".$_SESSION["descripcion"]."', 
+                                    ".$_SESSION["paginas"].", 
+                                    '".$_SESSION["pais"]."', 
+                                    '".$_SESSION["fechaPublicacion"]."', 
+                                    '".$_SESSION["idioma"]."', 
+                                    '".$_SESSION["isbn"]."', 
+                                    ".$_SESSION["existencia"].", 
+                                    ".$_SESSION["idCategoria"].", 
+                                    ".$_SESSION["idEditorial"].", 
                                     'Activo');";
 
 
-            $idAutores = unserialize($_COOKIE["idAutor"]);
+            $idAutores = unserialize($_SESSION["idAutor"]);
 
-            borrarCookies();
+            borrarDatosLibro();
             
             if ($server->conexion->query($registroLibro)) {
                 
@@ -406,10 +398,10 @@
                         $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
                         $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
 
-                        "<script>
-                            msjFracaso();
-                            window.location='libroAgregar.php';
-                        </script>";
+                        echo "<script>
+                                msjFracaso();
+                                window.location='libroAgregar.php';
+                              </script>";
 
                     }
 
@@ -421,27 +413,26 @@
                         </script>";
             
             }else{
-                borrarCookies();
-/*
+                borrarDatosLibro();
                 echo "<script>
                             msjFracaso();
                             window.location='libroAgregar.php';
-                        </script>";*/
+                        </script>";
             }
         }
 
-        function borrarCookies(){
-            setcookie("titulo", "" , time() - 1, "/");    
-            setcookie("descripcion", "", time() - 1, "/");
-            setcookie("paginas", "", time() - 1, "/");
-            setcookie("pais", "", time() - 1, "/");
-            setcookie("fechaPublicacion", "", time() - 1, "/");
-            setcookie("idioma", "", time() - 1, "/");
-            setcookie("isbn", "", time() - 1, "/");
-            setcookie("existencia", "", time() - 1, "/");
-            setcookie("idAutor", "", time() - 1, "/");
-            setcookie("idCategoria", "", time() - 1, "/");
-            setcookie("idEditorial", "", time() - 1, "/");
+        function borrarDatosLibro(){
+            unset($_SESSION["titulo"]);    
+            unset($_SESSION["descripcion"]);
+            unset($_SESSION["paginas"]);
+            unset($_SESSION["pais"]);
+            unset($_SESSION["fechaPublicacion"]);
+            unset($_SESSION["idioma"]);
+            unset($_SESSION["isbn"]);
+            unset($_SESSION["existencia"]);
+            unset($_SESSION["idAutor"]);
+            unset($_SESSION["idCategoria"]);
+            unset($_SESSION["idEditorial"]);
         }
         
         ?>
