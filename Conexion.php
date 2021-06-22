@@ -136,6 +136,17 @@
             return $this->conexion->query($sql);
         }
 
+        public function buscarPrestamo($prestamo) {
+            if (is_int($prestamo)){
+                $sql = "Select * FROM prestamos WHERE idPrestamo = $prestamo AND status = 'Activo';";  
+            }else{
+                $sql = "Select * FROM prestamos WHERE CONCAT(
+                    idPrestamo) like '%$prestamo%' AND status = 'Activo';";    
+            }
+            
+            return $this->conexion->query($sql);
+        }
+
     }// Fin - Clase Server
 
     $server = new Server;
