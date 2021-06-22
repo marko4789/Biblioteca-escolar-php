@@ -101,15 +101,17 @@
                                       INNER JOIN editoriales ON libros.idEditorial = editoriales.idEditorial) 
                         WHERE libros.idLibro = $libro AND libros.status = 'Activo';";
             }else{
-                $sql = "SELECT * FROM ((libros 
-                        INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
-                        INNER JOIN autores ON relacion_autoria.idAutor = autores.idAutor) 
+                $sql = "SELECT * FROM (((libros 
+                            INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
+                            INNER JOIN autores ON relacion_autoria.idAutor = autores.idAutor)
+                            INNER JOIN categorias ON libros.idCategoria = categorias.idCategoria)
                         WHERE CONCAT(libros.isbn, 
-                                    libros.titulo, 
-                                    autores.nombre, 
-                                    autores.apellidoPaterno, 
-                                    autores.apellidoMaterno) 
-                        like '%$libro%' AND libros.status = 'Activo';";    
+                                libros.titulo, 
+                                autores.nombre,
+                                categorias.categoria, 
+                                autores.apellidoPaterno, 
+                                autores.apellidoMaterno) 
+                        LIKE '%$libro%' AND libros.status = 'Activo';";    
             }
             
             return $this->conexion->query($sql);

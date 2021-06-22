@@ -91,7 +91,7 @@
                 <input value= "<?php echo $editorial; ?>" name="editorial" type="text" readonly>
                 
                 <label>Categoria: </label>
-                <input value= "<?php echo $titulo; ?>" name="categoria" type="text" readonly>
+                <input value= "<?php echo $categoria; ?>" name="categoria" type="text" readonly>
                 
             </div>
     

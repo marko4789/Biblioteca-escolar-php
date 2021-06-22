@@ -47,7 +47,7 @@
     ?>
 
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
-            <input placeholder = "Escriba el nombre, autor, ISBN a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
+            <input placeholder = "Título, autor, ISBN o la categoría del libro a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
 
