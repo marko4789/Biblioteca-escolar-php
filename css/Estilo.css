@@ -22,7 +22,7 @@ body {
 
   .frmFormulario input[type=text],.frmFormulario input[type=password],
   .frmFormulario input[type=email], .frmFormulario textarea, 
-  .frmFormulario input[type=number], .frmFormulario input[type=date]{
+  .frmFormulario input[type=number], .frmFormulario input[type=date], .frmFormulario select{
       width: 100%;
       padding: 12px 20px;
       margin: 8px 0;

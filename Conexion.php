@@ -141,12 +141,28 @@
             return $this->conexion->query($sql);
         }
 
+        public function consultarPrestamo(){
+            $sql = "SELECT prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
+                alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
+                INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
+                INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
+                ORDER BY idPrestamo";
+
+            return $this->conexion->query($sql);
+        }
+
         public function buscarPrestamo($prestamo) {
             if (is_int($prestamo)){
                 $sql = "Select * FROM prestamos WHERE idPrestamo = $prestamo AND status = 'Activo';";  
             }else{
-                $sql = "Select * FROM prestamos WHERE CONCAT(
-                    idPrestamo) like '%$prestamo%' AND status = 'Activo';";    
+           
+                    $sql = " SELECT prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
+                    alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
+                    INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
+                    INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
+			WHERE CONCAT(
+                    idPrestamo, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
+                    alumnos.`matricula` , prestamos.`fechaPrestamo`) LIKE '%$prestamo%' AND prestamos.`status` = 'Activo';";
             }
             
             return $this->conexion->query($sql);

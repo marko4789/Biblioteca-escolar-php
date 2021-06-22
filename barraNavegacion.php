@@ -18,13 +18,14 @@
 <ul>
   <li><a href="Index.php" id = "inicio">Inicio</a></li>
 
-  <li class="dropdown" ><a class="dropbtn" href="">Catálogo</a>
   
+  <!-- 
   <div class="dropdown-content">
   <a href="libroConsultar.php">Libros</a>
   <a href="#">Autores</a>
   <a href="#">Categorías</a> 
   </div>
+  -->
 
   </li>
 
@@ -36,6 +37,7 @@
 <?php
             if( !isset( $_SESSION["idUsuario"] ) ){
                 echo " <li class = 'btnSesion'><a class = 'btnSesion' href='iniciarSesion.php'>Iniciar sesión</a></li> ";
+                echo'<li class="dropdown" ><a class="dropbtn" href="libroConsultar.php">Libros</a>';
             }else{
                echo "
                <li class='dropdown'><a href='libroConsultar.php'>Libros</a>

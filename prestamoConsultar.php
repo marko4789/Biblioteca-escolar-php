@@ -3,10 +3,10 @@
     include_once ('Conexion.php');
     if(isset($_POST["prestamo"])){
         $prestamo = $_POST["prestamo"];
-        $datos = $server->buscarLibro($prestamo);
+        $datos = $server->buscarPrestamo($prestamo);
     }else{
         $prestamo = "";
-        $datos = $server->consultarTabla("prestamos");
+        $datos = $server->consultarPrestamo();
     }
 ?>
 <!DOCTYPE html>
@@ -41,7 +41,7 @@
 
 
             <form class = "frmBuscar" method="post" action= 'prestamoConsultar.php'>
-                <input placeholder = "Escriba " name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
+                <input placeholder = "Escriba datos relacionados con el préstamo" name="prestamo" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
                 <button type="submit" name="buscar">🔍 Buscar</button>  
             </form>
 
@@ -50,9 +50,11 @@
                     <thead>
                         <tr>
                             <th scope="col">#id</th>
-                            <th scope="col">ISBN</th>
-                            <th scope="col">Libro</th>
-                            <th scope="col">Autor(es)</th>
+                            <th scope="col">Título</th>
+                            <th scope="col">Nombre(s)</th>
+                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Matrícula</th>
+                            <th scope="col">Fecha préstamo</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -61,19 +63,16 @@
 
                             while($fila = mysqli_fetch_array($datos)){
                                 echo "<tr>";
-                                echo "<th scope='row'>".$fila['idLibro']."</th>";
-                                echo "<td scope='row'>".$fila['isbn']."</td>";
-                                echo "<td>".$fila['titulo']."</td>";
-                                echo "<td>";
-                                    $autores = $server->obtenerAutores($fila['idLibro']);
-                                        while ($autor = mysqli_fetch_array($autores)){
-                                            echo " - ".$autor["nombre"]." ".$autor["apellidoPaterno"]." ".$autor["apellidoPaterno"]."<br>";
-                                        }
-                                echo "</td>";
-                                echo "<td>
-                                        <a class='btnDetalles' href='libroDetalles.php?id=".$fila['idLibro']."'>👁 Ver detalles</a>
-                                        <a class='btnEditar' href='libroModificar.php?id=".$fila['idLibro']."'>🖉 Editar</a>
-                                        <a class='btnEliminar' href='libroDeshabilitar.php?id=".$fila['idLibro']."'>⮾ Eliminar</a>
+                                echo "<th scope='row'>".$fila['idPrestamo']."</th>";
+                                echo "<td scope='row'>".$fila['titulo']."</td>";
+                                echo "<td>".$fila['nombre']."</td>";
+                                echo "<td>".$fila['apellidoPaterno']."<br>".$fila['apellidoMaterno']."</td>";
+                                echo "<td>".$fila['matricula']."</td>";
+                                echo "<td>".$fila['fechaPrestamo']."</td>";
+                                
+                                echo "<td>  
+                                        <a class='btnEditar' href='prestamoModificar.php?id=".$fila['idPrestamo']."'>🖉 Editar</a>
+                                        <a class='btnEliminar' href='prestamoDeshabilitar.php?id=".$fila['idPrestamo']."'>⮾ Eliminar</a>
                                     </td>";
                                 echo "</th>";
                                 echo "</tr>";
@@ -88,7 +87,7 @@
 
             </div>
 
-            <a class = "cancel" href="libroConsultar.php">Cancelar</a>
+            <a class = "cancel" href="prestamoConsultar.php">Cancelar</a>
             <br><br>
 
     </div>
