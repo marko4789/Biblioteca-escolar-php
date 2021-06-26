@@ -146,14 +146,20 @@
                 alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
                 INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
                 INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
-                ORDER BY idPrestamo";
+                WHERE prestamos.`status` = 'Activo'  ORDER BY idPrestamo ";
 
             return $this->conexion->query($sql);
         }
 
         public function buscarPrestamo($prestamo) {
             if (is_int($prestamo)){
-                $sql = "Select * FROM prestamos WHERE idPrestamo = $prestamo AND status = 'Activo';";  
+                $sql = " SELECT prestamos.`idLibro`, prestamos.`idAlumno`, prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
+                    alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
+                    INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
+                    INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
+                    WHERE idPrestamo = $prestamo AND prestamos.`status` = 'Activo'
+                    ;";
+                /*$sql = "Select * FROM prestamos WHERE idPrestamo = $prestamo AND status = 'Activo';";  */
             }else{
            
                     $sql = " SELECT prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,

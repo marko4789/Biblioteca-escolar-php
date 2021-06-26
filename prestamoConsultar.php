@@ -52,7 +52,7 @@
                             <th scope="col">#id</th>
                             <th scope="col">Título</th>
                             <th scope="col">Nombre(s)</th>
-                            <th scope="col">Apellido Paterno</th>
+                            <th scope="col">Apellidos</th>
                             <th scope="col">Matrícula</th>
                             <th scope="col">Fecha préstamo</th>
                             <th scope="col">Acciones</th>
@@ -78,7 +78,7 @@
                                 echo "</tr>";
                             }
                             if (mysqli_num_rows($datos) == 0){
-                                echo 'No se han encontrado coincidencias con tu busqueda "'.$libro.'"';
+                                echo 'No se han encontrado coincidencias con tu busqueda "'.$prestamo.'"';
                             }
                             
                         ?>
