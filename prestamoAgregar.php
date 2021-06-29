@@ -27,6 +27,11 @@
             alert('Ha ocurrido un Error, intentelo más tarde.');
         }
 
+        function msjExistenciaAgotada(){
+            alert('No se dispone de la existencia suficiente para realizar el préstamo.');
+
+        }
+
     </script>
 
 </head>
@@ -231,7 +236,7 @@
                         window.location='prestamoAgregar.php';
                     </script>";
         }else{
-            registrarPrestamo();
+            librosPrestados();
 
         }      
       
@@ -308,10 +313,51 @@
    
     }//fin registrarPrestamo
 
+    function librosPrestados(){
+
+        $idLibro = $_SESSION["idLibro"];
+        $idAlumno = $_SESSION["idAlumno"];
+        $idUsuario = $_SESSION["idUsuario"]; 
+
+        global $server;
+
+        $consultaP = "SELECT  COUNT(prestamos.`idPrestamo`) FROM prestamos INNER JOIN libros ON libros.`idLibro` = prestamos.`idLibro` 
+        WHERE prestamos.`idLibro` = $idLibro; ";
+
+        $consultaP = "SELECT  COUNT(prestamos.`idPrestamo`) AS 'prestados' FROM prestamos 
+        INNER JOIN libros ON libros.`idLibro` = prestamos.`idLibro` WHERE prestamos.`idLibro` = $idLibro";
+                     
+        $consultaT = "SELECT existencia FROM libros WHERE idLibro = $idLibro; ";
+
+        $prestados = $server->conexion->query($consultaP);
+        $totales = $server->conexion->query($consultaT);
+
+        while($campo= mysqli_fetch_array($prestados))
+        $numprestados =(int) $campo["prestados"];
+
+        while($campo= mysqli_fetch_array($totales))
+        $numtotales = (int)$campo["existencia"];
+
+        if($numtotales > $numprestados+1){
+            registrarPrestamo();
+            
+        }
+        else{
+            echo "<script>
+            msjExistenciaAgotada();
+            window.location='prestamoAgregar.php';
+           </script>";
+        }
+
+
+    }//fin libros prestados
+
     function borrarVariablesSesion(){
         unset($_SESSION["idAlumno"]);
         unset($_SESSION["idLibro"]);
     }//fin borrarVariablesSesion
+
+  
 
     
     ?>
