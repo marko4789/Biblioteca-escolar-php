@@ -9,7 +9,7 @@ body {
 }
 
 
-  .frmFormulario {
+  .frmFormulario, .inicio{
     background-color: white;
       border: 3px solid #f1f1f1;
       margin-right: auto;
@@ -147,3 +147,53 @@ body {
   .btnDetalles{
     background-color: #E09703;
   }
+  
+ .inicio{
+   width: 85%;
+  content: "";
+  display: table;
+  clear: both;
+ }
+
+  .inicio section{
+    width: 40%;
+    margin: 3%;
+  }
+
+  .inicio img{
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    display: block;
+  }
+
+  .inicio a{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    background-color: #e08234;
+    display: block;
+    width: 200px;
+    height: 30px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: large;
+    padding-top: 10px;
+  }
+
+  .inicio a:hover{
+    background-color: #e49a5e;
+  }
+
+  .inicio p{
+    text-align: justify;
+  }
+
+  footer{
+    font-style: italic;
+  }
+
+  

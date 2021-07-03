@@ -48,6 +48,12 @@
             alert('Ha ocurrido un Error, intentelo más tarde.');
         }
 
+        function msjExistenciaAgotada(){
+            alert('No se dispone de la existencia suficiente para realizar el préstamo.');
+
+        }
+
+
     </script>
 
 </head>
@@ -126,7 +132,15 @@
                             window.location='prestamoConsultar.php';
                         </script>";
             }else{
+                if(librosPrestados($idLibro)){
                 modificarPrestamo($idPrestamo,$idLibro,$idAlumno,$idAlumnoInicial);
+                }
+                else{
+                        echo "<script>
+                    msjExistenciaAgotada();
+                    window.location='prestamoModificar.php';
+                </script>";
+                }
             }    
         }
 
@@ -198,6 +212,36 @@
     
         }//fin deuda alumno
         
+        function librosPrestados($idLibro){
+  
+            global $server;
+   
+            $consultaP = "SELECT  COUNT(prestamos.`idPrestamo`) AS 'prestados' FROM prestamos 
+            INNER JOIN libros ON libros.`idLibro` = prestamos.`idLibro` WHERE prestamos.`idLibro` = $idLibro AND prestamos.`status`='Activo';";
+                         
+            $consultaT = "SELECT existencia FROM libros WHERE idLibro = $idLibro  AND status = 'Activo'; ";
+    
+            $prestados = $server->conexion->query($consultaP);
+            $totales = $server->conexion->query($consultaT);
+    
+            while($campo= mysqli_fetch_array($prestados))
+            $numprestados =(int) $campo["prestados"];
+    
+            while($campo= mysqli_fetch_array($totales))
+            $numtotales = (int)$campo["existencia"];
+    
+            if($numtotales > $numprestados+1){
+               return true;
+                
+            }
+            else{
+                
+               return false;
+            }
+    
+    
+        }//fin libros prestados
+    
     
 
     ?>

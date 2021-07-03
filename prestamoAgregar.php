@@ -316,18 +316,13 @@
     function librosPrestados(){
 
         $idLibro = $_SESSION["idLibro"];
-        $idAlumno = $_SESSION["idAlumno"];
-        $idUsuario = $_SESSION["idUsuario"]; 
 
         global $server;
 
-        $consultaP = "SELECT  COUNT(prestamos.`idPrestamo`) FROM prestamos INNER JOIN libros ON libros.`idLibro` = prestamos.`idLibro` 
-        WHERE prestamos.`idLibro` = $idLibro; ";
-
         $consultaP = "SELECT  COUNT(prestamos.`idPrestamo`) AS 'prestados' FROM prestamos 
-        INNER JOIN libros ON libros.`idLibro` = prestamos.`idLibro` WHERE prestamos.`idLibro` = $idLibro";
+        INNER JOIN libros ON libros.`idLibro` = prestamos.`idLibro` WHERE prestamos.`idLibro` = $idLibro AND prestamos.`status`='Activo';";
                      
-        $consultaT = "SELECT existencia FROM libros WHERE idLibro = $idLibro; ";
+        $consultaT = "SELECT existencia FROM libros WHERE idLibro = $idLibro AND status = 'Activo'; ";
 
         $prestados = $server->conexion->query($consultaP);
         $totales = $server->conexion->query($consultaT);
