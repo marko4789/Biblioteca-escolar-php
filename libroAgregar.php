@@ -14,8 +14,12 @@
 
     <script>
     
-    function msjLibroExistente (){
+        function msjLibroExistente (){
             alert('El isbn del libro que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
+        }
+
+        function msjFaltanAutores(){
+            alert('No se seleccionó ningún autor');
         }
 
         function msjExito (){
@@ -68,38 +72,39 @@
     
         
         function mostrarFormulario(){
+            if(!isset($_SESSION["editando"])){
+                borrarDatosLibro();
+            }
             echo '
             <div class= "frmFormulario">
 
             <h2>Datos del libro</h2>
 
             <form method="post" action= "libroAgregar.php">
-
-                <div class="frmMargen">
                     
                     <label>Título</label>
-                    <input placeholder = "Nombre del libro" name="titulo" type="text" pattern="([\w]|[á-úñÑ.\s]|[!¡#$%&/\(\)=¿?-+])+" required>
+                    <input placeholder = "Nombre del libro" name="titulo" type="text" pattern="([\w]|[á-úñÑ.\s]|[!¡#$%&/\(\)=¿?-+])+" value= "'; if (isset($_SESSION["titulo"])){echo $_SESSION["titulo"];} echo'" required>
 
                     <label>Descripción</label><br>
-                    <textarea placeholder = "Escriba una breve descripción" name="descripcion" rows="10" cols="50" required></textarea> <br>
+                    <textarea placeholder = "Escriba una breve descripción" name="descripcion" rows="10" cols="50" required>'; if (isset($_SESSION["descripcion"])){echo str_replace("\\", "", $_SESSION["descripcion"]);} echo'</textarea> <br>
 
                     <label>Número de páginas</label>
-                    <input  placeholder = "Seleccione o digite el número de páginas" name="paginas" type="number" min=1 required><br>
+                    <input  placeholder = "Seleccione o digite el número de páginas" name="paginas" type="number" min=1 value="'; if (isset($_SESSION["paginas"])){echo $_SESSION["paginas"];} echo'" required><br>
 
                     <label>País</label>
-                    <input  placeholder = "País de donde procede el libro" name="pais" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+">
+                    <input  placeholder = "País de donde procede el libro" name="pais" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+" value="'; if (isset($_SESSION["pais"])){echo $_SESSION["pais"];} echo'">
 
                     <label>Fecha de publicación</label>
-                    <input name="fechaPublicacion" type="date" required><br>
+                    <input name="fechaPublicacion" type="date" value="'; if (isset($_SESSION["fechaPublicacion"])){echo $_SESSION["fechaPublicacion"];} echo'" required><br>
 
                     <label>Idioma</label>
-                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+" required>
+                    <input  placeholder = "Idioma en el que está escrito" name="idioma" type="text" pattern="([a-z]|[A-Z]|[á-úñÑ\s])+" value="'; if (isset($_SESSION["idioma"])){echo $_SESSION["idioma"];} echo'" required>
 
                     <label>ISBN</label>
-                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}" required>
+                    <input  placeholder = "Número Internacional Normalizado del Libro" name="isbn" type="text" pattern="([-\d]){10,17}" value="'; if (isset($_SESSION["isbn"])){echo $_SESSION["isbn"];} echo'" required>
 
                     <label>Existencia</label>
-                    <input name="existencia" placeholder = "Numero de ejemplares" type="number" min=1 required><br>
+                    <input name="existencia" placeholder = "Numero de ejemplares" type="number" min=1 value="'; if (isset($_SESSION["existencia"])){echo $_SESSION["existencia"];} echo'" required><br>
 
 
                     <button type="submit" name="btnSiguiente" value="paso2">Siguiente</button>
@@ -113,6 +118,9 @@
             </div>
             
             ';
+            if (isset($_SESSION["editando"])){
+                unset($_SESSION["editando"]);
+            }
         }
 
         function mostrarAutor(){
@@ -122,6 +130,9 @@
             if(isset($_POST["autor"])){
                 $autor = $_POST["autor"];
                 $datos = $server->buscarAutor($autor);
+                if (mysqli_num_rows($datos) == 0){
+                    $datos = $server->consultarTabla("autores");
+                }
             }else{
                 $datos = $server->consultarTabla("autores");
             }
@@ -177,10 +188,11 @@
             <br><br>
 
         </div>';
+
         
         if (isset($_POST["titulo"])){
             $_SESSION["titulo"] = $_POST["titulo"];
-            $_SESSION["descripcion"] = $_POST["descripcion"];
+            $_SESSION["descripcion"] = str_replace("'", "\\'", $_POST["descripcion"]);
             $_SESSION["paginas"] = $_POST["paginas"];
             $_SESSION["pais"] = $_POST["pais"];
             $_SESSION["fechaPublicacion"] = $_POST["fechaPublicacion"];
@@ -197,6 +209,12 @@
 
             if(isset($_POST['idAutor'])){
                 $_SESSION["idAutor"] = serialize($_POST['idAutor']);  
+            } else {
+                $_SESSION["editando"] = "Activo";
+                echo "<script>
+                                msjFaltanAutores();
+                                window.location='libroAgregar.php';
+                              </script>";
             }
             
             if(isset($_POST["categoria"])){
@@ -377,9 +395,8 @@
                                     ".$_SESSION["idEditorial"].", 
                                     'Activo');";
 
-
             $idAutores = unserialize($_SESSION["idAutor"]);
-
+            
             borrarDatosLibro();
             
             if ($server->conexion->query($registroLibro)) {

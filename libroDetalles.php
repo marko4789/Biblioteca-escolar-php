@@ -22,6 +22,10 @@
             header("Location: libroConsultar.php");
         }
 
+        if(session_status() === PHP_SESSION_NONE){
+            session_start();
+        }
+
     }else {
         header("Location: libroConsultar.php");
     }
@@ -76,7 +80,7 @@
                 <input value= "<?php echo $paginas; ?>" name="paginas" type="text" readonly>
                 
                 <label>Descripcion: </label>
-                <input value= "<?php echo $descripcion; ?>" name="descripcion" type="text" readonly>
+                <input value= "<?php echo str_replace("\"", htmlspecialchars('"'), $descripcion); ?>" name="descripcion" type="text" readonly>
                 
                 <label>País: </label>
                 <input value= "<?php echo $pais; ?>" name="pais" type="text" readonly>

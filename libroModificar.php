@@ -219,9 +219,9 @@
 
         $idLibro = $_GET["id"];
         
-        $registroLibro = "UPDATE libros SET 
+        $modificaLibro = "UPDATE libros SET 
                                 titulo = '".$_POST["titulo"]."', 
-                                descripcion = '".$_POST["descripcion"]."', 
+                                descripcion = '".str_replace("'", "\\'", $_POST["descripcion"])."', 
                                 paginas = ".$_POST["paginas"].", 
                                 pais = '".$_POST["pais"]."', 
                                 fechaPublicacion = '".$_POST["fechaPublicacion"]."', 
@@ -232,32 +232,34 @@
                                 idEditorial = ".$_POST["idEditorial"]." 
                           WHERE idLibro = ".$idLibro.";";
 
-
-        $idAutores = $_POST["idAutor"];
         
-        if ($server->conexion->query($registroLibro)) {
+        if ($server->conexion->query($modificaLibro)) {
 
-            $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
+            if (isset($_POST["idAutor"])){
+                
+                $idAutores = $_POST["idAutor"];
+                $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
 
-            foreach ($idAutores as $idAutor){
+                foreach ($idAutores as $idAutor){
 
-                $relacionAutores = "INSERT INTO relacion_autoria (idAutor, idLibro)
-                                        VALUES ($idAutor, $idLibro);";
+                    $relacionAutores = "INSERT INTO relacion_autoria (idAutor, idLibro)
+                                            VALUES ($idAutor, $idLibro);";
 
-                try {
-                    $server->conexion->query($relacionAutores);
-                } catch (mysqli_sql_exception $e) {
-                    echo $e;
-                    $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
-                    $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
+                    try {
+                        $server->conexion->query($relacionAutores);
+                    } catch (mysqli_sql_exception $e) {
+                        echo $e;
+                        $server->conexion->query("DELETE FROM relacion_autoria WHERE idLibro = $idLibro");
+                        $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
 
-                    echo "<script>
-                            msjFracaso();
-                            window.location='libroModificar.php?id=\"".$idLibro."\"';
-                          </script>";
+                        echo "<script>
+                                msjFracaso();
+                                window.location='libroModificar.php?id=\"".$idLibro."\"';
+                            </script>";
+
+                    }
 
                 }
-
             }
 
             echo "<script>
