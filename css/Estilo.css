@@ -54,7 +54,7 @@ body {
       font-size: larger;
   }
 
-  h3,h2,h1{
+  h4,h3,h2,h1{
       text-align: center;
   }
 
@@ -156,8 +156,9 @@ body {
  }
 
   .inicio section{
-    width: 40%;
+    width: 35%;
     margin: 3%;
+    margin-top: 5px;
   }
 
   .inicio img{
@@ -186,6 +187,34 @@ body {
 
   .inicio a:hover{
     background-color: #e49a5e;
+  }
+
+  .inicio table{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #prestamo{  
+    background-color: #894D9A;   
+   /* background-color: #4864A5;*/
+  }
+  #alumno{
+    background-color: #5CB85C;   
+  }
+  #autor{
+    background-color: #E0A734;
+  }
+  #categoria{
+    background-color: #1F8686;
+  }
+  #usuario{
+    background-color: #3a95db;
+  }
+  #editorial{
+    background-color: #CF407A;
+  }
+  #editorial:hover,#prestamo:hover,#alumno:hover,#autor:hover,#categoria:hover,#usuario:hover{
+    background-color: rgba(240, 129, 2, 0.342);
   }
 
   .inicio p{
