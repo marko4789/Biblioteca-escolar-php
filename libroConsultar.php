@@ -90,7 +90,7 @@
                             echo "</th>";
                             echo "</tr>";
                         }
-                        if (mysqli_num_rows($datos) == 0){
+                        if (mysqli_num_rows($datos) == 0 && isset($_POST["libro"])){
                             echo 'No se han encontrado coincidencias con tu busqueda "'.$libro.'"';
                         }
                         

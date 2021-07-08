@@ -69,7 +69,7 @@
                             echo "</tr>";
                         }
 
-                        if (mysqli_num_rows($datos) == 0){
+                        if (mysqli_num_rows($datos) == 0 && isset($_POST["categoria"])){
                             echo 'No se han encontrado coincidencias con tu busqueda "'.$categoria.'"';
                         }
                         
