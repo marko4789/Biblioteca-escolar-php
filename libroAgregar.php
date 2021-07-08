@@ -80,7 +80,7 @@
 
             <h2>Datos del libro</h2>
 
-            <form method="post" action= "libroAgregar.php">
+            <form class="frmMargen" method="post" action= "libroAgregar.php">
                     
                     <label>Título</label>
                     <input placeholder = "Nombre del libro" name="titulo" type="text" pattern="([\w]|[á-úñÑ.\s]|[!¡#$%&/\(\)=¿?-+])+" value= "'; if (isset($_SESSION["titulo"])){echo $_SESSION["titulo"];} echo'" required>
