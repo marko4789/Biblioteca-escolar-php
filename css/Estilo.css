@@ -223,6 +223,8 @@ body {
 
   footer{
     font-style: italic;
+    position: fixed;
+    bottom: 0;
   }
 
   
