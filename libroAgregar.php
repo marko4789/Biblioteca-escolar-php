@@ -48,7 +48,7 @@
             
 
     <?php
-
+        
         if(!isset($_REQUEST["btnSiguiente"]) && !isset($_GET["idCategoria"]) && !isset($_GET["idEditorial"])){
             include 'libroAgregarPaso1.php';
         } else if (isset($_REQUEST["btnSiguiente"])){
@@ -60,9 +60,9 @@
                 include 'libroAgregarPaso4.php';
             }
             
-        } else if (isset($_GET["idCategoria"])) {
+        } else if ( isset( $_GET[ "idCategoria" ] ) ) {
             include 'libroAgregarPaso4.php';
-        } else if (isset($_GET["idEditorial"])) {
+        } else if (isset( $_GET[ "idEditorial" ] ) ) {
             agregarLibro();
         } else {
             echo "<script>
@@ -74,11 +74,13 @@
         
 
         function agregarLibro(){
-            if (isset($_GET["idEditorial"])){
-                $_SESSION["idEditorial"] = $_GET["idEditorial"];
+            if (isset( $_GET[ "idEditorial" ] ) ) {
+                $infoLibro = json_decode( file_get_contents( 'infoLibro.json' ), true );
+                $infoLibro[ "idEditorial" ] = ( int ) $_POST[ 'idEditorial' ];
+                file_put_contents( "infoLibro.json", json_encode( $infoLibro ) );
             }
 
-            if(existeLibro($_SESSION["isbn"])){
+            if(existeLibro($infoLibro["isbn"])){
                 borrarDatosLibro();
                 echo "<script>
                             msjLibroExistente();
@@ -110,6 +112,8 @@
 
             global $server;
             
+            $infoLibro = json_decode( file_get_contents( 'infoLibro.json' ), true );
+            
             $registroLibro = "INSERT INTO libros (titulo, 
                                             descripcion, 
                                             paginas, 
@@ -121,19 +125,19 @@
                                             idCategoria, 
                                             idEditorial, 
                                             status)
-                            VALUES ('".$_SESSION["titulo"]."', 
-                                    '".$_SESSION["descripcion"]."', 
-                                    ".$_SESSION["paginas"].", 
-                                    '".$_SESSION["pais"]."', 
-                                    '".$_SESSION["fechaPublicacion"]."', 
-                                    '".$_SESSION["idioma"]."', 
-                                    '".$_SESSION["isbn"]."', 
-                                    ".$_SESSION["existencia"].", 
-                                    ".$_SESSION["idCategoria"].", 
-                                    ".$_SESSION["idEditorial"].", 
+                            VALUES ('".$infoLibro["titulo"]."', 
+                                    '".$infoLibro["descripcion"]."', 
+                                    ".$infoLibro["paginas"].", 
+                                    '".$infoLibro["pais"]."', 
+                                    '".$infoLibro["fechaPublicacion"]."', 
+                                    '".$infoLibro["idioma"]."', 
+                                    '".$infoLibro["isbn"]."', 
+                                    ".$infoLibro["existencia"].", 
+                                    ".$infoLibro["idCategoria"].", 
+                                    ".$infoLibro["idEditorial"].", 
                                     'Activo');";
 
-            $idAutores = unserialize($_SESSION["idAutor"]);
+            $idAutores = $infoLibro["idAutor"];
             
             borrarDatosLibro();
             

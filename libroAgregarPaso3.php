@@ -2,7 +2,9 @@
     global $server;
 
     if(isset($_POST['idAutor'])){
-        $_SESSION["idAutor"] = serialize($_POST['idAutor']);  
+        $infoLibro = json_decode(file_get_contents('infoLibro.json'), true);
+        $infoLibro["idAutor"] =  (array) $_POST['idAutor'];
+        file_put_contents("infoLibro.json", json_encode($infoLibro));
     } else {
         $_SESSION["editando"] = "Activo";
         echo "<script>

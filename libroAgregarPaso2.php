@@ -10,6 +10,23 @@
     }else{
         $datos = $server->consultarTabla("autores");
     }
+
+    if (isset($_POST["titulo"])){
+
+        $infoLibro = [  "titulo"            => $_POST["titulo"], 
+                        "descripcion"       => $_POST["descripcion"], 
+                        "paginas"           => $_POST["paginas"], 
+                        "pais"              => $_POST["pais"], 
+                        "fechaPublicacion"  => $_POST["fechaPublicacion"], 
+                        "idioma"            => $_POST["idioma"], 
+                        "isbn"              => $_POST["isbn"], 
+                        "existencia"        => $_POST["existencia"], 
+                        "idAutor"           => null, 
+                        "idCategoria"       => null, 
+                        "idEditorial"       => null];
+
+        file_put_contents("infoLibro.json", json_encode($infoLibro));
+    }
 ?>
 
 <div class = "frmFormulario">
@@ -61,17 +78,6 @@
     </form>
     <br><br>
 
-    <?php
-        if (isset($_POST["titulo"])){
-        $_SESSION["titulo"] = $_POST["titulo"];
-        $_SESSION["descripcion"] = str_replace("'", "\\'", $_POST["descripcion"]);
-        $_SESSION["paginas"] = $_POST["paginas"];
-        $_SESSION["pais"] = $_POST["pais"];
-        $_SESSION["fechaPublicacion"] = $_POST["fechaPublicacion"];
-        $_SESSION["idioma"] = $_POST["idioma"];
-        $_SESSION["isbn"] = $_POST["isbn"];
-        $_SESSION["existencia"] = $_POST["existencia"];
-        }
-    ?>
+    
 
 </div>

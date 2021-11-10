@@ -1,6 +1,8 @@
 <?php
     if (isset($_GET["idCategoria"])){
-        $_SESSION["idCategoria"] = $_GET["idCategoria"];
+        $infoLibro = json_decode(file_get_contents('infoLibro.json'), true);
+        $infoLibro["idCategoria"] =  (int)$_POST['idCategoria'];
+        file_put_contents("infoLibro.json", json_encode($infoLibro));
     }
 
     global $server;
