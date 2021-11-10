@@ -42,6 +42,8 @@
     <div class = "frmFormulario">
     <a class ="agregar" href="autorAgregar.php">✚ Nuevo autor</a>
 
+    <div class="frmMargen2">
+
         <form class = "frmBuscar" method="post" action= 'autorConsultar.php'>
             <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
@@ -85,8 +87,12 @@
 
         </div> <!-- Div con la clase tablaDatos -->
 
+        </div>
+
         <a class = "cancel" href="autorConsultar.php">Cancelar</a>
         <br><br>
+
+      
 
     </div> <!-- Div con la clase frmFormulario -->
 

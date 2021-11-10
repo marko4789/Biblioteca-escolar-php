@@ -39,6 +39,7 @@
 
         <a class ="agregar" href="prestamoAgregar.php">✚ Nuevo préstamo</a>
 
+        <div class="frmMargen2">
 
             <form class = "frmBuscar" method="post" action= 'prestamoConsultar.php'>
                 <input placeholder = "Escriba datos relacionados con el préstamo" name="prestamo" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
@@ -46,7 +47,7 @@
             </form>
 
             <div class = "tablaDatos">
-                <table style = " width: 90%;">
+                <table>
                     <thead>
                         <tr>
                             <th scope="col">#id</th>
@@ -87,8 +88,12 @@
 
             </div>
 
+            </div>
+
             <a class = "cancel" href="prestamoConsultar.php">Cancelar</a>
             <br><br>
+
+            
 
     </div>
 

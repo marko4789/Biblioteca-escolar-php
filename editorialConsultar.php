@@ -38,6 +38,8 @@
         <div class = "frmFormulario">
         <a class ="agregar" href="editorialAgregar.php">✚ Nueva editorial</a>
 
+        <div class="frmMargen2">
+
         <form class = "frmBuscar" method="post" action= 'editorialConsultar.php'>
             <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
@@ -76,8 +78,12 @@
 
         </div>
 
+        </div>
+
         <a class = "cancel" href="editorialConsultar.php">Cancelar</a>
         <br><br>
+
+      
 
     </div>
 

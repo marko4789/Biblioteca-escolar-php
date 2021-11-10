@@ -38,6 +38,8 @@
 
     <a class ="agregar" href="alumnoAgregar.php">✚ Nuevo alumno</a>
 
+    <div class="frmMargen2">
+
         <form class = "frmBuscar" method="post" action= 'alumnoConsultar.php'>
             <input placeholder = "Escriba el nombre del alumno a buscar" name="alumno" value="<?php echo $alumno;?>" type="text" pattern="[\wñÑá-ú\-]+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
@@ -85,8 +87,12 @@
 
         </div> <!-- Div con la clase tablaDatos -->
 
+        </div>
+
         <a class = "cancel" href="alumnoConsultar.php">Cancelar</a>
         <br><br>
+
+        
 
     </div> <!-- Div con la clase frmFormulario -->
 

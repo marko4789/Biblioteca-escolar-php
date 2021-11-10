@@ -46,13 +46,17 @@
         }
     ?>
 
+
+    <div class="frmMargen2">
+
+
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
             <input placeholder = "Título, autor, ISBN o la categoría del libro a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
             <button type="submit" name="buscar">🔍 Buscar</button>  
         </form>
 
         <div class = "tablaDatos">
-            <table style = " width: 90%;">
+            <table>
                 <thead>
                     <tr>
                         <th scope="col">#id</th>
@@ -97,6 +101,8 @@
                     ?>
                 </tbody>
             </table>
+
+            </div> 
 
         </div>
 

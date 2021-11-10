@@ -37,7 +37,10 @@
 
 
     <div class = "frmFormulario">
+
     <a class ="agregar" href="categoriaAgregar.php">✚ Nueva categoría</a>
+
+    <div class="frmMargen2">
 
         <form class = "frmBuscar" method="post" action= 'categoriaConsultar.php'>
             <input placeholder = "Escriba el nombre de la categoría a buscar" name="categoria" type="text" pattern="[\wñá-ú]+" required>
@@ -79,8 +82,12 @@
 
         </div> <!-- Div con la clase tablaDatos -->
 
+        </div>
+
         <a class = "cancel" href="categoriaConsultar.php">Cancelar</a>
         <br><br>
+
+      
 
     </div> <!-- Div con la clase frmFormulario -->
 

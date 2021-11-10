@@ -81,9 +81,8 @@
         
         
         <div class = "frmFormulario">
-
-        <h3>Seleccione un libro</h3>
-
+        <div class = "frmMargen2">
+        <h3>Seleccione un libro</h3>      
 
         <form class = "frmBuscar" method="post" action= "prestamoAgregar.php">
             <input placeholder = "Escriba el nombre, autor, ISBN a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
@@ -132,6 +131,7 @@
                 </tbody>
             </table>
             
+            </div>
             </div>
             
                 <a class = "cancel" href="prestamoConsultar.php">Cancelar</a>
