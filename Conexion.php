@@ -8,7 +8,7 @@
         public $db;
         public $conexion;
 
-        public function conectar () {
+        public function conectar() {
 
             $this->conexion = new mysqli( $this->server, $this->user, $this->pass, $this->db );
 
@@ -17,6 +17,7 @@
             }
 
         }// Fin - conectar
+
 
         public function consultarTabla($tabla, $condiciones = null) {
             if ($condiciones === null) {
@@ -28,147 +29,125 @@
             return $this->conexion->query($sql);
         }
 
+
         public function buscarUsuario($usuario) {
             if (is_int($usuario)){
-                $sql = "Select * FROM usuarios WHERE idUsuario = $usuario AND status = 'Activo';";  
+
+                $sql = "CALL buscarGeneral('usuarios','idUsuario',$usuario);";
+
             }else{
-                $sql = "Select * FROM usuarios WHERE CONCAT(
-                    idUsuario,
-                    nombreUsuario, 
-                    nombre, 
-                    apellidoPaterno, 
-                    apellidoMaterno) like '%$usuario%' AND status = 'Activo';";    
+
+                $sql = "CALL buscarUsuario('$usuario');";
+           
             }
             
             return $this->conexion->query($sql);
         }
+
 
         public function buscarAutor($autor) {
             if (is_int($autor)){
-                $sql = "Select * FROM autores WHERE idAutor = $autor AND status = 'Activo';";  
+                $sql = "CALL buscarGeneral('autores','idAutor',$autor);";  
             }else{
-                $sql = "Select * FROM autores WHERE CONCAT(
-                    idAutor,
-                    nombre, 
-                    apellidoPaterno, 
-                    apellidoMaterno) like '%$autor%' AND status = 'Activo';";    
+               
+                    $sql = "CALL buscarAutor('$autor');";
             }
             
             return $this->conexion->query($sql);
         }
 
+
         public function buscarCategoria($categoria) {
             if (is_int($categoria)){
-                $sql = "Select * FROM categorias WHERE idCategoria = $categoria AND status = 'Activo';";  
+
+                $sql = "CALL buscarGeneral('categorias','idCategoria',$categoria);";  
+
             }else{
-                $sql = "Select * FROM categorias WHERE CONCAT(
-                    idCategoria,
-                    categoria) like '%$categoria%' AND status = 'Activo';";    
+                   
+                $sql = "CALL buscarCategoria('$categoria');";
             }
             
                 return $this->conexion->query($sql);
             }
             
+
         public function buscarEditorial($editorial) {
             if (is_int($editorial)){
-                $sql = "Select * FROM editoriales WHERE idEditorial = $editorial AND status = 'Activo';";  
+
+                $sql = "CALL buscarGeneral('editoriales','idEditorial',$editorial);"; 
+
             }else{
-                $sql = "Select * FROM editoriales WHERE CONCAT(
-                    idEditorial,
-                    editorial) like '%$editorial%' AND status = 'Activo';";    
+ 
+                    $sql = "CALL buscarEditorial('$editorial');"; 
+
             }
             
             return $this->conexion->query($sql);
         }
+ 
 
         public function buscarLibro($libro) {
             if (is_int($libro)){
-                $sql = "SELECT  libros.idLibro, 
-                                libros.isbn, 
-                                libros.titulo, 
-                                libros.paginas, 
-                                libros.descripcion, 
-                                libros.pais, 
-                                libros.fechaPublicacion, 
-                                libros.idioma, 
-                                libros.existencia, 
-                                categorias.categoria,
-                                categorias.idCategoria, 
-                                editoriales.editorial, 
-                                editoriales.idEditorial
-                                
-                        FROM ((libros INNER JOIN categorias ON libros.idCategoria = categorias.idCategoria)
-                                      INNER JOIN editoriales ON libros.idEditorial = editoriales.idEditorial) 
-                        WHERE libros.idLibro = $libro AND libros.status = 'Activo';";
+
+                $sql = "CALL buscarLibroID($libro);";
+
             }else{
-                $sql = "SELECT * FROM (((libros 
-                            INNER JOIN relacion_autoria ON libros.idLibro = relacion_autoria.idlibro)
-                            INNER JOIN autores ON relacion_autoria.idAutor = autores.idAutor)
-                            INNER JOIN categorias ON libros.idCategoria = categorias.idCategoria)
-                        WHERE CONCAT(libros.isbn, 
-                                libros.titulo, 
-                                autores.nombre,
-                                categorias.categoria, 
-                                autores.apellidoPaterno, 
-                                autores.apellidoMaterno) 
-                        LIKE '%$libro%' AND libros.status = 'Activo';";    
+
+                $sql = "CALL buscarLibro('$libro');";
+
+            }         
+           
+            if($sentencia = $this->conexion->prepare($sql)){
+                $sentencia->execute();
+                if($resultado = $sentencia->get_result() )
+                 return $resultado;
             }
-            
-            return $this->conexion->query($sql);
         }
+
+
 
         public function buscarAlumno($alumno) {
-            if (is_int($alumno)){
-                $sql = "SELECT * FROM alumnos WHERE idAlumno = $alumno AND status = 'Activo';";  
+            if (is_int($alumno)){ 
+                $sql = "CALL buscarGeneral('alumnos','idAlumno',$alumno);";
             }else{
-                $sql = "SELECT * FROM alumnos WHERE CONCAT(
-                    idAlumno,
-                    nombre, 
-                    apellidoPaterno, 
-                    apellidoMaterno,
-                    matricula) like '%$alumno%' AND status = 'Activo';";    
+   
+                $sql = "CALL buscarAlumno('$alumno');";
+
             }
             
             return $this->conexion->query($sql);
         }
 
-        public function obtenerAutores($idLibro) {
-            $sql = "SELECT autores.nombre, autores.apellidoPaterno, autores.apellidoMaterno
-                    FROM (autores
-                    INNER JOIN relacion_autoria ON autores.idAutor = relacion_autoria.idAutor)
-                    WHERE relacion_autoria.idLibro = $idLibro;";
 
-            return $this->conexion->query($sql);
+       public function obtenerAutores($idLibro) {
+
+        $sql = "CALL obtenerAutores($idLibro);";
+
+        if($sentencia = $this->conexion->prepare($sql)){
+            $sentencia->execute();
+            if($resultado = $sentencia->get_result() )
+            return $resultado;
         }
+       }
+
 
         public function consultarPrestamo(){
-            $sql = "SELECT prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
-                alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
-                INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
-                INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
-                WHERE prestamos.`status` = 'Activo'  ORDER BY idPrestamo ";
+
+            $sql = "CALL consultarPrestamo();";
 
             return $this->conexion->query($sql);
         }
+
 
         public function buscarPrestamo($prestamo) {
             if (is_int($prestamo)){
-                $sql = " SELECT prestamos.`idLibro`, prestamos.`idAlumno`, prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
-                    alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
-                    INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
-                    INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
-                    WHERE idPrestamo = $prestamo AND prestamos.`status` = 'Activo'
-                    ;";
-                /*$sql = "Select * FROM prestamos WHERE idPrestamo = $prestamo AND status = 'Activo';";  */
+
+                     $sql = "CALL buscarPrestamoID('$prestamo');";
+
             }else{
            
-                    $sql = " SELECT prestamos.`idPrestamo`, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
-                    alumnos.`matricula` , prestamos.`fechaPrestamo` FROM prestamos
-                    INNER JOIN libros ON libros.`idLibro`=prestamos.`idLibro`
-                    INNER JOIN alumnos ON alumnos.`idAlumno`=prestamos.`idAlumno`
-			WHERE CONCAT(
-                    idPrestamo, libros.`titulo`, alumnos.`nombre`,alumnos.`apellidoPaterno`,alumnos.`apellidoMaterno`,
-                    alumnos.`matricula` , prestamos.`fechaPrestamo`) LIKE '%$prestamo%' AND prestamos.`status` = 'Activo';";
+                     $sql = "CALL buscarPrestamo('$prestamo');";
+
             }
             
             return $this->conexion->query($sql);
