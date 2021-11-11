@@ -8,6 +8,7 @@
  
   <link href="css/Estilo.css" rel="stylesheet">
   <link href="css/EstilosNavegacion.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
  
 
 
@@ -15,17 +16,13 @@
 <body>
   
 
+
+<div class="contenedor">
+<nav class="navegacion">
+
 <ul>
   <li><a href="Index.php" id = "inicio">Inicio</a></li>
 
-  
-  <!-- 
-  <div class="dropdown-content">
-  <a href="libroConsultar.php">Libros</a>
-  <a href="#">Autores</a>
-  <a href="#">Categorías</a> 
-  </div>
-  -->
 
   </li>
 
@@ -44,13 +41,12 @@
 
                <div class='dropdown-content'>
                <a href='libroAgregar.php'>Agregar Libro</a>
-               <a href='libroConsultar.php'>Consultar Libros</a>
-
-
-               
-               </div>
+               <a href='libroConsultar.php'>Consultar Libros</a>               
+               </div>              
                
                </li>
+
+
 
                <li class='dropdown'><a href='autorConsultar.php'>Autores</a>
                
@@ -60,6 +56,7 @@
                </div>
 
                </li>
+
 
 
                <li class='dropdown'><a href='categoriaConsultar.php'>Categorías</a>
@@ -72,6 +69,7 @@
                </li>
 
 
+
                <li class='dropdown'><a href='editorialConsultar.php'>Editoriales</a>
                
                <div class='dropdown-content'>
@@ -80,6 +78,7 @@
                </div>
 
                </li>
+
 
 
                <li class='dropdown'><a href='usuarioConsultar.php'>Usuarios</a>
@@ -92,6 +91,7 @@
                </li>
 
 
+
                <li class='dropdown'><a href='alumnoConsultar.php'>Alumnos</a>
                
                <div class='dropdown-content'>
@@ -102,6 +102,7 @@
                </li>
 
 
+
                <li class='dropdown'><a href='prestamoConsultar.php'>Préstamos</a>
                
                <div class='dropdown-content'>
@@ -110,6 +111,8 @@
                </div>
                
                </li>
+
+
 
                <li class='dropdown' id = 'msjBienvenida'><b>Bienvenido(a):</b> ".$_SESSION['nombres']."
               
@@ -125,7 +128,9 @@
 
 </ul>
 
+</nav>
 
+</div><!-- Clase contenedor  -->
 
 </body>
 </html>

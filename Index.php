@@ -40,7 +40,7 @@
         En la consulta de libros se pueden hacer tanto consultas generales como específicas de cada libro
         cualquier usuario puede consultar los libros en existencia para un préstamo posterior.
     </p>
-    <img src="https://image.freepik.com/vector-gratis/libro-blanco-sobre-fondo-blanco_1308-23052.jpg" alt="imagen ilustrativa">
+    <img style="width:30%;" src="https://image.freepik.com/vector-gratis/libro-blanco-sobre-fondo-blanco_1308-23052.jpg" alt="imagen ilustrativa">
     <a style="width:50%;" href="libroConsultar.php">📚 Libros</a>
 
     </section>
@@ -86,11 +86,11 @@
 
         echo'
         
-        <section style="float:right;width:50%;">
+        <section style="float:right;">
 
         <img src="https://image.freepik.com/vector-gratis/ilustracion-dia-mundial-libro-plano-organico_23-2148884673.jpg" alt="Día mundial del libro">
 
-        <h3 style = "font-style: italic">
+        <h3 style = "font-style: italic;">
         "Es un buen libro aquel que se abre con expectación y se cierra con provecho"
         </h3>
         <h4>Amos Bronson Alcott.</h4>

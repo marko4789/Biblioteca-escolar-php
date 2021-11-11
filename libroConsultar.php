@@ -49,6 +49,11 @@
 
     <div class="frmMargen2">
 
+    <i class='fas fa-plus-square'></i>
+    <i class="far fa-eye"></i>
+    <i class="fas fa-minus-square"></i>
+    <i class="fas fa-pen-square"></i>
+    <i class="fas fa-search"></i>
 
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
             <input placeholder = "Título, autor, ISBN o la categoría del libro a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
