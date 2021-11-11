@@ -76,7 +76,7 @@
         function agregarLibro(){
             if (isset( $_GET[ "idEditorial" ] ) ) {
                 $infoLibro = json_decode( file_get_contents( 'infoLibro.json' ), true );
-                $infoLibro[ "idEditorial" ] = ( int ) $_POST[ 'idEditorial' ];
+                $infoLibro[ "idEditorial" ] = ( int ) $_GET[ 'idEditorial' ];
                 file_put_contents( "infoLibro.json", json_encode( $infoLibro ) );
             }
 
@@ -175,7 +175,7 @@
                 borrarDatosLibro();
                 echo "<script>
                             msjFracaso();
-                            window.location='libroAgregar.php';
+                            //window.location='libroAgregar.php';
                         </script>";
             }
         }

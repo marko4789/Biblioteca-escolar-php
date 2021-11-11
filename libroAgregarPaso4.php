@@ -1,7 +1,7 @@
 <?php
     if (isset($_GET["idCategoria"])){
         $infoLibro = json_decode(file_get_contents('infoLibro.json'), true);
-        $infoLibro["idCategoria"] =  (int)$_POST['idCategoria'];
+        $infoLibro["idCategoria"] =  (int)$_GET['idCategoria'];
         file_put_contents("infoLibro.json", json_encode($infoLibro));
     }
 
