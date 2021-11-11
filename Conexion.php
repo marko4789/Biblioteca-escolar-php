@@ -18,6 +18,15 @@
 
         }// Fin - conectar
 
+        public function ejecutarConsulta($sql){
+           
+                if($sentencia = $this->conexion->prepare($sql)){
+                    $sentencia->execute();
+                    if($resultado = $sentencia->get_result() )
+                    return $resultado;
+                }
+           
+        }
 
         public function consultarTabla($tabla, $condiciones = null) {
             if ($condiciones === null) {
@@ -27,7 +36,10 @@
             }
             
             return $this->conexion->query($sql);
+            
         }
+
+        
 
 
         public function buscarUsuario($usuario) {
@@ -40,8 +52,12 @@
                 $sql = "CALL buscarUsuario('$usuario');";
            
             }
-            
-            return $this->conexion->query($sql);
+                       
+            if($sentencia = $this->conexion->prepare($sql)){
+                $sentencia->execute();
+                if($resultado = $sentencia->get_result() )
+                return $resultado;
+            }
         }
 
 
@@ -53,7 +69,12 @@
                     $sql = "CALL buscarAutor('$autor');";
             }
             
-            return $this->conexion->query($sql);
+            //return $this->conexion->query($sql);
+            if($sentencia = $this->conexion->prepare($sql)){
+                $sentencia->execute();
+                if($resultado = $sentencia->get_result() )
+                return $resultado;
+            }
         }
 
 
@@ -67,7 +88,12 @@
                 $sql = "CALL buscarCategoria('$categoria');";
             }
             
-                return $this->conexion->query($sql);
+                //return $this->conexion->query($sql);
+                if($sentencia = $this->conexion->prepare($sql)){
+                    $sentencia->execute();
+                    if($resultado = $sentencia->get_result() )
+                    return $resultado;
+                }
             }
             
 
@@ -82,7 +108,12 @@
 
             }
             
-            return $this->conexion->query($sql);
+           // return $this->conexion->query($sql);
+           if($sentencia = $this->conexion->prepare($sql)){
+            $sentencia->execute();
+            if($resultado = $sentencia->get_result() )
+            return $resultado;
+           }
         }
  
 
@@ -115,7 +146,11 @@
 
             }
             
-            return $this->conexion->query($sql);
+          if($sentencia = $this->conexion->prepare($sql)){
+            $sentencia->execute();
+            if($resultado = $sentencia->get_result() )
+            return $resultado;
+            }
         }
 
 
@@ -127,7 +162,7 @@
             $sentencia->execute();
             if($resultado = $sentencia->get_result() )
             return $resultado;
-        }
+         }
        }
 
 
@@ -135,7 +170,12 @@
 
             $sql = "CALL consultarPrestamo();";
 
-            return $this->conexion->query($sql);
+           // return $this->conexion->query($sql);
+            if($sentencia = $this->conexion->prepare($sql)){
+                $sentencia->execute();
+                if($resultado = $sentencia->get_result() )
+                return $resultado;
+            }
         }
 
 
@@ -150,7 +190,13 @@
 
             }
             
-            return $this->conexion->query($sql);
+           // return $this->conexion->query($sql);
+           if($sentencia = $this->conexion->prepare($sql)){
+            $sentencia->execute();
+            if($resultado = $sentencia->get_result() )
+            return $resultado;
+            }
+
         }
 
     }// Fin - Clase Server

@@ -82,7 +82,7 @@
                             echo "<td>";
                                 $autores = $server->obtenerAutores($fila['idLibro']);
                                     while ($autor = mysqli_fetch_array($autores)){
-                                        echo " - ".$autor["nombre"]." ".$autor["apellidoPaterno"]." ".$autor["apellidoPaterno"]."<br>";
+                                        echo " - ".$autor["nombre"]." ".$autor["apellidoPaterno"]." ".$autor["apellidoMaterno"]."<br>";
                                     }
                             echo "</td>";
                             if (isset( $_SESSION['idUsuario'])) {
