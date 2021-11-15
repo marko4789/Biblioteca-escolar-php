@@ -112,6 +112,7 @@ li.dropdown {
 
   body{
     font-size: 11px;
+    padding-top: 8%;
   }
   .contenedor{
     flex-wrap: wrap;
