@@ -36,13 +36,13 @@
     </header>
 
         <div class = "frmFormulario">
-        <a class ="agregar" href="editorialAgregar.php">✚ Nueva editorial</a>
+        <a class ="agregar" href="editorialAgregar.php">  <i class='far fa-plus-square'></i> Nueva editorial</a>
 
         <div class="frmMargen2">
 
         <form class = "frmBuscar" method="post" action= 'editorialConsultar.php'>
             <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
-            <button type="submit" name="buscar">🔍 Buscar</button>  
+            <button type="submit" name="buscar"><i class="fas fa-search"></i> Buscar</button>  
         </form>
 
         <div class = "tablaDatos">
@@ -62,8 +62,8 @@
                             echo "<th scope='row'>".$fila['idEditorial']."</th>";
                             echo "<td>".$fila['editorial']."</td>";
                             echo "<td>
-                                    <a class='btnEditar' href='editorialModificar.php?id=".$fila['idEditorial']."'>🖉 Editar</a>
-                                    <a class='btnEliminar' href='editorialDeshabilitar.php?id=".$fila['idEditorial']."'>⮾ Eliminar</a>
+                                    <a class='btnEditar' href='editorialModificar.php?id=".$fila['idEditorial']."'><i class='far fa-edit'></i> Editar</a>
+                                    <a class='btnEliminar' href='editorialDeshabilitar.php?id=".$fila['idEditorial']."'><i class='far fa-minus-square'></i> Eliminar</a>
                                 </td>";
                             echo "</th>";
                             echo "</tr>";

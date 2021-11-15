@@ -38,13 +38,13 @@
 
     <div class = "frmFormulario">
 
-    <a class ="agregar" href="categoriaAgregar.php">✚ Nueva categoría</a>
+    <a class ="agregar" href="categoriaAgregar.php">  <i class='far fa-plus-square'></i> Nueva categoría</a>
 
     <div class="frmMargen2">
 
         <form class = "frmBuscar" method="post" action= 'categoriaConsultar.php'>
             <input placeholder = "Escriba el nombre de la categoría a buscar" name="categoria" type="text" pattern="[\wñá-ú]+" required>
-            <button type="submit" name="buscar">🔍 Buscar</button>  
+            <button type="submit" name="buscar"><i class="fas fa-search"></i> Buscar</button>  
         </form>
 
         <div class = "tablaDatos">
@@ -65,8 +65,8 @@
                             echo "<th scope='row'>".$fila['idCategoria']."</th>";
                             echo "<td>".$fila['categoria']."</td>";
                             echo "<td>
-                                    <a class='btnEditar' href='categoriaModificar.php?id=".$fila['idCategoria']."'>🖉 Editar</a>
-                                    <a class='btnEliminar' href='categoriaDeshabilitar.php?id=".$fila['idCategoria']."'>⮾ Eliminar</a>
+                                    <a class='btnEditar' href='categoriaModificar.php?id=".$fila['idCategoria']."'><i class='far fa-edit'></i> Editar</a>
+                                    <a class='btnEliminar' href='categoriaDeshabilitar.php?id=".$fila['idCategoria']."'><i class='far fa-minus-square'></i> Eliminar</a>
                                 </td>";
                             echo "</th>";
                             echo "</tr>";
