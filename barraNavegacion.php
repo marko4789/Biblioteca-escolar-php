@@ -30,7 +30,7 @@
 
 
 
-<ul class="show">
+<ul>
   
  
 
