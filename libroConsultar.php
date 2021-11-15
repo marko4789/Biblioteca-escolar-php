@@ -42,22 +42,16 @@
 
     <?php  
         if (isset( $_SESSION['idUsuario'])) {
-            echo '<a class ="agregar" href="libroAgregar.php">✚ Nuevo libro</a>';
+            echo '<a class ="agregar" href="libroAgregar.php"> <i class="far fa-plus-square"></i> Nuevo libro</a>';
         }
     ?>
 
 
     <div class="frmMargen2">
 
-    <i class='fas fa-plus-square'></i>
-    <i class="far fa-eye"></i>
-    <i class="fas fa-minus-square"></i>
-    <i class="fas fa-pen-square"></i>
-    <i class="fas fa-search"></i>
-
         <form class = "frmBuscar" method="post" action= 'libroConsultar.php'>
             <input placeholder = "Título, autor, ISBN o la categoría del libro a buscar" name="libro" type="text" pattern="([\w]|[á-úñÑ.\-\s])+" required>
-            <button type="submit" name="buscar">🔍 Buscar</button>  
+            <button type="submit" name="buscar">  <i class="fas fa-search"></i> Buscar</button>  
         </form>
 
         <div class = "tablaDatos">
@@ -87,9 +81,9 @@
                             echo "</td>";
                             if (isset( $_SESSION['idUsuario'])) {
                                 echo "<td>
-                                    <a class='btnDetalles' href='libroDetalles.php?id=".$fila['idLibro']."'>👁 Ver detalles</a>
-                                    <a class='btnEditar' href='libroModificar.php?id=".$fila['idLibro']."'>🖉 Editar</a>
-                                    <a class='btnEliminar' href='libroDeshabilitar.php?id=".$fila['idLibro']."'>⮾ Eliminar</a>
+                                    <a class='btnDetalles' href='libroDetalles.php?id=".$fila['idLibro']."'> <i class='far fa-eye'></i> Ver detalles</a>
+                                    <a class='btnEditar' href='libroModificar.php?id=".$fila['idLibro']."'> <i class='far fa-edit'></i> Editar</a>
+                                    <a class='btnEliminar' href='libroDeshabilitar.php?id=".$fila['idLibro']."'>  <i class='far fa-minus-square'></i> Eliminar</a>
                                 </td>";
                             }else{
                                 echo "<td>

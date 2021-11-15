@@ -40,13 +40,13 @@
 
 
     <div class = "frmFormulario">
-    <a class ="agregar" href="autorAgregar.php">✚ Nuevo autor</a>
+    <a class ="agregar" href="autorAgregar.php">  <i class='far fa-plus-square'></i> Nuevo autor</a>
 
     <div class="frmMargen2">
 
         <form class = "frmBuscar" method="post" action= 'autorConsultar.php'>
             <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
-            <button type="submit" name="buscar">🔍 Buscar</button>  
+            <button type="submit" name="buscar"><i class="fas fa-search"></i> Buscar</button>  
         </form>
 
         <div class = "tablaDatos">
@@ -71,8 +71,8 @@
                             echo "<td>".$fila['apellidoPaterno']."</td>";
                             echo "<td>".$fila['apellidoMaterno']."</td>";
                             echo "<td>
-                                    <a class='btnEditar' href='autorModificar.php?id=".$fila['idAutor']."'>🖉 Editar</a>
-                                    <a class='btnEliminar' href='autorDeshabilitar.php?id=".$fila['idAutor']."'>⮾ Eliminar</a>
+                                    <a class='btnEditar' href='autorModificar.php?id=".$fila['idAutor']."'><i class='far fa-edit'></i> Editar</a>
+                                    <a class='btnEliminar' href='autorDeshabilitar.php?id=".$fila['idAutor']."'><i class='far fa-minus-square'></i> Eliminar</a>
                                 </td>";
                             echo "</th>";
                             echo "</tr>";

@@ -9,32 +9,36 @@
   <link href="css/Estilo.css" rel="stylesheet">
   <link href="css/EstilosNavegacion.css" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
- 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="menu.js"></script>
 
 
 </head>
 <body>
   
-
+<header class="header">
 
 <div class="contenedor">
+
+
+<span class="menu"><i class="fas fa-list-ul"></i></span>
+<a href="Index.php" id = "inicio">Inicio</a>
+
 <nav class="navegacion">
 
-<ul>
-  <li><a href="Index.php" id = "inicio">Inicio</a></li>
-
-
-  </li>
 
 
 
 
-
+<ul class="show">
+  
+ 
 
 <?php
             if( !isset( $_SESSION["idUsuario"] ) ){
-                echo " <li class = 'btnSesion'><a class = 'btnSesion' href='iniciarSesion.php'>Iniciar sesión</a></li> ";
-                echo'<li class="dropdown" ><a class="dropbtn" href="libroConsultar.php">Libros</a>';
+              echo'<li class="dropdown" ><a class="dropbtn" href="libroConsultar.php">Libros</a>';  
+              echo " <li class = ''><a class = '' href='iniciarSesion.php'>Iniciar sesión</a></li> ";
+                
             }else{
                echo "
                <li class='dropdown'><a href='libroConsultar.php'>Libros</a>
@@ -111,15 +115,9 @@
                </div>
                
                </li>
+             
 
-
-
-               <li class='dropdown' id = 'msjBienvenida'><b>Bienvenido(a):</b> ".$_SESSION['nombres']."
-              
-               <div class='dropdown-content'>
-               <a href='cerrarSesion.php'>Cerrar sesión</a>
-               </div>
-
+               <li class='dropdown'><a id='cerrarsesion' href='cerrarSesion.php'>Cerrar sesión</a>           
                </li>
                
                ";
@@ -131,6 +129,10 @@
 </nav>
 
 </div><!-- Clase contenedor  -->
+
+</header>
+
+
 
 </body>
 </html>
