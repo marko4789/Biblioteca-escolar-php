@@ -23,7 +23,6 @@ body{
   justify-content: space-between;
   justify-content:left;
   align-items: center;
-  /*flex-wrap: wrap;*/
 }
 
 
@@ -32,7 +31,7 @@ body{
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
+ /* background-color: #333;*/
 }
 
 .navegacion ul li {
@@ -40,10 +39,9 @@ body{
   display: inline-block;
 }
 
-.navegacion ul li a, .dropbtn,#inicio{
+.navegacion ul li a, .dropbtn,#inicio, span.menu{
   display: block;
   color: white;
-  /*text-align: center;*/
   padding: 14px 16px;
   text-decoration: none;
   transition: all 0.5s;
@@ -84,11 +82,6 @@ li.dropdown {
   display: block;
 }
 
- /*#msjBienvenida {
-  float: right;
-  background-color:#e08234;
-
-}*/
 
 .btnSesion{
   float: right;
@@ -104,7 +97,7 @@ li.dropdown {
   background-color:#e08234;
 }
 
-.menu{
+span.menu{
   display: none;
 }
 
@@ -119,21 +112,23 @@ li.dropdown {
   }
 
   .navegacion ul {
-    width: 40%;
+    width: 100%;
   }
   .navegacion ul li{
+    border-top: rgb(77, 77, 77) 0.5px solid;
     display: block;
   }
 
-  .navegacion ul li a, .dropbtn, #msjBienvenida{
+  .navegacion ul li a, .dropbtn{
     padding: 5px;
+    padding-left: 2%;
   }
 
-  .menu{
+  span.menu{
     display: block;
-    cursor: pointer;
-    padding: 1%;
-    color: white;
+  }
+  .menu:hover{
+    background-color: rgb(80, 80, 80);
   }
   .navegacion ul{
     display: none;
@@ -142,6 +137,9 @@ li.dropdown {
     display: block;
   }
   
+  .dropdown:hover .dropdown-content {
+    display: none;
+  }
  
 
 }

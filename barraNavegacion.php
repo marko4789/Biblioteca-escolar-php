@@ -6,9 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Biblioteca Escolar</title>
  
+
+  <link rel="stylesheet" href="Bootstrap_5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
   <link href="css/Estilo.css" rel="stylesheet">
   <link href="css/EstilosNavegacion.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+
+ 
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="menu.js"></script>
 
@@ -132,6 +139,7 @@
 
 </header>
 
+<script src="Bootstrap_5.1.3/js/bootstrap.bundle.min.js"></script>
 
 
 </body>
