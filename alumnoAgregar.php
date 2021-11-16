@@ -15,7 +15,17 @@
     <script >
 
         function msjAlumnoExistente (){
-            alert('La matrícula del alumno que escribió ya está registrada\n\nElija otro y vuelva a intentarlo');
+            var modalAlumnoExistente = new bootstrap.Modal(document.getElementById('modalAlumnoExistente'), {
+                keyboard: false
+            })
+
+            var btnContinuar = document.getElementById('btnContinuarAE');
+
+            btnContinuar.addEventListener("click", function () {
+                window.location = "alumnoConsultar.php";
+            }, false);
+
+            modalAlumnoExistente.show();
         }
 
         function msjExito(){
@@ -23,7 +33,7 @@
                 keyboard: false
             })
 
-            var btnContinuar = document.getElementById('btnContinuar');
+            var btnContinuar = document.getElementById('btnContinuarE');
 
             btnContinuar.addEventListener("click", function () {
                 window.location = "alumnoConsultar.php";
@@ -33,7 +43,17 @@
         }
 
         function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
+            var modalFracaso = new bootstrap.Modal(document.getElementById('modalFracaso'), {
+                keyboard: false
+            })
+
+            var btnContinuar = document.getElementById('btnContinuarF');
+
+            btnContinuar.addEventListener("click", function () {
+                window.location = "alumnoConsultar.php";
+            }, false);
+
+            modalFracaso.show();
         }
 
     </script>
@@ -55,7 +75,44 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="btnCancelar" data-bs-dismiss="modal">Agregar otro alumno</button>
-                    <button type="button" class="btn btn-primary" id="btnContinuar">Continuar</button>
+                    <button type="button" class="btn btn-primary" id="btnContinuarE">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalFracaso" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Ha ocurrido un Error, intentelo más tarde.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnCancelar" data-bs-dismiss="modal">Agregar otro alumno</button>
+                    <button type="button" class="btn btn-danger" id="btnContinuarF">Continuar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalAlumnoExistente" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>La matrícula del alumno que escribió ya está registrada</p>
+                    <p>Elija otro y vuelva a intentarlo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnCancelar" data-bs-dismiss="modal">Agregar otro alumno</button>
+                    <button type="button" class="btn btn-warning" id="btnContinuarAE">Continuar</button>
                 </div>
             </div>
         </div>

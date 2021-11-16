@@ -13,7 +13,12 @@
             $this->conexion = new mysqli( $this->server, $this->user, $this->pass, $this->db );
 
             if ( $this->conexion -> connect_error) {
+                echo "<script>
+                            alert('Error: No se ha podido conectar con el servidor.');
+                            window.location.href = 'Index.php';
+                        </script>";
                 die ("Error: " . $this->conexion->connect_error);
+                
             }
 
         }// Fin - conectar
