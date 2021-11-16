@@ -27,7 +27,16 @@
         </div>
     </header>
 
-   
+<style>
+
+    .carrusel{
+        width: 70%;
+        margin-left:auto;
+        margin-right:auto;
+
+    }
+</style>
+
 
     <div class="inicio">
 
@@ -86,14 +95,46 @@
 
         echo'
         
-        <section style="float:right;">
+        <section style="float:right;">';
+        ?>
+        
+        <div class="carrusel">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img src="Imagenes/libro3.jpg" class="d-block w-100">
+                        
+                    </div>
+                    <div class="carousel-item">
+                        <img src="Imagenes/libro1.jpg" class="d-block w-100" alt="...">
+                        
+                    </div>
+                    
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>       
+        
+        <?php
 
-        <img src="https://image.freepik.com/vector-gratis/ilustracion-dia-mundial-libro-plano-organico_23-2148884673.jpg" alt="Día mundial del libro">
+        echo '
 
-        <h3 style = "font-style: italic;">
+        <h4 style = "font-style: italic;">
         "Es un buen libro aquel que se abre con expectación y se cierra con provecho"
-        </h3>
-        <h4>Amos Bronson Alcott.</h4>
+        </h4>
+        <h5>Amos Bronson Alcott.</h5>
    
          </section>
         
