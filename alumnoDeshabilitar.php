@@ -141,8 +141,6 @@
                             msjExito();
                             //window.location='alumnoConsultar.php';
                         </script>";
-                
-                
             }
         }
     

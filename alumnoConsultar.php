@@ -19,10 +19,47 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
+    <script>
+
+        function msjAlumnoNoExiste (){
+            var modalAlumnoNoExiste = new bootstrap.Modal(document.getElementById('modalAlumnoNoExiste'), {
+                keyboard: false,
+                backdrop: 'static'
+            });
+
+            var btnAceptar = document.getElementById('btnAceptarAE');
+
+            btnAceptar.addEventListener("click", function () {
+                window.location='alumnoConsultar.php';
+            }, false);
+
+            modalAlumnoNoExiste.show();
+        }
+    
+    </script>
 </head>
 
 <body>
+
+    <div class="modal" id="modalAlumnoNoExiste" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>No se han encontrado coincidencias con tu busqueda.</p>
+                    <p>Vuelva a intentarlo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php
     include("barraNavegacion.php");
@@ -41,7 +78,7 @@
     <div class="frmMargen2">
 
         <form class = "frmBuscar" method="post" action= 'alumnoConsultar.php'>
-            <input placeholder = "Escriba el nombre del alumno a buscar" name="alumno" value="<?php echo $alumno;?>" type="text" pattern="[\wñÑá-ú\-]+" required>
+            <input placeholder = "Escriba el nombre del alumno a buscar" name="alumno" value="<?php echo $alumno;?>" type="text" pattern="[\wñÑá-ú\- .,]+" required>
             <button type="submit" name="buscar"><i class="fas fa-search"></i> Buscar</button>  
         </form>
 
@@ -78,7 +115,9 @@
                             echo "</tr>";
                         }
                         if (mysqli_num_rows($datos) == 0 && isset($_POST["alumno"])){
-                            echo 'No se han encontrado coincidencias con tu busqueda "'.$alumno.'"';
+                            echo '<script>
+                                    msjAlumnoNoExiste ();
+                                  </script>';
                         }
                     
                     ?>
@@ -96,6 +135,8 @@
 
     </div> <!-- Div con la clase frmFormulario -->
 
+    
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
 </body>
 

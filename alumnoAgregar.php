@@ -43,20 +43,6 @@
             modalExito.show();
         }
 
-        function msjFracaso (){
-            var modalFracaso = new bootstrap.Modal(document.getElementById('modalFracaso'), {
-                keyboard: false
-            });
-
-            var btnContinuar = document.getElementById('btnContinuarF');
-
-            btnContinuar.addEventListener("click", function () {
-                window.location = "alumnoConsultar.php";
-            }, false);
-
-            modalFracaso.show();
-        }
-
     </script>
 
 
@@ -76,24 +62,6 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="btnCancelarE" data-bs-dismiss="modal">Agregar otro alumno</button>
                     <button type="button" class="btn btn-primary" id="btnContinuarE">Continuar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="modalFracaso" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Error</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Ha ocurrido un Error, intentelo más tarde.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btnCancelarF" data-bs-dismiss="modal">Agregar otro alumno</button>
-                    <button type="button" class="btn btn-danger" id="btnContinuarF">Continuar</button>
                 </div>
             </div>
         </div>
@@ -210,10 +178,6 @@
             if ($server->conexion->query($consulta)) {
                 echo "  <script>
                             msjExito();
-                        </script>";
-            }else{
-                echo "<script>
-                            msjFracaso();
                         </script>";
             }
         }

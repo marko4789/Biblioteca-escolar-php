@@ -39,12 +39,6 @@
                 keyboard: false
             });
 
-            var btnContinuar = document.getElementById('btnContinuarAE');
-
-            btnContinuar.addEventListener("click", function () {
-                window.location = "alumnoConsultar.php";
-            }, false);
-
             modalAlumnoExistente.show();
         }
 
@@ -53,27 +47,13 @@
                 keyboard: false
             });
 
-            var btnContinuar = document.getElementById('btnContinuarE');
+            var btnAceptar = document.getElementById('btnAceptarE');
 
-            btnContinuar.addEventListener("click", function () {
+            btnAceptar.addEventListener("click", function () {
                 window.location = "alumnoConsultar.php";
             }, false);
 
             modalExito.show();
-        }
-
-        function msjFracaso (){
-            var modalFracaso = new bootstrap.Modal(document.getElementById('modalFracaso'), {
-                keyboard: false
-            });
-
-            var btnContinuar = document.getElementById('btnContinuarF');
-
-            btnContinuar.addEventListener("click", function () {
-                window.location = "alumnoConsultar.php";
-            }, false);
-
-            modalFracaso.show();
         }
 
     </script>
@@ -93,26 +73,8 @@
                     <p>El alumno ha sido modificado con éxito!</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btnCancelar" data-bs-dismiss="modal">Agregar otro alumno</button>
-                    <button type="button" class="btn btn-primary" id="btnContinuarE">Continuar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal" id="modalFracaso" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Error</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>Ha ocurrido un Error, intentelo más tarde.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btnCancelar" data-bs-dismiss="modal">Agregar otro alumno</button>
-                    <button type="button" class="btn btn-danger" id="btnContinuarF">Continuar</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarE" data-bs-dismiss="modal">Seguir modificando</button>
+                    <button type="button" class="btn btn-primary" id="btnAceptarE">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -130,8 +92,7 @@
                     <p>Elija otro y vuelva a intentarlo.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btnCancelar" data-bs-dismiss="modal">Agregar otro alumno</button>
-                    <button type="button" class="btn btn-warning" id="btnContinuarAE">Continuar</button>
+                    <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
                 </div>
             </div>
         </div>
@@ -233,11 +194,6 @@
                 echo "<script>
                             msjExito();
                             //window.location='alumnoConsultar.php';
-                        </script>";
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            //window.location='alumnoModificar.php?id=$idAlumno';
                         </script>";
             }
         }
