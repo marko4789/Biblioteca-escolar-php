@@ -28,7 +28,8 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
     <script>
     
     function msjAutorExistente (){
@@ -90,7 +91,8 @@
 
     </div>
 
-
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+    
     <?php
     
         include_once("Conexion.php");

@@ -28,15 +28,23 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
     <script>
     
-        function msjExito (){
-            alert('El autor ha sido eliminado con éxito!');
-        }
+    function msjExito (){
+            var modalExito = new bootstrap.Modal(document.getElementById('modalExito'), {
+                keyboard: false,
+                backdrop: 'static'
+            });
 
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
+            var btnAceptar = document.getElementById('btnAceptarE');
+
+            btnAceptar.addEventListener("click", function () {
+                window.location='autorConsultar.php';
+            }, false);
+
+            modalExito.show();
         }
 
     </script>
@@ -44,6 +52,22 @@
 </head>
 
 <body>
+
+    <div class="modal" id="modalExito" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Éxito</h5>
+                </div>
+                <div class="modal-body">
+                    <p>¡El autor ha sido eliminado con éxito!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnAceptarE">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php
     include("barraNavegacion.php");
@@ -86,7 +110,8 @@
 
     </div>
 
-
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+    
     <?php
     
     if (isset($_POST["nombres"])){
@@ -107,14 +132,8 @@
                           
                 echo "<script>
                         msjExito();
-                        window.location='autorConsultar.php';
                       </script>";
                         
-        }else{
-            echo "<script>
-                        msjFracaso();
-                        window.location='autorDeshabilitar.php?id=$idAutor';
-                    </script>";
         }
     }
     
