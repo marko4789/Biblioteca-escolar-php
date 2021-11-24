@@ -31,17 +31,28 @@
     <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
     <script>
-    
-    function msjAutorExistente (){
-            alert('El nombre del autor que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
+
 
         function msjExito (){
-            alert('El autor ha sido modificado con éxito!');
-        }
+            var modalExito = new bootstrap.Modal(document.getElementById('modalExito'), {
+                keyboard: false
+            });
 
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
+            var btnAceptar = document.getElementById('btnAceptarE');
+
+            btnAceptar.addEventListener("click", function () {
+                window.location = "autorConsultar.php";
+            }, false);
+
+            modalExito.show();
+        }
+    
+        function msjAutorExistente (){
+            var modalAutorExistente = new bootstrap.Modal(document.getElementById('modalAutorExistente'), {
+                keyboard: false
+            });
+
+            modalAutorExistente.show();
         }
 
     </script>
@@ -49,6 +60,42 @@
 </head>
 
 <body>
+
+    <div class="modal" id="modalExito" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Éxito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El autor ha sido modificado con éxito!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnCancelarE" data-bs-dismiss="modal">Seguir modificando</button>
+                    <button type="button" class="btn btn-primary" id="btnAceptarE">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalAutorExistente" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El nombre del autor que escribió ya está registrado</p>
+                    <p>Elija otro y vuelva a intentarlo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <?php
     include("barraNavegacion.php");
@@ -141,18 +188,14 @@
             if ($server->conexion->query($consulta)) {
                 echo "<script>
                             msjExito();
-                            window.location='autorConsultar.php';
                         </script>";
              
             }else{
                 echo "<script>
                             msjFracaso();
-                            window.location='autorModificar.php?id=$idAutor';
                         </script>";
             }
         }
-
-       
         
     ?>
 
