@@ -78,7 +78,7 @@
                     <p>Elija otro y vuelva a intentarlo.</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="btnCancelarAE">Modificar otro alumno</button>
+                    <button type="button" class="btn btn-secondary" id="btnCancelarAE">Modificar otro autor</button>
                     <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
                 </div>
             </div>

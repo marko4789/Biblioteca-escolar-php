@@ -10,22 +10,9 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    function msjCategoriaExistente (){
-            alert('El nombre de la categoría que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('La categoría ha sido registrado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 
 </head>
@@ -34,6 +21,7 @@
 
     <?php
     include("barraNavegacion.php");
+    include("Modales.php");
     ?>
 
     <header>
@@ -65,7 +53,8 @@
             
     </div>
 
-
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+    
     <?php
         
         include_once("Conexion.php");
@@ -108,14 +97,9 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "<script>
-                            msjExito();
-                            window.location='categoriaConsultar.php';
+                            msjExito('categoria');
                         </script>";
             
-            }else{
-                echo "<script>
-                            msjFracaso();
-                        </script>";
             }
         }
         
