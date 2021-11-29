@@ -1,9 +1,4 @@
 
-body{
- /*background-color: rgb(216, 215, 175);*/
-}
-/*997*/
-
 .header{
   top: 0;
   left: 0;
@@ -11,6 +6,7 @@ body{
   position: fixed;
   background-color: #333;
   margin: 0;
+  z-index:2 !important;
 }
 
 .navegacion{

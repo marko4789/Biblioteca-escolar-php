@@ -15,7 +15,18 @@
 
 </head>
 
-<body>
+<style>
+.index{
+  background-image: url("Imagenes/fondo_libros.jpg");
+  background-size: 30%;
+  background-repeat: repeat;
+
+}
+
+  
+</style>
+
+<body class="index">
 
     <?php
     include("barraNavegacion.php");
@@ -26,16 +37,6 @@
             <h1>Biblioteca escolar</h1>
         </div>
     </header>
-
-<style>
-
-    .carrusel{
-        width: 70%;
-        margin-left:auto;
-        margin-right:auto;
-
-    }
-</style>
 
 
     <div class="inicio">
@@ -100,14 +101,10 @@
         
         <div class="carrusel">
             <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                </div>
+
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="Imagenes/libro3.jpg" class="d-block w-100">
+                        <img src="Imagenes/libro2.jpg" class="d-block w-100">
                         
                     </div>
                     <div class="carousel-item">
@@ -117,7 +114,7 @@
                     
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span  class="carousel-control-prev-icon" aria-hidden="true"></span>
                     <span class="visually-hidden">Previous</span>
                 </button>
                 <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
@@ -148,9 +145,9 @@
    
     </div><!--   Fin div class inicio   -->
 
-<small>
+  
     <footer>Trabajo realizado en conjunto por Ocampos Ortega Marco Antonio y Ruiz Martínez Mónica Lizbeth </footer>
-    </small>
+
 
 </body>
 
