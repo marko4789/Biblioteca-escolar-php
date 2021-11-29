@@ -74,7 +74,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p id="mensajeM">El alumno ha sido modificado con éxito!</p>
+                <p id="mensajeM"></p>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" id="btnCancelarM" data-bs-dismiss="modal">Seguir modificando</button>

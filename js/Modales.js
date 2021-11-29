@@ -4,7 +4,7 @@ function msjRegistrado (op){
         backdrop: 'static'
     });
 
-    var btnContinuar = document.getElementById('btnContinuarR');
+    var btnAceptar = document.getElementById('btnAceptarR');
     var btnCancelar = document.getElementById('btnCancelarR');
     var mensaje = document.getElementById('mensajeR');
 
@@ -17,7 +17,7 @@ function msjRegistrado (op){
     }
     
 
-    btnContinuar.addEventListener("click", function () {
+    btnAceptar.addEventListener("click", function () {
         window.location = op+"Consultar.php";
     }, false);
 

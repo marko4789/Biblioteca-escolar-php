@@ -30,28 +30,15 @@
     <link href="css/Estilo.css" rel="stylesheet">
     <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    <script>
-    
-    function msjAutorExistente (){
-            alert('El nombre del autor que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('El autor ha sido modificado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -104,8 +91,8 @@
             $apellidoMaterno = $_POST["apellidoMaterno"];
 
             if(existeAutor($idAutor, $nombre, $apellidoPaterno, $apellidoMaterno)){
-                echo "<script>
-                            msjAutorExistente();
+                echo "  <script>
+                            msjExiste ('autor');
                         </script>";
             }else{
                 modificarAutor($idAutor, $nombre, $apellidoPaterno, $apellidoMaterno);
@@ -139,16 +126,10 @@
             WHERE idAutor = $idAutor AND status = 'Activo';";
 
             if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='autorConsultar.php';
+                echo "  <script>
+                            msjModificado ('autor');
                         </script>";
              
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='autorModificar.php?id=$idAutor';
-                        </script>";
             }
         }
 

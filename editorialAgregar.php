@@ -10,22 +10,9 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-    <script>
-    
-    function msjEditorialExistente (){
-            alert('El nombre de la editorial que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('La editorial ha sido registrado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
@@ -33,6 +20,7 @@
 
     <?php
     include("barraNavegacion.php");
+    include("Modales.php");
     ?>
 
     <header>
@@ -63,6 +51,8 @@
         <a class = "cancel" href="Index.php">Cancelar</a> <br><br>
             
     </div>
+    
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
     <?php
     
@@ -73,8 +63,8 @@
             $editorial = $_POST["editorial"];
 
             if(existeEditorial($editorial)){
-                echo "<script>
-                            msjEditorialExistente();
+                echo "  <script>
+                            msjExiste ('autor');
                         </script>";
             }else{
                 registrarEditorial($editorial);
@@ -105,15 +95,10 @@
             VALUES ('$editorial', 'Activo');";
 
             if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='editorialConsultar.php';
+                echo "  <script>
+                            msjRegistrado ('autor');
                         </script>";
              
-            }else{
-                echo "<script>
-                            msjFracaso();
-                        </script>";
             }
         }
         

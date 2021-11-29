@@ -29,22 +29,15 @@
     <link href="css/Estilo.css" rel="stylesheet">
     <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    <script>
-     function msjExito (){
-            alert('La categoría ha sido eliminada con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -97,15 +90,9 @@
             if ($server->conexion->query($consulta)) {
                             
                     echo "<script>
-                            msjExito();
-                            window.location='categoriaConsultar.php';
+                            msjDeshabilitado ('categoria');
                         </script>";
                             
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='categoriaDeshabilitar.php?id=$idCategoria';
-                        </script>";
             }
         }
     

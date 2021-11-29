@@ -26,29 +26,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-        function msjEditorialExistente (){
-            alert('El nombre de la editorial que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('La editorial ha sido modificada con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -87,8 +75,8 @@
             $editorial = $_POST["editorial"];
 
             if(existeEditorial($idEditorial, $editorial)){
-                echo "<script>
-                            msjEditorialExistente();
+                echo "  <script>
+                            msjExiste ('editorial');
                         </script>";
             }else{
                 modificarEditorial($idEditorial, $editorial);
@@ -120,21 +108,13 @@
             WHERE idEditorial = $idEditorial AND status = 'Activo';";
 
             if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='editorialConsultar.php';
+                echo "  <script>
+                            msjModificado ('editorial');
                         </script>";
              
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='editorialModificar.php?id=$idEditorial';
-                        </script>";
             }
         }
 
-       
-        
     ?>
 
 </body>

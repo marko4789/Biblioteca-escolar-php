@@ -26,18 +26,9 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-    <script>
-
-        function msjExito (){
-            alert('La editorial ha sido eliminada con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
@@ -74,6 +65,8 @@
         <a class = "cancel" href="editorialConsultar.php">Cancelar</a> <br><br>
             
     </div>
+    
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
     <?php
     
@@ -95,16 +88,10 @@
             WHERE idEditorial = $idEditorial AND status = 'Activo';";
 
             if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='editorialConsultar.php';
+                echo "  <script>
+                            msjDeshabilitado ('editorial');
                         </script>";
              
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='editorialDeshabilitar.php?id=$idEditorial';
-                        </script>";
             }
         }
 

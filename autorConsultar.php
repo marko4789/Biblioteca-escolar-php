@@ -22,47 +22,15 @@
     <link href="css/Estilo.css" rel="stylesheet">
     <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    <script>
-
-        function msjAutorNoExiste (){
-            var modalAutorNoExiste = new bootstrap.Modal(document.getElementById('modalAutorNoExiste'), {
-                keyboard: false,
-                backdrop: 'static'
-            });
-
-            var btnAceptar = document.getElementById('btnAceptarAE');
-
-            btnAceptar.addEventListener("click", function () {
-                window.location='autorConsultar.php';
-            }, false);
-
-            modalAutorNoExiste.show();
-        }
+    <script src="js/Modales.js"></script>
     
-    </script>
 </head>
 
 <body>
 
-    <div class="modal" id="modalAutorNoExiste" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Error</h5>
-                </div>
-                <div class="modal-body">
-                    <p>No se han encontrado coincidencias con tu busqueda.</p>
-                    <p>Vuelva a intentarlo.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -114,9 +82,9 @@
                             echo "</tr>";
                         }
                         if (mysqli_num_rows($datos) == 0 && isset($_POST["autor"])){
-                            echo '<script>
-                                    msjAutorNoExiste ();
-                                  </script>';
+                            echo "<script>
+                                    msjNoExiste ('autor');
+                                  </script>";
                         }
                         
                     ?>

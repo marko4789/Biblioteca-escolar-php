@@ -21,48 +21,15 @@
     <link href="css/Estilo.css" rel="stylesheet">
     <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    <script>
-
-        function msjCategoriaNoExiste (){
-            var modalCategoriaNoExiste = new bootstrap.Modal(document.getElementById('modalCategoriaNoExiste'), {
-                keyboard: false,
-                backdrop: 'static'
-            });
-
-            var btnAceptar = document.getElementById('btnAceptarAE');
-
-            btnAceptar.addEventListener("click", function () {
-                window.location='categoriaConsultar.php';
-            }, false);
-
-            modalCategoriaNoExiste.show();
-        }
-    
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
-    <div class="modal" id="modalCategoriaNoExiste" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Error</h5>
-                </div>
-                <div class="modal-body">
-                    <p>No se han encontrado coincidencias con tu busqueda.</p>
-                    <p>Vuelva a intentarlo.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -110,7 +77,9 @@
                         }
 
                         if (mysqli_num_rows($datos) == 0 && isset($_POST["categoria"])){
-                            echo 'No se han encontrado coincidencias con tu busqueda "'.$categoria.'"';
+                            echo "<script>
+                                    msjNoExiste ('categoria');
+                                  </script>";
                         }
                         
                     ?>

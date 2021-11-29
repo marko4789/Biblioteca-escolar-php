@@ -32,46 +32,15 @@
     <link href="css/Estilo.css" rel="stylesheet">
     <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    <script>
-        function msjExito (){
-            var modalExito = new bootstrap.Modal(document.getElementById('modalExito'), {
-                keyboard: false,
-                backdrop: 'static'
-            });
-
-            var btnAceptar = document.getElementById('btnAceptarE');
-
-            btnAceptar.addEventListener("click", function () {
-                window.location='alumnoConsultar.php';
-            }, false);
-
-            modalExito.show();
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
-    <div class="modal" id="modalExito" tabindex="-1">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Éxito</h5>
-                </div>
-                <div class="modal-body">
-                    <p>¡El alumno ha sido eliminado con éxito!</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="btnAceptarE">Aceptar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -138,9 +107,8 @@
             if ($server->conexion->query($consulta)) {
                                    
                     echo "<script>
-                            msjExito();
-                            //window.location='alumnoConsultar.php';
-                        </script>";
+                            msjDeshabilitado ('alumno');
+                          </script>";
             }
         }
     

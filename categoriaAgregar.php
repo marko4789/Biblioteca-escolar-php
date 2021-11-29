@@ -64,8 +64,8 @@
             $categoria = $_POST["categoria"];
 
             if(existeCategoria($categoria)){
-                echo "<script>
-                            msjCategoriaExistente();
+                echo "  <script>
+                            msjExiste ('categoria');
                         </script>";
             }else{
                 registrarCategoria($categoria);
@@ -97,7 +97,7 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "<script>
-                            msjExito('categoria');
+                            msjExito ('categoria');
                         </script>";
             
             }
