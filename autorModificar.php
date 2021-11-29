@@ -36,6 +36,42 @@
 
 <body>
 
+    <div class="modal" id="modalExito" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Éxito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El autor ha sido modificado con éxito!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" id="btnCancelarE" data-bs-dismiss="modal">Seguir modificando</button>
+                    <button type="button" class="btn btn-primary" id="btnAceptarE">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modalAutorExistente" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Error</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El nombre del autor que escribió ya está registrado</p>
+                    <p>Elija otro y vuelva a intentarlo.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-warning" id="btnAceptarAE" data-bs-dismiss="modal">Aceptar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php
         include("barraNavegacion.php");
         include("Modales.php");
@@ -132,8 +168,6 @@
              
             }
         }
-
-       
         
     ?>
 
