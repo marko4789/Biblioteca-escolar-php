@@ -31,25 +31,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
-
-        function msjExito (){
-            alert('El usuario ha sido eliminado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -95,6 +87,9 @@
                     
     </div>
 
+    <!-- JavaScript de Bootstrap -->
+    <script src="Bootstrap_5.1.3/js/bootstrap.bundle.min.js"></script>
+
     <?php
     
     if (isset($_POST["usuario"])){
@@ -115,21 +110,14 @@
                 
             if ($idUsuario == $_SESSION["idUsuario"]){
                 echo "<script>
-                        msjExito();
-                        window.location='cerrarSesion.php';
+                        msjDeshabilitado ('usuario', 'cerrarSesion.php');
                       </script>";
             }else{
                 echo "<script>
-                        msjExito();
-                        window.location='usuarioConsultar.php';
+                        msjDeshabilitado ('usuario', 'usuarioConsultar.php');
                       </script>";
             }
             
-        }else{
-            echo "<script>
-                        msjFracaso();
-                        window.location='usuarioDeshabilitar.php?id=$idUsuario';
-                    </script>";
         }
     }
     

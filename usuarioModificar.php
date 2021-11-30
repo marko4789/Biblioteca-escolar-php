@@ -31,8 +31,9 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
 
-    <script>
+    <script src="js/Modales.js">
         function validarPassword(){
             var pass1 = document.getElementById('inputPassword1').value;
             var pass2 = document.getElementById('inputPassword2').value;
@@ -44,19 +45,6 @@
                 return false;
             }
         }
-
-        function msjUsuarioExistente (){
-            alert('El nombre de usuario que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('El usuario ha sido modificado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
     </script>
 
 </head>
@@ -64,7 +52,8 @@
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -124,6 +113,9 @@
 
     </div>
 
+    <!-- JavaScript de Bootstrap -->
+    <script src="Bootstrap_5.1.3/js/bootstrap.bundle.min.js"></script>
+
     <?php
         
         if (isset($_POST["usuario"])){
@@ -143,8 +135,8 @@
             
             if(existeUsuario($idUsuario, $usuario)){
                 echo "<script>
-                            msjUsuarioExistente();
-                        </script>";
+                        msjExiste ('alumno');
+                      </script>";
             }else{
                 modificarUsuario($idUsuario, $usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email);
             }
@@ -192,14 +184,8 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "<script>
-                            msjExito();
-                            window.location='usuarioConsultar.php';
-                        </script>";
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='usuarioModificar.php?id=$idUsuario';
-                        </script>";
+                        msjModificado ('usuario');
+                      </script>";
             }
         }
         
