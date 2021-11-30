@@ -66,6 +66,8 @@
             
     </div>
 
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+    
     <?php
     
         include_once("Conexion.php");

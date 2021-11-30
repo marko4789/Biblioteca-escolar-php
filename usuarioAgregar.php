@@ -10,8 +10,9 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/Modales.js">
         function validarPassword(){
             var pass1 = document.getElementById('inputPassword1').value;
             var pass2 = document.getElementById('inputPassword2').value;
@@ -23,19 +24,6 @@
                 return false;
             }
         }
-
-        function msjUsuarioExistente (){
-            alert('El nombre de usuario que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('El usuario ha sido registrado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }
-
     </script>
 
 </head>
@@ -44,7 +32,9 @@
 
     <?php
     include("barraNavegacion.php");
+    include("Modales.php");
     ?>
+
     <header>
         <div class="titulo">
             <h1>Agregar Usuario</h1>
@@ -53,53 +43,53 @@
 
  
                     
-        <div class= "frmFormulario">
+    <div class= "frmFormulario">
 
-            <h2>Datos del usuario</h2>
-           
-                <form method="post" action= 'usuarioAgregar.php' onsubmit="return validarPassword()">
+        <h2>Datos del usuario</h2>
+        
+            <form method="post" action= 'usuarioAgregar.php' onsubmit="return validarPassword()">
+                
+            <div class="frmMargen">
+
+                <label>Usuario</label>
+                <input placeholder = "Nombre de usuario" name="usuario" type="text" pattern="[\wñÑ]+" required>
+            
+                                
+                <label>Contraseña</label> <span style = "color: red;">*</span> 
+                <input placeholder = "Contraseña del usuario" id="inputPassword1" name="password" type="password"  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
+                <br> <span style = "color: red;">*</span> <span style = "color: rgb(120, 120, 120);">Debe contener de 8 a 16 caracteres, al menos un dígito, una minúscula y una mayúscula. </span> <br>
+
+
+                <label>Confirmar contraseña</label>
+                <input placeholder = "Escriba de nuevo la contraseña" id="inputPassword2" name="confirmepassword" type="password"  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
+                
+                                            
+                <label>Nombre(s)</label>
+                <input placeholder = "Nombre" name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
+            
+
+                <label >Apellidos</label>
+                <div>                        
+                        <input name="apellidoPaterno" placeholder="Apellido paterno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>                                   
+                        <input name="apellidoMaterno" placeholder="Apellido materno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>                      
+                </div>
+
+            
+                <label>Email</label>
+                <input name="email" type="email" placeholder="ejemplo.email@gmail.com" required>
+            
+        
+                <button type="submit" name="registrar">Registrar</button>  
+
+                </div>
+
+            </form>
+
+            <a class = "cancel" href="Index.php">Cancelar</a> <br><br>
                     
-                <div class="frmMargen">
+    </div>
 
-                        <label>Usuario</label>
-                        <input placeholder = "Nombre de usuario" name="usuario" type="text" pattern="[\wñÑ]+" required>
-                    
-                                       
-                        <label>Contraseña</label> <span style = "color: red;">*</span> 
-                        <input placeholder = "Contraseña del usuario" id="inputPassword1" name="password" type="password"  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
-                        <br> <span style = "color: red;">*</span> <span style = "color: rgb(120, 120, 120);">Debe contener de 8 a 16 caracteres, al menos un dígito, una minúscula y una mayúscula. </span> <br>
-
-
-                        <label>Confirmar contraseña</label>
-                        <input placeholder = "Escriba de nuevo la contraseña" id="inputPassword2" name="confirmepassword" type="password"  pattern="(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])([\wñÑ]){8,16}" required>
-                       
-                                                    
-                        <label>Nombre(s)</label>
-                        <input placeholder = "Nombre" name="nombres" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>
-                    
-
-                        <label >Apellidos</label>
-                        <div>                        
-                                <input name="apellidoPaterno" placeholder="Apellido paterno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>                                   
-                                <input name="apellidoMaterno" placeholder="Apellido materno" type="text" pattern="([a-z]|[A-Z]|[á-úñN\s])+" required>                      
-                        </div>
-
-                   
-                        <label>Email</label>
-                        <input name="email" type="email" placeholder="ejemplo.email@gmail.com" required>
-                    
-           
-                    <button type="submit" name="registrar">Registrar</button>  
-
-                    </div>
-
-                </form>
-
-                <a class = "cancel" href="Index.php">Cancelar</a> <br><br>
-                      
-        </div>
-
-
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
     
     <?php
     
@@ -116,7 +106,7 @@
 
             if(existeUsuario($usuario)){
                 echo "<script>
-                            msjUsuarioExistente();
+                            msjExiste ('usuario');
                         </script>";
             }else{
                 registrarUsuario($usuario, $password, $nombre, $apellidoPaterno, $apellidoMaterno, $email);
@@ -147,22 +137,13 @@
             VALUES ('$usuario', MD5('$password'), '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$email', 'Activo');";
 
             if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='usuarioConsultar.php';
-                        </script>";
-               // header("Location: usuarioConsultar.php");
-            }else{
-                echo "<script>
-                            msjFracaso();
+                echo "  <script>
+                            msjRegistrado ('usuario');
                         </script>";
             }
         }
         
     ?>
-
-
-
 
 </body>
 

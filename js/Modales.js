@@ -58,7 +58,7 @@ function msjNoExiste (op){
     modalNoExiste.show();
 }
 
-function msjDeshabilitado (op){
+function msjDeshabilitado (op, redireccion){
     var modalDeshabilitado = new bootstrap.Modal(document.getElementById('modalDeshabilitado'), {
         keyboard: false,
         backdrop: 'static'
@@ -74,6 +74,9 @@ function msjDeshabilitado (op){
     }
 
     btnAceptar.addEventListener("click", function () {
+        if(op == 'usuario'){
+            window.location = redireccion;    
+        }
         window.location = op+'Consultar.php';
     }, false);
 
