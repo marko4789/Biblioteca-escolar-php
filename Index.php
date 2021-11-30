@@ -17,12 +17,19 @@
 
 <style>
 .index{
+  background-color: transparent;  
   background-image: url("Imagenes/fondo_libros.jpg");
   background-size: 30%;
   background-repeat: repeat;
 
 }
 
+.titulo img{
+    display:block;
+    width: 25%;
+    margin-left:auto;
+    margin-right:auto;
+}
   
 </style>
 
@@ -34,7 +41,7 @@
 
     <header>
         <div class="titulo">
-            <h1>Biblioteca escolar</h1>
+            <img src="Imagenes/logo_1.png" alt="Biblioteca Escolar">
         </div>
     </header>
 
