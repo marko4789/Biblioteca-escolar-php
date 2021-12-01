@@ -35,7 +35,8 @@
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>

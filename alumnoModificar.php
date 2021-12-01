@@ -133,7 +133,7 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "  <script>
-                            msjModificado ('alumno');
+                            msjModificado ('alumno', $idAlumno);
                         </script>";
             }
         }

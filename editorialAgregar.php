@@ -64,7 +64,7 @@
 
             if(existeEditorial($editorial)){
                 echo "  <script>
-                            msjExiste ('autor');
+                            msjExiste ('editorial');
                         </script>";
             }else{
                 registrarEditorial($editorial);
@@ -96,7 +96,7 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "  <script>
-                            msjRegistrado ('autor');
+                            msjRegistrado ('editorial');
                         </script>";
              
             }

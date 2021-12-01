@@ -83,12 +83,13 @@ function msjDeshabilitado (op, redireccion){
     modalDeshabilitado.show();
 }
 
-function msjModificado (op){
+function msjModificado (op, id){
     var modalModificado = new bootstrap.Modal(document.getElementById('modalModificado'), {
         keyboard: false
     });
 
     var btnAceptar = document.getElementById('btnAceptarM');
+    var btnSeguirEditando = document.getElementById('btnCancelarM');
     var mensaje = document.getElementById('mensajeM');
 
     if (op == "categoria" || op == "editorial"){
@@ -99,6 +100,10 @@ function msjModificado (op){
 
     btnAceptar.addEventListener("click", function () {
         window.location = op+"Consultar.php";
+    }, false);
+
+    btnSeguirEditando.addEventListener("click", function () {
+        window.location = op+"Modificar.php?id="+id;
     }, false);
 
     modalModificado.show();

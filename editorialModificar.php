@@ -111,7 +111,7 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "  <script>
-                            msjModificado ('editorial');
+                            msjModificado ('editorial', $idEditorial);
                         </script>";
              
             }
