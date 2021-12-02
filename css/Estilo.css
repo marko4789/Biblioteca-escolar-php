@@ -224,6 +224,7 @@ p{
   }
 
   #prestamo{  
+    display: block;
     background-color: #894D9A;   
   }
   #alumno{
@@ -267,7 +268,25 @@ p{
 
 }
 .carousel-item img{
-  height: 90%;
   z-index: 1;
 }
+
+.carousel-caption{
+  display: block;
+  padding-top: 30%;
+  
+}
+ 
+.carousel-caption p{
+  color:black;
+}
+
+.marcoImagen{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+  margin-bottom: 50%;
+}
+
  
