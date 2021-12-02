@@ -97,8 +97,8 @@
 
             if ($server->conexion->query($consulta)) {
                 echo "<script>
-                            msjExito ('categoria');
-                        </script>";
+                        msjRegistrado ('categoria');
+                      </script>";
             
             }
         }

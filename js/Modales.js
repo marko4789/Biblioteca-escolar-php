@@ -68,7 +68,7 @@ function msjDeshabilitado (op, redireccion){
     var mensaje = document.getElementById('mensajeD');
 
     if (op == "categoria" || op == "editorial"){
-        mensaje.innerHTML = "La "+op+" ha sido eliminado con éxito!";
+        mensaje.innerHTML = "La "+op+" ha sido eliminada con éxito!";
     }else{
         mensaje.innerHTML = "El "+op+" ha sido eliminado con éxito!";
     }
