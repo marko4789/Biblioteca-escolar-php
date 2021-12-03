@@ -10,7 +10,6 @@
 
     <title>Biblioteca escolar</title>
     <meta charset="UTF-8">
-
     <link href="css/Estilo.css" rel="stylesheet">
 
 </head>
@@ -24,12 +23,7 @@
 
 }
 
-.titulo img{
-    display:block;
-    width: 25%;
-    margin-left:auto;
-    margin-right:auto;
-}
+
   
 </style>
 
@@ -57,8 +51,8 @@
         En la consulta de libros se pueden hacer tanto consultas generales como específicas de cada libro
         cualquier usuario puede consultar los libros en existencia para un préstamo posterior.
     </p>
-    <img style="width:30%;" src="https://image.freepik.com/vector-gratis/libro-blanco-sobre-fondo-blanco_1308-23052.jpg" alt="imagen ilustrativa">
-    <a style="width:50%;" href="libroConsultar.php">📚 Libros</a>
+    <img src="https://image.freepik.com/vector-gratis/libro-blanco-sobre-fondo-blanco_1308-23052.jpg" alt="imagen ilustrativa">
+    <a href="libroConsultar.php">📚 Libros</a>
 
     </section>
 
@@ -82,9 +76,9 @@
                         <div class="marcoImagen">
                             <img src="Imagenes/iconos/préstamo.png">
                         </div>
-                        <div class="carousel-caption ">
-                            <a id="prestamo" href="prestamoConsultar.php">📓 Préstamos</a>
-                            <p>Some representative placeholder content for the first slide.</p>
+                        <div class="carrusel-separador">
+                                <a id="prestamo" href="prestamoConsultar.php">📓 Préstamos</a>
+                                <p>Some representative placeholder content for the first slide.</p>
                         </div>
                     </div>
 
@@ -92,7 +86,7 @@
                         <div class="marcoImagen">
                             <img src="Imagenes/iconos/alumno.png">
                         </div>
-                        <div class="carousel-caption ">
+                        <div class="carrusel-separador">
                             <a id="alumno" href="alumnoConsultar.php">🙋 Alumnos</a>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>       
@@ -102,7 +96,7 @@
                         <div class="marcoImagen">
                             <img src="Imagenes/iconos/autor.png">
                         </div>
-                        <div class="carousel-caption ">
+                        <div class="carrusel-separador">
                             <a id="autor" href="autorConsultar.php">👨 Autores</a>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>       
@@ -112,7 +106,7 @@
                         <div class="marcoImagen">
                             <img src="Imagenes/iconos/editorial.png">
                         </div>
-                        <div class="carousel-caption ">
+                        <div class="carrusel-separador">
                             <a id="editorial" href="editorialConsultar.php">🏢 Editoriales</a>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>       
@@ -122,7 +116,7 @@
                         <div class="marcoImagen">
                             <img src="Imagenes/iconos/categoría.png">
                         </div>
-                        <div class="carousel-caption ">
+                        <div class="carrusel-separador">
                             <a id="categoria" href="categoriaConsultar.php">💡 Categorías</a>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>       
@@ -132,7 +126,7 @@
                         <div class="marcoImagen">
                             <img src="Imagenes/iconos/usuario.png">
                         </div>
-                        <div class="carousel-caption ">
+                        <div class="carrusel-separador">
                             <a id="usuario" href="usuarioConsultar.php">👤 Usuarios</a>
                             <p>Some representative placeholder content for the first slide.</p>
                         </div>       

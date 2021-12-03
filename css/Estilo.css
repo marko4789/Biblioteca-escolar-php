@@ -187,7 +187,7 @@ p{
   }
 
   .inicio img{
-    width: 50%;
+    width: 30%;
     margin-right: auto;
     margin-left: auto;
     display: block;
@@ -198,7 +198,7 @@ p{
     margin-top: 5%;
     background-color: #e08234;
     display: block;
-    width: 100%;
+    width: 50%;
     height: 5%;
     border-radius: 10px;
     text-decoration: none;
@@ -206,11 +206,9 @@ p{
     font-weight: bold;
     text-align: center;
     font-size: large;
-    padding-top: 10px;
     margin-left: auto;
     margin-right: auto;
-    padding-top: 2%;
-    padding-bottom: 2%;
+    padding: 2%, 2%;
   }
 
   .inicio a:hover{
@@ -271,22 +269,64 @@ p{
   z-index: 1;
 }
 
-.carousel-caption{
-  display: block;
-  padding-top: 30%;
-  
-}
- 
-.carousel-caption p{
-  color:black;
-}
-
 .marcoImagen{
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 70%;
-  margin-bottom: 50%;
+  width: 90%;
+  margin-bottom: 10%;
 }
 
- 
+.marcoImagen img{
+  margin-top: 1%;
+}
+
+.carrusel-separador{
+  display: block;
+  margin-top: 1%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carrusel-separador a{
+  display: block;
+}
+
+.carrusel-separador p{
+  text-align: center;
+}
+
+.titulo{
+  margin-top: 1%;
+}
+.titulo img{
+  display:block;
+  width: 20%;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+@media only screen and (max-width:892px){
+  .titulo img{
+    width: 15em;
+  }
+
+  .titulo{
+    margin-top: 2rem;
+  }
+
+  .carrusel{
+    width: 100%;
+  }
+
+  .inicio img{
+    width: 50%;
+  }
+
+  .marcoImagen{
+    width: 100%;
+  }
+
+
+}
