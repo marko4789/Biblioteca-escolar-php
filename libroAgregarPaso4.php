@@ -10,6 +10,12 @@
     if(isset($_POST["editorial"])){
         $editorial = $_POST["editorial"];
         $datos = $server->buscarEditorial($editorial);
+        if (mysqli_num_rows($datos) == 0){
+            $datos = $server->consultarTabla("editoriales");
+            echo "  <script>
+                        msjNoExiste ('agregandoLibro');
+                    </script>";
+        }
     }else{
         $editorial = "";
         $datos = $server->consultarTabla("editoriales");
@@ -44,9 +50,6 @@
                             </td>";
                         echo "</th>";
                         echo "</tr>";
-                    }
-                    if (mysqli_num_rows($datos) == 0){
-                        echo 'No se han encontrado coincidencias con tu busqueda "'.$editorial.'"';
                     }
                 ?>
                    

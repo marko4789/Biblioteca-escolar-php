@@ -36,6 +36,8 @@ function msjExiste (op){
         mensaje.innerHTML = "La "+op+" que escribió ya está registrada";
     }else if (op == "alumno"){
         mensaje.innerHTML = "La matrícula del alumno que escribió ya está registrada";
+    }else if (op == "libro"){
+        mensaje.innerHTML = "El isbn del libro que escribió ya está registrado";
     }else{
         mensaje.innerHTML = "El "+op+" que escribió ya está registrado";
     }
@@ -52,7 +54,9 @@ function msjNoExiste (op){
     var btnAceptar = document.getElementById('btnAceptarNE');
 
     btnAceptar.addEventListener("click", function () {
-        window.location = op+'Consultar.php';
+        if (! op == "agregandoLibro" ) {
+            window.location = op+'Consultar.php';
+        }
     }, false);
 
     modalNoExiste.show();
@@ -107,4 +111,22 @@ function msjModificado (op, id){
     }, false);
 
     modalModificado.show();
+}
+
+function msjFracaso (op){
+    var modalFracaso = new bootstrap.Modal(document.getElementById('modalFracaso'), {
+        keyboard: false,
+        backdrop: 'static'
+    });
+
+    var btnAceptar = document.getElementById('btnAceptarF');
+
+    btnAceptar.addEventListener("click", function () {
+        if(op == 'usuario'){
+            window.location = redireccion;    
+        }
+        window.location = op+'Consultar.php';
+    }, false);
+
+    modalFracaso.show();
 }

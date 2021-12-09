@@ -6,6 +6,9 @@
         $datos = $server->buscarAutor($autor);
         if (mysqli_num_rows($datos) == 0){
             $datos = $server->consultarTabla("autores");
+            echo "  <script>
+                        msjNoExiste ('agregandoLibro');
+                    </script>";
         }
     }else{
         $datos = $server->consultarTabla("autores");
@@ -26,13 +29,14 @@
                         "idEditorial"       => null];
 
         file_put_contents("infoLibro.json", json_encode($infoLibro));
+
     }
 ?>
 
 <div class = "frmFormulario">
 
     <form class = "frmBuscar" method="post" action= "libroAgregar.php">
-        <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+        <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+">
         <button type="submit" name="btnSiguiente" value="paso2">🔍 Buscar</button>  
     </form>
 
@@ -60,9 +64,6 @@
                             echo "<td>".$fila['apellidoMaterno']."</td>";
                             echo "</th>";
                             echo "</tr>";
-                        }
-                        if (mysqli_num_rows($datos) == 0){
-                            echo 'No se han encontrado coincidencias con tu busqueda "'.$autor.'"';
                         }
                     ?>
                 </tbody>

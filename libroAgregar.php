@@ -11,6 +11,9 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/Modales.js"></script>
 
     <script>
     
@@ -37,7 +40,8 @@
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -46,6 +50,7 @@
         </div>
     </header>
             
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
     <?php
         
@@ -65,7 +70,7 @@
         } else if (isset( $_GET[ "idEditorial" ] ) ) {
             agregarLibro();
         } else {
-            echo "<script>
+            echo "  <script>
                         msjFracaso();
                     </script>";
         }
@@ -83,8 +88,7 @@
             if(existeLibro($infoLibro["isbn"])){
                 borrarDatosLibro();
                 echo "<script>
-                            msjLibroExistente();
-                            window.location='libroAgregar.php';
+                            msjExiste ('libro');
                         </script>";
             }else{
                 registrarLibro();
@@ -158,45 +162,31 @@
                         $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
 
                         echo "<script>
-                                msjFracaso();
-                                window.location='libroAgregar.php';
+                                msjFracaso('libro');
                               </script>";
-
                     }
 
                 }
 
-                echo "<script>
-                            msjExito();
-                            window.location='libroConsultar.php';
+                echo "  <script>
+                            msjRegistrado ('libro');
                         </script>";
             
             }else{
                 borrarDatosLibro();
                 echo "<script>
-                            msjFracaso();
-                            //window.location='libroAgregar.php';
+                            msjFracaso('libro');
                         </script>";
             }
         }
 
         function borrarDatosLibro(){
-            unset($_SESSION["titulo"]);    
-            unset($_SESSION["descripcion"]);
-            unset($_SESSION["paginas"]);
-            unset($_SESSION["pais"]);
-            unset($_SESSION["fechaPublicacion"]);
-            unset($_SESSION["idioma"]);
-            unset($_SESSION["isbn"]);
-            unset($_SESSION["existencia"]);
-            unset($_SESSION["idAutor"]);
-            unset($_SESSION["idCategoria"]);
-            unset($_SESSION["idEditorial"]);
+
+            file_put_contents( "infoLibro.json", "");
+
         }
         
         ?>
-
-        
 
 </body>
 
