@@ -41,36 +41,23 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
         <div class="titulo">
             <h1>Modificar libro</h1>
         </div>
-
-        <script>
-        
-            function msjLibroExistente (){
-                alert('El isbn del libro que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-            }
-
-            function msjExito (){
-                alert('El libro ha sido modificado con éxito!');
-            }
-
-            function msjFracaso (){
-                alert('Ha ocurrido un Error, intentelo más tarde.');
-            }
-
-        </script>
-
     </header>
 
     <div class= "frmFormulario">
@@ -181,6 +168,8 @@
             
     </div>
 
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+
     <?php
 
     if (isset($_POST["titulo"])){
@@ -188,9 +177,8 @@
 
 
         if(existeLibro($_GET["id"], $_POST["isbn"])){
-            echo "<script>
-                        msjLibroExistente();
-                        window.location='libroAgregar.php';
+            echo "  <script>
+                        msjExiste ('libro');
                     </script>";
         }else{
             modificarLibro();
@@ -253,8 +241,7 @@
                         $server->conexion->query("DELETE FROM libros WHERE idLibro = $idLibro");
 
                         echo "<script>
-                                msjFracaso();
-                                window.location='libroModificar.php?id=\"".$idLibro."\"';
+                                msjFracaso('libro');
                             </script>";
 
                     }
@@ -263,8 +250,7 @@
             }
 
             echo "<script>
-                        msjExito();
-                        window.location='libroConsultar.php';
+                    msjModificado ('libro', $idLibro);
                     </script>";
         
         }else{
