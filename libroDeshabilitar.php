@@ -36,25 +36,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
-
-        function msjExito (){
-            alert('El libro ha sido eliminado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ah ocurrido un Error, intentelo más tarde.');
-        }   
-
-    </script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -115,6 +107,8 @@
             
     </div>
 
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+
     <?php
     
         include_once("Conexion.php");
@@ -135,16 +129,10 @@
             WHERE idLibro = $idLibro AND status = 'Activo';";
 
             if ($server->conexion->query($consulta)) {
-                echo "<script>
-                            msjExito();
-                            window.location='libroConsultar.php';
+                echo "  <script>
+                            msjDeshabilitado ('libro')
                         </script>";
              
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='libroDeshabilitar.php?id=$idLibro';
-                        </script>";
             }
         }
 

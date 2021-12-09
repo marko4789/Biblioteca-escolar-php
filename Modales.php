@@ -83,3 +83,21 @@
         </div>
     </div>
 </div>
+
+<div class="modal" id="modalFracaso" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Error</h5>
+            </div>
+            <div class="modal-body">
+                <p id="mensajeF"></p>
+                <p>Ha ocurrido un error</p>
+                <p>Intentelo más tarde</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnAceptarF">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
