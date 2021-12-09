@@ -77,8 +77,7 @@
                             <img src="Imagenes/iconos/préstamo.png">
                         </div>
                         <div class="carrusel-separador">
-                                <a id="prestamo" href="prestamoConsultar.php">📓 Préstamos</a>
-                                <p>Some representative placeholder content for the first slide.</p>
+                                <a id="prestamo" href="prestamoConsultar.php"><i class="fas fa-book"></i> Préstamos</a>
                         </div>
                     </div>
 
@@ -87,8 +86,7 @@
                             <img src="Imagenes/iconos/alumno.png">
                         </div>
                         <div class="carrusel-separador">
-                            <a id="alumno" href="alumnoConsultar.php">🙋 Alumnos</a>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <a id="alumno" href="alumnoConsultar.php"><i class="fas fa-user-graduate"></i> Alumnos</a>
                         </div>       
                     </div>
 
@@ -97,8 +95,7 @@
                             <img src="Imagenes/iconos/autor.png">
                         </div>
                         <div class="carrusel-separador">
-                            <a id="autor" href="autorConsultar.php">👨 Autores</a>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <a id="autor" href="autorConsultar.php"><i class="fas fa-user-tie"></i> Autores</a>
                         </div>       
                     </div>
 
@@ -107,8 +104,7 @@
                             <img src="Imagenes/iconos/editorial.png">
                         </div>
                         <div class="carrusel-separador">
-                            <a id="editorial" href="editorialConsultar.php">🏢 Editoriales</a>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <a id="editorial" href="editorialConsultar.php"><i class="fas fa-globe"></i> Editoriales</a>
                         </div>       
                     </div>
 
@@ -117,8 +113,7 @@
                             <img src="Imagenes/iconos/categoría.png">
                         </div>
                         <div class="carrusel-separador">
-                            <a id="categoria" href="categoriaConsultar.php">💡 Categorías</a>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <a id="categoria" href="categoriaConsultar.php"><i class="fas fa-lightbulb"></i> Categorías</a>
                         </div>       
                     </div>
 
@@ -127,8 +122,7 @@
                             <img src="Imagenes/iconos/usuario.png">
                         </div>
                         <div class="carrusel-separador">
-                            <a id="usuario" href="usuarioConsultar.php">👤 Usuarios</a>
-                            <p>Some representative placeholder content for the first slide.</p>
+                            <a id="usuario" href="usuarioConsultar.php"><i class="fas fa-user"></i> Usuarios</a>
                         </div>       
                     </div>
                     

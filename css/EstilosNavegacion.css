@@ -79,17 +79,12 @@ li.dropdown {
 }
 
 
-.btnSesion{
-  float: right;
-}
-
-
 #inicio{
   text-decoration: none;
   float: right;
   color: white;
 }
-#inicio:hover, .btnSesion:hover, #cerrarsesion:hover{
+#inicio:hover, #cerrarsesion:hover{
   background-color:#e08234;
 }
 
