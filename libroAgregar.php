@@ -15,26 +15,6 @@
     
     <script src="js/Modales.js"></script>
 
-    <script>
-    
-        function msjLibroExistente (){
-            alert('El isbn del libro que escribió ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjFaltanAutores(){
-            alert('No se seleccionó ningún autor');
-        }
-
-        function msjExito (){
-            alert('El libro ha sido registrado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ha ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
-
 </head>
 
 <body>

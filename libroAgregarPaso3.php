@@ -20,10 +20,9 @@
         file_put_contents("infoLibro.json", json_encode($infoLibro));
     } else if (!isset($_POST["categoria"])) {
         $_SESSION["editando"] = "Activo";
-        echo "<script>
-                        msjFaltanAutores();
-                        window.location='libroAgregar.php';
-                        </script>";
+        echo "  <script>
+                    msjFaltanAutores();
+                </script>";
     }
     
 ?>

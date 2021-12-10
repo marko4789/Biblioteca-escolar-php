@@ -120,12 +120,33 @@ function msjFracaso (op){
     });
 
     var btnAceptar = document.getElementById('btnAceptarF');
+    var mensaje = document.getElementById('mensajeF');
+
+    mensaje.innerHTML = "Ha ocurrido un error.";
 
     btnAceptar.addEventListener("click", function () {
         if(op == 'usuario'){
             window.location = redireccion;    
         }
         window.location = op+'Consultar.php';
+    }, false);
+
+    modalFracaso.show();
+}
+
+function msjFaltanAutores(){
+    var modalFracaso = new bootstrap.Modal(document.getElementById('modalFracaso'), {
+        keyboard: false,
+        backdrop: 'static'
+    });
+
+    var btnAceptar = document.getElementById('btnAceptarF');
+    var mensaje = document.getElementById('mensajeF');
+
+    mensaje.innerHTML = "No se seleccionó ningún autor.";
+
+    btnAceptar.addEventListener("click", function () {
+        window.location = 'libroAgregar.php';
     }, false);
 
     modalFracaso.show();

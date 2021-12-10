@@ -92,7 +92,6 @@
             </div>
             <div class="modal-body">
                 <p id="mensajeF"></p>
-                <p>Ha ocurrido un error</p>
                 <p>Intentelo más tarde</p>
             </div>
             <div class="modal-footer">
