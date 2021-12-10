@@ -39,50 +39,50 @@
         </div>
     </header>
 
-        <div class = "frmFormulario">
+    <div class = "frmFormulario">
         <a class ="agregar" href="editorialAgregar.php">  <i class='far fa-plus-square'></i> Nueva editorial</a>
 
         <div class="frmMargen2">
 
-        <form class = "frmBuscar" method="post" action= 'editorialConsultar.php'>
-            <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
-            <button type="submit" name="buscar"><i class="fas fa-search"></i> Buscar</button>  
-        </form>
+            <form class = "frmBuscar" method="post" action= 'editorialConsultar.php'>
+                <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+                <button type="submit" name="buscar"><i class="fas fa-search"></i> Buscar</button>  
+            </form>
 
-        <div class = "tablaDatos">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">#id</th>
-                        <th scope="col">Nombre de editorial</th>
-                        <th scope="col">Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+            <div class = "tablaDatos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">#id</th>
+                            <th scope="col">Nombre de editorial</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
-                        while($fila = mysqli_fetch_array($datos)){
-                            echo "<tr>";
-                            echo "<th scope='row'>".$fila['idEditorial']."</th>";
-                            echo "<td>".$fila['editorial']."</td>";
-                            echo "<td>
-                                    <a class='btnEditar' href='editorialModificar.php?id=".$fila['idEditorial']."'><i class='far fa-edit'></i> Editar</a>
-                                    <a class='btnEliminar' href='editorialDeshabilitar.php?id=".$fila['idEditorial']."'><i class='far fa-minus-square'></i> Eliminar</a>
-                                </td>";
-                            echo "</th>";
-                            echo "</tr>";
-                        }
-                        if (mysqli_num_rows($datos) == 0 && isset($_POST["editorial"])){
-                            echo "  <script>
-                                        msjNoExiste ('editorial');
-                                    </script>";
-                        }
-                        
-                    ?>
-                </tbody>
-            </table>
+                            while($fila = mysqli_fetch_array($datos)){
+                                echo "<tr>";
+                                echo "<th scope='row'>".$fila['idEditorial']."</th>";
+                                echo "<td>".$fila['editorial']."</td>";
+                                echo "<td>
+                                        <a class='btnEditar' href='editorialModificar.php?id=".$fila['idEditorial']."'><i class='far fa-edit'></i> Editar</a>
+                                        <a class='btnEliminar' href='editorialDeshabilitar.php?id=".$fila['idEditorial']."'><i class='far fa-minus-square'></i> Eliminar</a>
+                                    </td>";
+                                echo "</th>";
+                                echo "</tr>";
+                            }
+                            if (mysqli_num_rows($datos) == 0 && isset($_POST["editorial"])){
+                                echo "  <script>
+                                            msjNoExiste ('editorial');
+                                        </script>";
+                            }
+                            
+                        ?>
+                    </tbody>
+                </table>
 
-        </div>
+            </div>
 
         </div>
 

@@ -34,51 +34,50 @@
 ?>
 
 <div class = "frmFormulario">
+        
+    <div class= "frmMargen">
 
-    <form class = "frmBuscar" method="post" action= "libroAgregar.php">
-        <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+">
-        <button type="submit" name="btnSiguiente" value="paso2">🔍 Buscar</button>  
-    </form>
+        <form class = "frmBuscar" method="post" action= "libroAgregar.php">
+            <input placeholder = "Escriba el nombre del autor a buscar" name="autor" type="text" pattern="([\w]|[á-úñÑ.\s])+">
+            <button type="submit" name="btnSiguiente" value="paso2">🔍 Buscar</button>  
+        </form>
 
-    <p>Seleccione los autores del libro: </p>
+        <p>Seleccione los autores del libro: </p>
 
-    <form method="post" action= "libroAgregar.php">
-        <div class = "tablaDatos">
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Seleccionar</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Apellido paterno</th>
-                        <th scope="col">Apellido materno</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
+        <form method="post" action= "libroAgregar.php">
+            <div class = "tablaDatos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Seleccionar</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Apellido paterno</th>
+                            <th scope="col">Apellido materno</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
-                        while($fila = mysqli_fetch_array($datos)){
-                            echo "<tr>";
-                            echo "<th scope='row'><input name='idAutor[]' type='checkbox' value=".$fila['idAutor']."></th>";
-                            echo "<td>".$fila['nombre']."</td>";
-                            echo "<td>".$fila['apellidoPaterno']."</td>";
-                            echo "<td>".$fila['apellidoMaterno']."</td>";
-                            echo "</th>";
-                            echo "</tr>";
-                        }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+                            while($fila = mysqli_fetch_array($datos)){
+                                echo "<tr>";
+                                echo "<th scope='row'><input name='idAutor[]' type='checkbox' value=".$fila['idAutor']."></th>";
+                                echo "<td>".$fila['nombre']."</td>";
+                                echo "<td>".$fila['apellidoPaterno']."</td>";
+                                echo "<td>".$fila['apellidoMaterno']."</td>";
+                                echo "</th>";
+                                echo "</tr>";
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
 
-        <div class= "frmMargen">
             <button type="submit" name="btnSiguiente" value="paso3">Siguiente</button>
-        </div>                 
 
-        <a class = "cancel" href="libroConsultar.php">Cancelar</a>
-
-    </form>
+        </form>
     <br><br>
 
+    <a class = "cancel" href="libroConsultar.php">Cancelar</a>
     
-
+    </div>
 </div>

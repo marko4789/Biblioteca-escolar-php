@@ -23,39 +23,41 @@
 ?>
 
 <div class = "frmFormulario">
+    <div class= "frmMargen">
 
-    <form class = "frmBuscar" method="post" action= "libroAgregar.php">
-        <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
-        <button type="submit" name="btnSiguiente" value="paso4">🔍 Buscar</button>  
-    </form>
+        <form class = "frmBuscar" method="post" action= "libroAgregar.php">
+            <input placeholder = "Escriba el nombre de la editorial a buscar" name="editorial" type="text" pattern="([\w]|[á-úñÑ.\s])+" required>
+            <button type="submit" name="btnSiguiente" value="paso4">🔍 Buscar</button>  
+        </form>
 
-    <div class = "tablaDatos">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col">#id</th>
-                    <th scope="col">Nombre de editorial</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class = "tablaDatos">
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">#id</th>
+                        <th scope="col">Nombre de editorial</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
 
-                    while($fila = mysqli_fetch_array($datos)){
-                        echo "<tr>";
-                        echo "<th scope='row'>".$fila['idEditorial']."</th>";
-                        echo "<td>".$fila['editorial']."</td>";
-                        echo "<td>
-                                <a class='btnEditar' href='libroAgregar.php?idEditorial=".$fila['idEditorial']."'>Seleccionar</a>
-                            </td>";
-                        echo "</th>";
-                        echo "</tr>";
-                    }
-                ?>
-                   
-            </tbody>
-        </table>
-
+                        while($fila = mysqli_fetch_array($datos)){
+                            echo "<tr>";
+                            echo "<th scope='row'>".$fila['idEditorial']."</th>";
+                            echo "<td>".$fila['editorial']."</td>";
+                            echo "<td>
+                                    <a class='btnEditar' href='libroAgregar.php?idEditorial=".$fila['idEditorial']."'>Seleccionar</a>
+                                </td>";
+                            echo "</th>";
+                            echo "</tr>";
+                        }
+                    ?>
+                    
+                </tbody>
+            </table>
+            
+        </div>
     </div>
 
     <a class = "cancel" href="libroConsultar.php">Cancelar</a>
