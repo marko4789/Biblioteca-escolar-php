@@ -1,9 +1,19 @@
 <?php
     include("validarSesion.php");
+
+    $mostrarModal = false;
+
     include_once ('Conexion.php');
+    
     if(isset($_POST["prestamo"])){
         $prestamo = $_POST["prestamo"];
         $datos = $server->buscarPrestamo($prestamo);
+
+        if (mysqli_num_rows($datos) == 0){
+            $mostrarModal = true;
+            $datos = $server->consultarPrestamo();
+        }
+
     }else{
         $prestamo = "";
         $datos = $server->consultarPrestamo();
@@ -18,13 +28,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -78,8 +92,10 @@
                                 echo "</th>";
                                 echo "</tr>";
                             }
-                            if (mysqli_num_rows($datos) == 0 && isset($_POST["prestamo"])){
-                                echo 'No se han encontrado coincidencias con tu busqueda "'.$prestamo.'"';
+                            if ($mostrarModal){
+                                echo "  <script>
+                                            msjNoExiste ('prestamo');
+                                        </script>";
                             }
                             
                         ?>
@@ -97,8 +113,7 @@
 
     </div>
 
-
-
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
 </body>
 

@@ -1,10 +1,18 @@
 <?php
     include("validarSesion.php");
 
+    $mostrarModal = false;
+    
     include_once ('Conexion.php');
     if(isset($_POST["autor"])){
         $autor = $_POST["autor"];
         $datos = $server->buscarAutor($autor);
+
+        if (mysqli_num_rows($datos) == 0){
+            $mostrarModal = true;
+            $datos = $server->consultarTabla("autores");
+        }
+
     }else{
         $autor = "";
         $datos = $server->consultarTabla("autores");
@@ -81,10 +89,10 @@
                             echo "</th>";
                             echo "</tr>";
                         }
-                        if (mysqli_num_rows($datos) == 0 && isset($_POST["autor"])){
-                            echo "<script>
-                                    msjNoExiste ('autor');
-                                  </script>";
+                        if ($mostrarModal){
+                            echo "  <script>
+                                        msjNoExiste ('autor');
+                                    </script>";
                         }
                         
                     ?>

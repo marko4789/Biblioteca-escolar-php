@@ -12,34 +12,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    function msjPrestamoExistente (){
-            alert('El préstamo ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('El préstamo ha sido registrado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ha ocurrido un Error, intentelo más tarde.');
-        }
-
-        function msjExistenciaAgotada(){
-            alert('No se dispone de la existencia suficiente para realizar el préstamo.');
-
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -48,8 +31,7 @@
         </div>
     </header>
 
-
-
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
     <?php
 
@@ -62,7 +44,6 @@
     if(isset($_GET["idAlumno"])){
         agregarPrestamo();
     }
-
 
 
     function mostrarLibros(){
@@ -231,9 +212,8 @@
 
         if(existePrestamo($_SESSION["idLibro"], $_SESSION["idAlumno"])){
             borrarVariablesSesion();
-            echo "<script>
-                        msjPrestamoExistente();
-                        window.location='prestamoAgregar.php';
+            echo "  <script>
+                        msjExiste ('prestamo');
                     </script>";
         }else{
             librosPrestados();
@@ -299,15 +279,9 @@
         if ($server->conexion->query($registroPrestamo) && $server->conexion->query($deudaAlumno)) {
             
             echo "<script>
-                    msjExito();
-                    window.location='prestamoConsultar.php';
+                    msjRegistrado('prestamo');
                 </script>";
        
-        }else{
-            echo "<script>
-            msjFracaso();
-           window.location='prestamoAgregar.php';
-        </script>";
         }
      
    
@@ -339,8 +313,7 @@
         }
         else{
             echo "<script>
-            msjExistenciaAgotada();
-            window.location='prestamoAgregar.php';
+            msjFaltan('prestamo');
            </script>";
         }
 

@@ -4,10 +4,18 @@
         session_start();
     }
 
+    $mostrarModal = false;
+
     include_once ('Conexion.php');
     if(isset($_POST["libro"])){
         $libro = $_POST["libro"];
         $datos = $server->buscarLibro($libro);
+
+        if (mysqli_num_rows($datos) == 0){
+            $mostrarModal = true;
+            $datos = $server->consultarTabla("libros");
+        }
+
     }else{
         $libro = "";
         $datos = $server->consultarTabla("libros");
@@ -23,13 +31,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
+    
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -93,8 +105,11 @@
                             echo "</th>";
                             echo "</tr>";
                         }
-                        if (mysqli_num_rows($datos) == 0 && isset($_POST["libro"])){
-                            echo 'No se han encontrado coincidencias con tu busqueda "'.$libro.'"';
+
+                        if ($mostrarModal){
+                            echo "  <script>
+                                        msjNoExiste ('libro');
+                                    </script>";
                         }
                         
                     ?>
@@ -109,6 +124,8 @@
         <br><br>
 
     </div>
+
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
 
 </body>
 

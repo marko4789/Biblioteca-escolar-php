@@ -31,26 +31,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-    <script>
-    
-        function msjExito (){
-            alert('El préstamo ha sido deshabilitado con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ha ocurrido un Error, intentelo más tarde.');
-        }
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -85,6 +76,8 @@
 
     </div> <!--Div de frmFormulario-->
 
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+
     <?php
     
     if (isset($_POST["eliminar"])){
@@ -105,11 +98,6 @@
           
             deudaAlumno($idAlumno);              
                         
-        }else{
-            echo "<script>
-                        msjFracaso();
-                        window.location='prestamoDeshabilitar.php?id=$idPrestamo';
-                    </script>";
         }
     }
 
@@ -131,10 +119,9 @@
             $server->conexion->query($consulta2);
         }
 
-            echo "<script>
-            msjExito();
-            window.location='prestamoConsultar.php';
-            </script>";
+            echo "  <script>
+                        msjDeshabilitado('prestamo');
+                    </script>";
 
     }//fin deuda alumno
     

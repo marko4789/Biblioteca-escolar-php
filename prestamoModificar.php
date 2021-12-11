@@ -33,35 +33,17 @@
     <meta charset="UTF-8">
 
     <link href="css/Estilo.css" rel="stylesheet">
-
-    <script>
+    <link href="Bootstrap_5.1.3/css/bootstrap.min.css" rel="stylesheet">
     
-        function msjPrestamoExistente (){
-            alert('El préstamo ya está registrado\n\nElija otro y vuelva a intentarlo');
-        }
-
-        function msjExito (){
-            alert('El préstamo ha sido modificada con éxito!');
-        }
-
-        function msjFracaso (){
-            alert('Ha ocurrido un Error, intentelo más tarde.');
-        }
-
-        function msjExistenciaAgotada(){
-            alert('No se dispone de la existencia suficiente para realizar el préstamo.');
-
-        }
-
-
-    </script>
+    <script src="js/Modales.js"></script>
 
 </head>
 
 <body>
 
     <?php
-    include("barraNavegacion.php");
+        include("barraNavegacion.php");
+        include("Modales.php");
     ?>
 
     <header>
@@ -119,6 +101,8 @@
 
     </div> <!--Div de frmFormulario-->
 
+    <script src="Bootstrap_5.1.3/js/bootstrap.min.js"></script>
+
     <?php
 
         if (isset($_POST["modificar"])){
@@ -127,19 +111,17 @@
             $idPrestamo = $_GET["id"];
 
             if(existePrestamo ($idPrestamo,$idLibro,$idAlumno)){
-                echo "<script>
-                            msjPrestamoExistente();
-                            window.location='prestamoConsultar.php';
+                echo "  <script>
+                            msjExiste('prestamo');
                         </script>";
             }else{
                 if(librosPrestados($idLibro)){
                 modificarPrestamo($idPrestamo,$idLibro,$idAlumno,$idAlumnoInicial);
                 }
                 else{
-                        echo "<script>
-                    msjExistenciaAgotada();
-                    window.location='prestamoModificar.php';
-                </script>";
+                    echo "  <script>
+                                msjFaltan('prestamoM');
+                            </script>";
                 }
             }    
         }
@@ -170,15 +152,8 @@
             if ($server->conexion->query($consulta)) {
                 deudaAlumno($idAlumno);
                 deudaAlumno($inicial);
-                echo "<script>
-                            msjExito();
-                            window.location='prestamoConsultar.php';
-                        </script>";
-             
-            }else{
-                echo "<script>
-                            msjFracaso();
-                            window.location='prestamoModificar.php?id=$idPrestamo';
+                echo "  <script>
+                            msjModificado ('prestamo', $idPrestamo);
                         </script>";
             }
         }

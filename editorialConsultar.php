@@ -1,10 +1,18 @@
 <?php
     include("validarSesion.php");
 
+    $mostrarModal = false;
+    
     include_once ('Conexion.php');
     if(isset($_POST["editorial"])){
         $editorial = $_POST["editorial"];
         $datos = $server->buscarEditorial($editorial);
+
+        if (mysqli_num_rows($datos) == 0){
+            $mostrarModal = true;
+            $datos = $server->consultarTabla("editoriales");
+        }
+
     }else{
         $editorial = "";
         $datos = $server->consultarTabla("editoriales");
@@ -72,7 +80,7 @@
                                 echo "</th>";
                                 echo "</tr>";
                             }
-                            if (mysqli_num_rows($datos) == 0 && isset($_POST["editorial"])){
+                            if ($mostrarModal){
                                 echo "  <script>
                                             msjNoExiste ('editorial');
                                         </script>";

@@ -1,10 +1,19 @@
 <?php
     include("validarSesion.php");
+
+    $mostrarModal = false;
+    
     include_once ('Conexion.php');
 
     if(isset($_POST["categoria"])){
         $categoria = $_POST["categoria"];
         $datos = $server->buscarCategoria($categoria);
+
+        if (mysqli_num_rows($datos) == 0){
+            $mostrarModal = true;
+            $datos = $server->consultarTabla("categorias");
+        }
+
     }else{
         $datos = $server->consultarTabla("categorias");
     }
@@ -76,10 +85,10 @@
                             echo "</tr>";
                         }
 
-                        if (mysqli_num_rows($datos) == 0 && isset($_POST["categoria"])){
-                            echo "<script>
-                                    msjNoExiste ('categoria');
-                                  </script>";
+                        if ($mostrarModal){
+                            echo "  <script>
+                                        msjNoExiste ('categoria');
+                                    </script>";
                         }
                         
                     ?>

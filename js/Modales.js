@@ -21,6 +21,14 @@ function msjRegistrado (op){
         window.location = op+"Consultar.php";
     }, false);
 
+    btnCancelar.addEventListener("click", function () {
+        if (op="prestamo"){
+            window.location = "prestamoAgregar.php";
+        }else{
+            window.location = op+"Consultar.php";
+        }
+    }, false);
+
     modalRegistrado.show();
 }
 
@@ -42,6 +50,10 @@ function msjExiste (op){
         mensaje.innerHTML = "El "+op+" que escribió ya está registrado";
     }
 
+    btnAceptar.addEventListener("click", function () {
+            window.location = op+'Consultar.php';
+    }, false);
+
     modalExiste.show();
 }
 
@@ -54,9 +66,7 @@ function msjNoExiste (op){
     var btnAceptar = document.getElementById('btnAceptarNE');
 
     btnAceptar.addEventListener("click", function () {
-        if (! op == "agregandoLibro" ) {
-            window.location = op+'Consultar.php';
-        }
+        
     }, false);
 
     modalNoExiste.show();
@@ -134,7 +144,7 @@ function msjFracaso (op){
     modalFracaso.show();
 }
 
-function msjFaltanAutores(){
+function msjFaltan(op){
     var modalFracaso = new bootstrap.Modal(document.getElementById('modalFracaso'), {
         keyboard: false,
         backdrop: 'static'
@@ -143,10 +153,19 @@ function msjFaltanAutores(){
     var btnAceptar = document.getElementById('btnAceptarF');
     var mensaje = document.getElementById('mensajeF');
 
-    mensaje.innerHTML = "No se seleccionó ningún autor.";
-
+    if (op = "libro"){
+        mensaje.innerHTML = "No se seleccionó ningún autor.";
+    }
+    if (op = "prestamo" || op == "prestamoM"){
+        mensaje.innerHTML = "No se dispone de la existencia suficiente para realizar el préstamo.";
+    }
+    
     btnAceptar.addEventListener("click", function () {
-        window.location = 'libroAgregar.php';
+        if (op == "prestamoM"){
+            window.location = op+'Modificar.php';
+        }else{
+            window.location = op+'Agregar.php';
+        }
     }, false);
 
     modalFracaso.show();

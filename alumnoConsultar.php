@@ -1,10 +1,19 @@
 <?php
     include("validarSesion.php");
+    
+    $mostrarModal = false;
+
     include_once ('Conexion.php');
 
     if(isset($_POST["alumno"])){
         $alumno = $_POST["alumno"];
         $datos = $server->buscarAlumno($alumno);
+
+        if (mysqli_num_rows($datos) == 0){
+            $mostrarModal = true;
+            $datos = $server->consultarTabla("alumnos");
+        }
+
     }else{
         $alumno = "";
         $datos = $server->consultarTabla("alumnos");
@@ -80,10 +89,10 @@
                             echo "</th>";
                             echo "</tr>";
                         }
-                        if (mysqli_num_rows($datos) == 0 && isset($_POST["alumno"])){
-                            echo "<script>
-                                    msjNoExiste ('alumno');
-                                  </script>";
+                        if ($mostrarModal){
+                            echo "  <script>
+                                        msjNoExiste ('alumno');
+                                    </script>";
                         }
                     
                     ?>

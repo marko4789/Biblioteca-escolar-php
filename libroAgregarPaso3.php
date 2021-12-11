@@ -21,7 +21,7 @@
     } else if (!isset($_POST["categoria"])) {
         $_SESSION["editando"] = "Activo";
         echo "  <script>
-                    msjFaltanAutores();
+                    msjFaltan('libro');
                 </script>";
     }
     
