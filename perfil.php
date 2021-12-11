@@ -1,7 +1,18 @@
 <?php
-    if(session_status() === PHP_SESSION_NONE){
-        session_start();
-    }
+    include("validarSesion.php");
+    include("Conexion.php");
+
+    $datos = $server->buscarUsuario($_SESSION['idUsuario']);
+
+        if ($fila = mysqli_fetch_array($datos)){
+            $usuario = $fila['nombreUsuario'];
+            $nombre = $fila['nombre'];
+            $apellidoPaterno = $fila['apellidoPaterno'];
+            $apellidoMaterno = $fila['apellidoMaterno'];
+            $email = $fila['email'];
+        }
+    
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -45,8 +56,8 @@
     <section style="float:left;">
         <div class= "caja" >
             <h6>ID de usuario: <?php echo $_SESSION['idUsuario']?></h6>
-            <h6>Nombre del usuario: <?php echo $_SESSION['nombreUsuario']?></h6>
-            <h6>Nombre completo: <?php echo $_SESSION['nombres']." ".$_SESSION['apellidoPaterno']." ".$_SESSION['apellidoMaterno']?></h6>
+            <h6>Nombre del usuario: <?php echo $usuario?></h6>
+            <h6>Nombre completo: <?php echo $nombre." ".$apellidoPaterno." ".$apellidoMaterno;?></h6>
         </div>
     </section>
 
@@ -61,11 +72,6 @@
 
 
     </div>
-
-
-
-
-
 
 </body>
 
