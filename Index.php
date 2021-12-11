@@ -22,9 +22,6 @@
   background-repeat: repeat;
 
 }
-
-
-  
 </style>
 
 <body class="index">

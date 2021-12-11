@@ -48,6 +48,8 @@
                 
             }else{
                echo "
+               <li class='dropdown'><a href='perfil.php'>Perfil</a>  </li>
+
                <li class='dropdown'><a href='libroConsultar.php'>Libros</a>
 
                <div class='dropdown-content'>

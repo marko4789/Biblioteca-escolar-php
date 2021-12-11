@@ -244,7 +244,7 @@ p{
     background-color: rgba(240, 129, 2, 0.342);
   }
 
-  .inicio p{
+  .inicio p,h6{
     text-align: justify;
   }
 
@@ -309,7 +309,21 @@ p{
 }
 
 
-@media only screen and (max-width:892px){
+.caja{
+  border: #8d8c8c4b 8px double;
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  margin-left:5%;
+  margin-top:5%
+}
+
+.caja h6{
+  display: block;
+  margin:5%
+}
+
+
+@media only screen and (max-width:965px){
   .titulo img{
     width: 15em;
   }

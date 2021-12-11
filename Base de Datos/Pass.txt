@@ -1,3 +1,8 @@
+bd_biblioteca
 User = admin
-
 Password = Mx_123456
+
+bd_biblioteca_10-12-2021 RECOMENDADA ACTUALIZADA
+
+User = admin
+Password = SoyAdmin123
